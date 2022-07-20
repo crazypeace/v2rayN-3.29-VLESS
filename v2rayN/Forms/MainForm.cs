@@ -1234,6 +1234,10 @@ namespace v2rayN.Forms
         }
         private void tsbCheckUpdateN_Click(object sender, EventArgs e)
         {
+            Process.Start(Global.UpdateUrl);
+
+            return;
+
             //System.Diagnostics.Process.Start(Global.UpdateUrl);
             DownloadHandle downloadHandle = null;
             if (downloadHandle == null)
@@ -1570,8 +1574,12 @@ namespace v2rayN.Forms
 
 
 
+
         #endregion
 
-      
+        private void tsbQRCodeSwitch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

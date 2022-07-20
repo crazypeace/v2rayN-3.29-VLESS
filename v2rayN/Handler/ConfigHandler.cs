@@ -441,6 +441,31 @@ namespace v2rayN.Handler
                         vmessItem.port);
                     url = string.Format("{0}{1}{2}{3}", Global.trojanProtocol, url, query, remark);
                 }
+                else if (vmessItem.configType == (int)EConfigType.VLESS)
+                {
+                    string remark = string.Empty;
+                    if (!Utils.IsNullOrEmpty(vmessItem.remarks))
+                    {
+                        remark = "#" + WebUtility.UrlEncode(vmessItem.remarks);
+                    }
+                    var dicQuery = new Dictionary<string, string>();
+                    if (!Utils.IsNullOrEmpty(vmessItem.security))
+                    {
+                        dicQuery.Add("encryption", vmessItem.security);
+                    }
+                    else
+                    {
+                        dicQuery.Add("encryption", "none");
+                    }
+                    GetStdTransport(vmessItem, "none", ref dicQuery);
+                    string query = "?" + string.Join("&", dicQuery.Select(x => x.Key + "=" + x.Value).ToArray());
+
+                    url = string.Format("{0}@{1}:{2}",
+                    vmessItem.id,
+                    GetIpv6(vmessItem.address),
+                    vmessItem.port);
+                    url = $"{Global.vlessProtocol}{url}{query}{remark}";
+                }
                 else
                 {
                 }
@@ -877,6 +902,13 @@ namespace v2rayN.Handler
                         countServers++;
                     }
                 }
+                else if (vmessItem.configType == (int)EConfigType.VLESS)
+                {
+                    if (AddVlessServer(ref config, vmessItem, -1) == 0)
+                    {
+                        countServers++;
+                    }
+                }
             }
             return countServers;
         }
@@ -1080,5 +1112,80 @@ namespace v2rayN.Handler
             return 0;
         }
 
+        private static string GetIpv6(string address)
+        {
+            return Utils.IsIpv6(address) ? $"[{address}]" : address;
+        }
+
+        private static int GetStdTransport(VmessItem item, string securityDef, ref Dictionary<string, string> dicQuery)
+        {
+            if (!Utils.IsNullOrEmpty(item.flow))
+            {
+                dicQuery.Add("flow", item.flow);
+            }
+
+            if (!Utils.IsNullOrEmpty(item.streamSecurity))
+            {
+                dicQuery.Add("security", item.streamSecurity);
+            }
+            else
+            {
+                if (securityDef != null)
+                {
+                    dicQuery.Add("security", securityDef);
+                }
+            }
+
+            dicQuery.Add("type", !Utils.IsNullOrEmpty(item.network) ? item.network : "tcp");
+
+            switch (item.network)
+            {
+                case "tcp":
+                    dicQuery.Add("headerType", !Utils.IsNullOrEmpty(item.headerType) ? item.headerType : "none");
+                    if (!Utils.IsNullOrEmpty(item.requestHost))
+                    {
+                        dicQuery.Add("host", WebUtility.UrlEncode(item.requestHost));
+                    }
+                    break;
+                case "kcp":
+                    dicQuery.Add("headerType", !Utils.IsNullOrEmpty(item.headerType) ? item.headerType : "none");
+                    if (!Utils.IsNullOrEmpty(item.path))
+                    {
+                        dicQuery.Add("seed", WebUtility.UrlEncode(item.path));
+                    }
+                    break;
+
+                case "ws":
+                    if (!Utils.IsNullOrEmpty(item.requestHost))
+                    {
+                        dicQuery.Add("host", WebUtility.UrlEncode(item.requestHost));
+                    }
+                    if (!Utils.IsNullOrEmpty(item.path))
+                    {
+                        dicQuery.Add("path", WebUtility.UrlEncode(item.path));
+                    }
+                    break;
+
+                case "http":
+                case "h2":
+                    dicQuery["type"] = "http";
+                    if (!Utils.IsNullOrEmpty(item.requestHost))
+                    {
+                        dicQuery.Add("host", WebUtility.UrlEncode(item.requestHost));
+                    }
+                    if (!Utils.IsNullOrEmpty(item.path))
+                    {
+                        dicQuery.Add("path", WebUtility.UrlEncode(item.path));
+                    }
+                    break;
+
+                case "quic":
+                    dicQuery.Add("headerType", !Utils.IsNullOrEmpty(item.headerType) ? item.headerType : "none");
+                    dicQuery.Add("quicSecurity", WebUtility.UrlEncode(item.requestHost));
+                    dicQuery.Add("key", WebUtility.UrlEncode(item.path));
+                    break;
+            }
+            return 0;
+        }
     }
 }

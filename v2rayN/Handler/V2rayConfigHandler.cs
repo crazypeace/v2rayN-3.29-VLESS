@@ -1452,6 +1452,25 @@ namespace v2rayN.Handler
                         vmessItem.remarks = WebUtility.UrlDecode(remarks);
                     }                     
                 }
+                else if (result.StartsWith(Global.vlessProtocol))
+                {
+                    vmessItem.configType = (int)EConfigType.VLESS;
+                    vmessItem.security = "none";
+
+                    Uri url = new Uri(result);
+
+                    vmessItem.address = url.IdnHost;
+                    vmessItem.port = url.Port;
+                    vmessItem.remarks = url.GetComponents(UriComponents.Fragment, UriFormat.Unescaped);
+                    vmessItem.id = url.UserInfo;
+
+                    var query = HttpUtility.ParseQueryString(url.Query);
+                    vmessItem.security = query["encryption"] ?? "none";
+                    vmessItem.streamSecurity = query["security"] ?? "";
+
+                    ResolveStdTransport(query, ref vmessItem);
+
+                }
                 else
                 {
                     msg = UIRes.I18N("NonvmessOrssProtocol");
@@ -1465,6 +1484,46 @@ namespace v2rayN.Handler
             }
 
             return vmessItem;
+        }
+
+        private static int ResolveStdTransport(NameValueCollection query, ref VmessItem item)
+        {
+            item.flow = query["flow"] ?? "";
+            item.streamSecurity = query["security"] ?? "";
+            item.network = query["type"] ?? "tcp";
+            switch (item.network)
+            {
+                case "tcp":
+                    item.headerType = query["headerType"] ?? "none";
+                    item.requestHost = WebUtility.UrlDecode(query["host"] ?? "");
+
+                    break;
+                case "kcp":
+                    item.headerType = query["headerType"] ?? "none";
+                    item.path = WebUtility.UrlDecode(query["seed"] ?? "");
+                    break;
+
+                case "ws":
+                    item.requestHost = WebUtility.UrlDecode(query["host"] ?? "");
+                    item.path = WebUtility.UrlDecode(query["path"] ?? "/");
+                    break;
+
+                case "http":
+                case "h2":
+                    item.network = "h2";
+                    item.requestHost = WebUtility.UrlDecode(query["host"] ?? "");
+                    item.path = WebUtility.UrlDecode(query["path"] ?? "/");
+                    break;
+
+                case "quic":
+                    item.headerType = query["headerType"] ?? "none";
+                    item.requestHost = query["quicSecurity"] ?? "none";
+                    item.path = WebUtility.UrlDecode(query["key"] ?? "");
+                    break;
+                default:
+                    break;
+            }
+            return 0;
         }
 
 

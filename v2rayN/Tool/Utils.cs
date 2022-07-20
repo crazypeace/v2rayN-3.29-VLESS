@@ -684,7 +684,7 @@ namespace v2rayN
             try
             {
                 string location = GetExePath();
-                return string.Format("v2rayN - V{0} - {1}",
+                return string.Format("v2rayN - VLESS - V{0} - {1}",
                         FileVersionInfo.GetVersionInfo(location).FileVersion.ToString(),
                         File.GetLastWriteTime(location).ToString("yyyy/MM/dd"));
             }
@@ -916,5 +916,22 @@ namespace v2rayN
 
         #endregion
 
+        public static bool IsIpv6(string ip)
+        {
+            IPAddress address;
+            if (IPAddress.TryParse(ip, out address))
+            {
+                switch (address.AddressFamily)
+                {
+                    case AddressFamily.InterNetwork:
+                        return false;
+                    case AddressFamily.InterNetworkV6:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+            return false;
+        }
     }
 }
