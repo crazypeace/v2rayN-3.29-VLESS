@@ -9,6 +9,9 @@ A v2rayN-3.29 mod version. Can add VLESS server from clipboard, share VLESS serv
 - 将VLESS节点分享为链接
 - 将VLESS节点分享为二维码
 
+# 打包v2rayN-Core.zip时
+打包的是V2Ray 4.31.0版本，支持VLESS和XTLS
+
 # 本repo在原版v2rayN 3.29基础上的修改
 - 参考v2rayN 5.29的代码逻辑，实现:从剪贴板添加VLESS节点，将VLESS节点分享为链接，将VLESS节点分享为二维码
 - 窗口标题增加`- VLESS`表明非原版
