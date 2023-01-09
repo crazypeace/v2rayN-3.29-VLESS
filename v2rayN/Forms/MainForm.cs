@@ -890,12 +890,12 @@ namespace v2rayN.Forms
             bgwScan.RunWorkerAsync();
         }
 
-        private int AddBatchServers(string clipboardData, string subid = "")
+        private int AddBatchServers(string clipboardData, string subid = "", bool allowInsecure = false)
         {
             int counter;
             int _Add()
             {
-                return ConfigHandler.AddBatchServers(ref config, clipboardData, subid);
+                return ConfigHandler.AddBatchServers(ref config, clipboardData, subid, allowInsecure);
             }
             counter = _Add();
             if (counter < 1)
@@ -1494,13 +1494,16 @@ namespace v2rayN.Forms
 
             for (int k = 1; k <= config.subItem.Count; k++)
             {
-                string id = config.subItem[k - 1].id.TrimEx();
-                string url = config.subItem[k - 1].url.TrimEx();
-                string hashCode = $"{k}->";
                 if (config.subItem[k - 1].enabled == false)
                 {
                     continue;
                 }
+
+                string id = config.subItem[k - 1].id.TrimEx();
+                string url = config.subItem[k - 1].url.TrimEx();
+                bool allowInsecure = config.subItem[k - 1].allowInsecure;
+                string hashCode = $"{k}->";
+
                 if (Utils.IsNullOrEmpty(id) || Utils.IsNullOrEmpty(url))
                 {
                     AppendText(false, $"{hashCode}{UIRes.I18N("MsgNoValidSubscription")}");
@@ -1523,7 +1526,7 @@ namespace v2rayN.Forms
                         ConfigHandler.RemoveServerViaSubid(ref config, id);
                         AppendText(false, $"{hashCode}{UIRes.I18N("MsgClearSubscription")}");
                         RefreshServers();
-                        if (AddBatchServers(result, id) > 0)
+                        if (AddBatchServers(result, id, allowInsecure) > 0)
                         {
                         }
                         else

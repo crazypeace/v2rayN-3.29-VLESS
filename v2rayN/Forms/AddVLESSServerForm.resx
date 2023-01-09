@@ -388,7 +388,7 @@
     <value>338, 35</value>
   </data>
   <data name="panTlsMore.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
+    <value>33</value>
   </data>
   <data name="&gt;&gt;panTlsMore.Name" xml:space="preserve">
     <value>panTlsMore</value>
@@ -1378,7 +1378,7 @@
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>AddVLESSServerForm</value>
+    <value>AddServer5Form</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>v2rayN.Forms.BaseServerForm, v2rayN, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>

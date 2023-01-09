@@ -36,12 +36,14 @@
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.chkAllowInsecureTrue = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
             resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.chkAllowInsecureTrue);
             this.groupBox2.Controls.Add(this.chkEnabled);
             this.groupBox2.Controls.Add(this.btnRemove);
             this.groupBox2.Controls.Add(this.txtUrl);
@@ -87,6 +89,13 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
+            // chkAllowInsecureTrue
+            // 
+            resources.ApplyResources(this.chkAllowInsecureTrue, "chkAllowInsecureTrue");
+            this.chkAllowInsecureTrue.Name = "chkAllowInsecureTrue";
+            this.chkAllowInsecureTrue.UseVisualStyleBackColor = true;
+            this.chkAllowInsecureTrue.Leave += new System.EventHandler(this.txtRemarks_Leave);
+            // 
             // SubSettingControl
             // 
             resources.ApplyResources(this, "$this");
@@ -109,5 +118,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.CheckBox chkEnabled;
+        private System.Windows.Forms.CheckBox chkAllowInsecureTrue;
     }
 }

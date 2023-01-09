@@ -718,6 +718,11 @@ namespace v2rayN.Mode
         }
 
         /// <summary>
+        /// allowInsecure
+        /// </summary>
+        public bool allowInsecure { get; set; } = false;
+
+        /// <summary>
         /// enable
         /// </summary>
         public bool enabled { get; set; } = true;

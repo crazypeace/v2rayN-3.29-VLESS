@@ -432,7 +432,7 @@
             resources.ApplyResources(this.MenuItemImportClipboard, "MenuItemImportClipboard");
             this.MenuItemImportClipboard.Click += new System.EventHandler(this.MenuItemImportClipboard_Click);
             // 
-            // AddVLESSServerForm
+            // AddServer5Form
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -442,7 +442,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuServer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "AddVLESSServerForm";
+            this.Name = "AddServer5Form";
             this.Load += new System.EventHandler(this.AddServer5Form_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

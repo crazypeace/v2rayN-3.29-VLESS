@@ -126,7 +126,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
+    <value>37</value>
   </data>
   <data name="btnClose.Text" xml:space="preserve">
     <value>&amp;Cancel</value>
@@ -265,7 +265,7 @@
     <value>83, 12</value>
   </data>
   <data name="label21.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
+    <value>34</value>
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>allowInsecure</value>
@@ -298,7 +298,7 @@
     <value>91, 20</value>
   </data>
   <data name="cmbAllowInsecure.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
+    <value>35</value>
   </data>
   <data name="&gt;&gt;cmbAllowInsecure.Name" xml:space="preserve">
     <value>cmbAllowInsecure</value>
@@ -319,7 +319,7 @@
     <value>338, 35</value>
   </data>
   <data name="panTlsMore.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
+    <value>33</value>
   </data>
   <data name="&gt;&gt;panTlsMore.Name" xml:space="preserve">
     <value>panTlsMore</value>
@@ -643,7 +643,7 @@
     <value>tls</value>
   </data>
   <data name="cmbStreamSecurity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 243</value>
+    <value>127, 239</value>
   </data>
   <data name="cmbStreamSecurity.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 20</value>
@@ -1198,7 +1198,7 @@
     <value>75, 23</value>
   </data>
   <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
+    <value>36</value>
   </data>
   <data name="btnOK.Text" xml:space="preserve">
     <value>&amp;OK</value>
@@ -1360,7 +1360,7 @@
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>AddVmessServerForm</value>
+    <value>AddServerForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>v2rayN.Forms.BaseServerForm, v2rayN, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>

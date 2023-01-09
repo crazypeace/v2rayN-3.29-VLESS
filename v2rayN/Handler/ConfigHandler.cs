@@ -843,7 +843,7 @@ namespace v2rayN.Handler
         /// <param name="clipboardData"></param>
         /// <param name="subid"></param>
         /// <returns>成功导入的数量</returns>
-        public static int AddBatchServers(ref Config config, string clipboardData, string subid = "")
+        public static int AddBatchServers(ref Config config, string clipboardData, string subid = "", bool allowInsecure = false)
         {
             if (Utils.IsNullOrEmpty(clipboardData))
             {
@@ -876,6 +876,10 @@ namespace v2rayN.Handler
                 vmessItem.subid = subid;
                 if (vmessItem.configType == (int)EConfigType.Vmess)
                 {
+                    if (allowInsecure)
+                    {
+                        vmessItem.allowInsecure = "true";
+                    }
                     if (AddServer(ref config, vmessItem, -1) == 0)
                     {
                         countServers++;
@@ -904,6 +908,10 @@ namespace v2rayN.Handler
                 }
                 else if (vmessItem.configType == (int)EConfigType.VLESS)
                 {
+                    if (allowInsecure)
+                    {
+                        vmessItem.allowInsecure = "true";
+                    }
                     if (AddVlessServer(ref config, vmessItem, -1) == 0)
                     {
                         countServers++;

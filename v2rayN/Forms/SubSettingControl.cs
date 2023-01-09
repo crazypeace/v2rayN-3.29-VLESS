@@ -30,6 +30,7 @@ namespace v2rayN.Forms
                 txtRemarks.Text = subItem.remarks.ToString();
                 txtUrl.Text = subItem.url.ToString();
                 chkEnabled.Checked = subItem.enabled;
+                chkAllowInsecureTrue.Checked = subItem.allowInsecure;
             }
         }
         private void EndBindingSub()
@@ -39,6 +40,7 @@ namespace v2rayN.Forms
                 subItem.remarks = txtRemarks.Text.TrimEx();
                 subItem.url = txtUrl.Text.TrimEx();
                 subItem.enabled = chkEnabled.Checked;
+                subItem.allowInsecure = chkAllowInsecureTrue.Checked;
             }
         }
         private void txtRemarks_Leave(object sender, EventArgs e)
