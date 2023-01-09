@@ -8,7 +8,9 @@ namespace v2rayN
 
         public const string v2rayWebsiteUrl = @"https://www.v2fly.org/";
         public const string AboutUrl = @"https://github.com/2dust/v2rayN";
-        public const string UpdateUrl = AboutUrl + @"/releases";
+        public const string UpdateUrl = @"https://github.com/crazypeace/v2rayN-3.29-VLESS/releases";
+        public const string IssueUrl = @"https://github.com/crazypeace/v2rayN-3.29-VLESS/issues";
+        public const string BloggerUrl = "https://zelikk.blogspot.com";
 
 
         /// <summary>

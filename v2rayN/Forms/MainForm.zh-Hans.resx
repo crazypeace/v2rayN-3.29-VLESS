@@ -443,13 +443,13 @@
   </data>
   <data name="tsbReload.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE3SURBVFhH7ZaBDQIhDEVvBEdwBDfQDXQER3AD3cARdAPd
-        QDfSDbQvuSb1AicFjJrwkxcN0FIolOuamv5VE2E+gLaPayWchEcE+hhTXVPhIoQmDcFYbKpoJtwEdX4X
-        jgIrXfTwnzb6dBw22BaJVdjJmWQs1/SdBRtE0U5cBXW2oSFRO0HtSEeW2FZ1wsq9sjuRdTDVAXnNuWLY
-        6JnAl0sYa/Q5q1dhq35ci+Bkq2HJvbZpxGeybAAuw4Fq+cnW1wPITgHFYxvBUw+qHEIL1yq1vDKhVlH3
-        NQwF4JkcFRWiUAB7IVW2FFPO3YqlgPd+LJf02e8Fdi3rMdIAcLDuf9UpeT0IS0G/hvhPm305vSl7EQFY
-        B6zCvozvYGzRM8zEoeg5TPZwDaGvpHQni1yzSxbXPW9q+hF13ROHuJnQcjbhtQAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAATdJREFUWEftloENAiEMRW8ER3AEN9ANdARHcAPdwBF0A91AN9INtC+5JvUCJwWM
+        mvCTFw3QUiiU65qa/lUTYT6Ato9rJZyERwT6GFNdU+EihCYNwVhsqmgm3AR1fheOAitd9PCfNvp0HDbY
+        FolV2MmZZCzX9J0FG0TRTlwFdbahIVE7Qe1IR5bYVnXCyr2yO5F1MNUBec25YtjomcCXSxhr9DmrV2Gr
+        flyL4GSrYcm9tmnEZ7JsAC7DgWr5ydbXA8hOAcVjG8FTD6ocQgvXKrW8MqFWUfc1DAXgmRwVFaJQAHsh
+        VbYUU87diqWA934sl/TZ7wV2Lesx0gBwsO5/1Sl5PQhLQb+G+E+bfTm9KXsRAVgHrMK+jO9gbNEzzMSh
+        6DlM9nANoa+kdCeLXLNLFtc9b2r6EXXdE4e4mdByNuG1AAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="tsbReload.Size" type="System.Drawing.Size, System.Drawing">
@@ -468,13 +468,13 @@
     <value>223, 22</value>
   </data>
   <data name="tsbCheckUpdateN.Text" xml:space="preserve">
-    <value>v2rayN</value>
+    <value>v2rayN-VLESS</value>
   </data>
   <data name="tsbCheckUpdateCore.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 22</value>
   </data>
   <data name="tsbCheckUpdateCore.Text" xml:space="preserve">
-    <value>v2rayCore</value>
+    <value>v2rayCore v4.45.2</value>
   </data>
   <data name="tsbCheckUpdatePACList.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 22</value>
@@ -498,7 +498,7 @@
     <value>   帮助   </value>
   </data>
   <data name="tsbAbout.Text" xml:space="preserve">
-    <value>v2rayN 项目</value>
+    <value>反馈 v2rayN-VLESS 项目</value>
   </data>
   <data name="tsbV2rayWebsite.Text" xml:space="preserve">
     <value>V2Ray 官网</value>
@@ -507,13 +507,13 @@
     <value>68, 53</value>
   </data>
   <data name="tsbPromotion.Text" xml:space="preserve">
-    <value>    推广    </value>
+    <value>   修改者    </value>
   </data>
   <data name="tsbClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAySURBVFhH7c6xDQAgCEVBRnVTHU2ZABuMxV3yOvJDAAA/
-        GqfZVG6X8mg1dfUAAPBQxAZd0SJruVXHWwAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAADJJREFUWEftzrENACAIRUFGdVMdTZkAG4zFXfI68kMAAD8ap9lUbpfyaDV19QAA
+        8FDEBl3RImu5VcdbAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="tsbClose.Size" type="System.Drawing.Size, System.Drawing">

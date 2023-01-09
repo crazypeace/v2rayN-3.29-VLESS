@@ -132,6 +132,7 @@ namespace v2rayN.Handler
             try
             {
                 string version = redirectUrl.Substring(redirectUrl.LastIndexOf("/", StringComparison.Ordinal) + 1);
+                version = "v4.45.2";  // 最多更新到最后一个v4版本
 
                 string curVersion;
                 string message;

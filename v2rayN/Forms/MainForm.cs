@@ -1421,7 +1421,7 @@ namespace v2rayN.Forms
 
         private void tsbAbout_Click(object sender, EventArgs e)
         {
-            Process.Start(Global.AboutUrl);
+            Process.Start(Global.IssueUrl); // 访问Issue
         }
 
         private void tsbV2rayWebsite_Click(object sender, EventArgs e)
@@ -1431,7 +1431,7 @@ namespace v2rayN.Forms
 
         private void tsbPromotion_Click(object sender, EventArgs e)
         {
-            Process.Start($"{Utils.Base64Decode(Global.PromotionUrl)}?t={DateTime.Now.Ticks}");
+            Process.Start(Global.BloggerUrl);
         }
         #endregion
 
@@ -1581,6 +1581,11 @@ namespace v2rayN.Forms
         #endregion
 
         private void tsbQRCodeSwitch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbCheckUpdate_Click(object sender, EventArgs e)
         {
 
         }
