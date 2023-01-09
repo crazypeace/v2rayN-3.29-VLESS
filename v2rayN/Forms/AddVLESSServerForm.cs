@@ -5,15 +5,15 @@ using v2rayN.Mode;
 
 namespace v2rayN.Forms
 {
-    public partial class AddServerForm : BaseServerForm
+    public partial class AddVLESSServerForm : BaseServerForm
     { 
 
-        public AddServerForm()
+        public AddVLESSServerForm()
         {
             InitializeComponent();
         }
 
-        private void AddServerForm_Load(object sender, EventArgs e)
+        private void AddServer5Form_Load(object sender, EventArgs e)
         {
             if (EditIndex >= 0)
             {
@@ -35,7 +35,7 @@ namespace v2rayN.Forms
             txtAddress.Text = vmessItem.address;
             txtPort.Text = vmessItem.port.ToString();
             txtId.Text = vmessItem.id;
-            txtAlterId.Text = vmessItem.alterId.ToString();
+            cmbFlow.Text = vmessItem.flow;
             cmbSecurity.Text = vmessItem.security;
             cmbNetwork.Text = vmessItem.network;
             txtRemarks.Text = vmessItem.remarks;
@@ -56,8 +56,8 @@ namespace v2rayN.Forms
             txtAddress.Text = "";
             txtPort.Text = "";
             txtId.Text = "";
-            txtAlterId.Text = "0";
-            cmbSecurity.Text = Global.DefaultSecurity;
+            cmbFlow.Text = "";
+            cmbSecurity.Text = Global.None;
             cmbNetwork.Text = Global.DefaultNetwork;
             txtRemarks.Text = "";
 
@@ -112,7 +112,7 @@ namespace v2rayN.Forms
             string address = txtAddress.Text;
             string port = txtPort.Text;
             string id = txtId.Text;
-            string alterId = txtAlterId.Text;
+            string flow = cmbFlow.Text;
             string security = cmbSecurity.Text;
             string network = cmbNetwork.Text;
             string remarks = txtRemarks.Text;
@@ -138,16 +138,12 @@ namespace v2rayN.Forms
                 UI.Show(UIRes.I18N("FillUUID"));
                 return;
             }
-            if (Utils.IsNullOrEmpty(alterId) || !Utils.IsNumberic(alterId))
-            {
-                UI.Show(UIRes.I18N("FillCorrectAlterId"));
-                return;
-            }
+
 
             vmessItem.address = address;
             vmessItem.port = Utils.ToInt(port);
             vmessItem.id = id;
-            vmessItem.alterId = Utils.ToInt(alterId);
+            vmessItem.flow = flow;
             vmessItem.security = security;
             vmessItem.network = network;
             vmessItem.remarks = remarks;
@@ -158,7 +154,7 @@ namespace v2rayN.Forms
             vmessItem.streamSecurity = streamSecurity;
             vmessItem.allowInsecure = allowInsecure;
 
-            if (ConfigHandler.AddServer(ref config, vmessItem, EditIndex) == 0)
+            if (ConfigHandler.AddVlessServer(ref config, vmessItem, EditIndex) == 0)
             {
                 this.DialogResult = DialogResult.OK;
             }
@@ -250,7 +246,6 @@ namespace v2rayN.Forms
             txtAddress.Text = vmessItem.address;
             txtPort.Text = vmessItem.port.ToString();
             txtId.Text = vmessItem.id;
-            txtAlterId.Text = vmessItem.alterId.ToString();
             txtRemarks.Text = vmessItem.remarks;
             cmbNetwork.Text = vmessItem.network;
             cmbHeaderType.Text = vmessItem.headerType;
@@ -278,7 +273,6 @@ namespace v2rayN.Forms
             txtAddress.Text = vmessItem.address;
             txtPort.Text = vmessItem.port.ToString();
             txtId.Text = vmessItem.id;
-            txtAlterId.Text = vmessItem.alterId.ToString();
             txtRemarks.Text = vmessItem.remarks;
             cmbNetwork.Text = vmessItem.network;
             cmbHeaderType.Text = vmessItem.headerType;

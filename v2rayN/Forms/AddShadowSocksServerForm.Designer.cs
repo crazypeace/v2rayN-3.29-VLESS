@@ -1,6 +1,6 @@
 ﻿namespace v2rayN.Forms
 {
-    partial class AddServer4Form
+    partial class AddShadowSocksServerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddServer4Form));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddShadowSocksServerForm));
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtSecurity = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.cmbSecurity = new System.Windows.Forms.ComboBox();
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
@@ -64,13 +64,13 @@
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.txtSecurity);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtId);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.cmbSecurity);
             this.groupBox1.Controls.Add(this.txtRemarks);
             this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtId);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtPort);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtAddress);
@@ -78,30 +78,26 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // txtSecurity
-            // 
-            resources.ApplyResources(this.txtSecurity, "txtSecurity");
-            this.txtSecurity.Name = "txtSecurity";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // txtId
-            // 
-            resources.ApplyResources(this.txtId, "txtId");
-            this.txtId.Name = "txtId";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
             // label13
             // 
             resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
+            // 
+            // cmbSecurity
+            // 
+            resources.ApplyResources(this.cmbSecurity, "cmbSecurity");
+            this.cmbSecurity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSecurity.FormattingEnabled = true;
+            this.cmbSecurity.Items.AddRange(new object[] {
+            resources.GetString("cmbSecurity.Items"),
+            resources.GetString("cmbSecurity.Items1"),
+            resources.GetString("cmbSecurity.Items2"),
+            resources.GetString("cmbSecurity.Items3"),
+            resources.GetString("cmbSecurity.Items4"),
+            resources.GetString("cmbSecurity.Items5"),
+            resources.GetString("cmbSecurity.Items6"),
+            resources.GetString("cmbSecurity.Items7")});
+            this.cmbSecurity.Name = "cmbSecurity";
             // 
             // txtRemarks
             // 
@@ -112,6 +108,21 @@
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // txtId
+            // 
+            resources.ApplyResources(this.txtId, "txtId");
+            this.txtId.Name = "txtId";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
             // 
             // txtPort
             // 
@@ -172,7 +183,7 @@
             this.menuItemImportClipboard.Name = "menuItemImportClipboard";
             this.menuItemImportClipboard.Click += new System.EventHandler(this.menuItemImportClipboard_Click);
             // 
-            // AddServer4Form
+            // AddServer3Form
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -183,8 +194,8 @@
             this.Controls.Add(this.menuServer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = true;
-            this.Name = "AddServer4Form";
-            this.Load += new System.EventHandler(this.AddServer4Form_Load);
+            this.Name = "AddServer3Form";
+            this.Load += new System.EventHandler(this.AddServer3Form_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -202,19 +213,19 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.TextBox txtRemarks;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbSecurity;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.MenuStrip menuServer;
         private System.Windows.Forms.ToolStripMenuItem MenuItem1;
         private System.Windows.Forms.ToolStripMenuItem menuItemImportClipboard;
-        private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtSecurity;
-        private System.Windows.Forms.Label label4;
     }
 }

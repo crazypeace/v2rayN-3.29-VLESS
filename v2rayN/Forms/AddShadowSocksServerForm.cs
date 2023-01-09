@@ -5,10 +5,10 @@ using v2rayN.Mode;
 
 namespace v2rayN.Forms
 {
-    public partial class AddServer3Form : BaseServerForm
+    public partial class AddShadowSocksServerForm : BaseServerForm
     { 
 
-        public AddServer3Form()
+        public AddShadowSocksServerForm()
         {
             InitializeComponent();
         }

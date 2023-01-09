@@ -1,6 +1,6 @@
 ﻿namespace v2rayN.Forms
 {
-    partial class AddServerForm
+    partial class AddVLESSServerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddServerForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddVLESSServerForm));
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbFlow = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnGUID = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -61,8 +63,6 @@
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtAlterId = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.TextBox();
@@ -95,6 +95,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbFlow);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnGUID);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -103,8 +105,6 @@
             this.groupBox1.Controls.Add(this.txtRemarks);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtAlterId);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtPort);
@@ -114,6 +114,23 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // cmbFlow
+            // 
+            this.cmbFlow.FormattingEnabled = true;
+            this.cmbFlow.Items.AddRange(new object[] {
+            resources.GetString("cmbFlow.Items"),
+            resources.GetString("cmbFlow.Items1"),
+            resources.GetString("cmbFlow.Items2"),
+            resources.GetString("cmbFlow.Items3"),
+            resources.GetString("cmbFlow.Items4")});
+            resources.ApplyResources(this.cmbFlow, "cmbFlow");
+            this.cmbFlow.Name = "cmbFlow";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
             // 
             // btnGUID
             // 
@@ -256,7 +273,8 @@
             this.cmbStreamSecurity.FormattingEnabled = true;
             this.cmbStreamSecurity.Items.AddRange(new object[] {
             resources.GetString("cmbStreamSecurity.Items"),
-            resources.GetString("cmbStreamSecurity.Items1")});
+            resources.GetString("cmbStreamSecurity.Items1"),
+            resources.GetString("cmbStreamSecurity.Items2")});
             resources.ApplyResources(this.cmbStreamSecurity, "cmbStreamSecurity");
             this.cmbStreamSecurity.Name = "cmbStreamSecurity";
             this.cmbStreamSecurity.SelectedIndexChanged += new System.EventHandler(this.cmbStreamSecurity_SelectedIndexChanged);
@@ -303,13 +321,10 @@
             // 
             // cmbSecurity
             // 
-            this.cmbSecurity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSecurity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.cmbSecurity.FormattingEnabled = true;
             this.cmbSecurity.Items.AddRange(new object[] {
-            resources.GetString("cmbSecurity.Items"),
-            resources.GetString("cmbSecurity.Items1"),
-            resources.GetString("cmbSecurity.Items2"),
-            resources.GetString("cmbSecurity.Items3")});
+            resources.GetString("cmbSecurity.Items")});
             resources.ApplyResources(this.cmbSecurity, "cmbSecurity");
             this.cmbSecurity.Name = "cmbSecurity";
             // 
@@ -327,16 +342,6 @@
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            // 
-            // txtAlterId
-            // 
-            resources.ApplyResources(this.txtAlterId, "txtAlterId");
-            this.txtAlterId.Name = "txtAlterId";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
             // 
             // txtId
             // 
@@ -427,7 +432,7 @@
             resources.ApplyResources(this.MenuItemImportClipboard, "MenuItemImportClipboard");
             this.MenuItemImportClipboard.Click += new System.EventHandler(this.MenuItemImportClipboard_Click);
             // 
-            // AddServerForm
+            // AddVLESSServerForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -437,8 +442,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuServer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "AddServerForm";
-            this.Load += new System.EventHandler(this.AddServerForm_Load);
+            this.Name = "AddVLESSServerForm";
+            this.Load += new System.EventHandler(this.AddServer5Form_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -461,8 +466,6 @@
         private System.Windows.Forms.TextBox txtRemarks;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtAlterId;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPort;
@@ -504,5 +507,7 @@
         private System.Windows.Forms.Panel panTlsMore;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox cmbFlow;
+        private System.Windows.Forms.Label label4;
     }
 }

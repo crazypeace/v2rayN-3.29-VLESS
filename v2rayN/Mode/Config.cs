@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using v2rayN.Base;
 using v2rayN.HttpProxyHandler;
 

@@ -483,22 +483,22 @@ namespace v2rayN.Forms
             switch (configType)
             {
                 case (int)EConfigType.Vmess:
-                    fm = new AddServerForm();
+                    fm = new AddVmessServerForm();
                     break;
                 case (int)EConfigType.Shadowsocks:
-                    fm = new AddServer3Form();
+                    fm = new AddShadowSocksServerForm();
                     break;
                 case (int)EConfigType.Socks:
-                    fm = new AddServer4Form();
+                    fm = new AddSocksServerForm();
                     break;
                 case (int)EConfigType.VLESS:
-                    fm = new AddServer5Form();
+                    fm = new AddVLESSServerForm();
                     break;
                 case (int)EConfigType.Trojan:
-                    fm = new AddServer6Form();
+                    fm = new AddTrojanServerForm();
                     break;
                 default:
-                    fm = new AddServer2Form();
+                    fm = new AddCustomServerForm();
                     break;
             }
             fm.EditIndex = index;

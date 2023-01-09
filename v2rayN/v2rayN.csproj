@@ -98,26 +98,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\AddServer6Form.cs">
+    <Compile Include="Forms\AddTrojanServerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddServer6Form.Designer.cs">
-      <DependentUpon>AddServer6Form.cs</DependentUpon>
+    <Compile Include="Forms\AddTrojanServerForm.Designer.cs">
+      <DependentUpon>AddTrojanServerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddServer4Form.cs">
+    <Compile Include="Forms\AddSocksServerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddServer4Form.Designer.cs">
-      <DependentUpon>AddServer4Form.cs</DependentUpon>
+    <Compile Include="Forms\AddSocksServerForm.Designer.cs">
+      <DependentUpon>AddSocksServerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Base\ListViewFlickerFree.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\AddServer5Form.cs">
+    <Compile Include="Forms\AddVLESSServerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddServer5Form.Designer.cs">
-      <DependentUpon>AddServer5Form.cs</DependentUpon>
+    <Compile Include="Forms\AddVLESSServerForm.Designer.cs">
+      <DependentUpon>AddVLESSServerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\BaseServerForm.cs">
       <SubType>Form</SubType>
@@ -137,17 +137,17 @@
     <Compile Include="Forms\SubSettingForm.Designer.cs">
       <DependentUpon>SubSettingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddServer2Form.cs">
+    <Compile Include="Forms\AddCustomServerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddServer2Form.Designer.cs">
-      <DependentUpon>AddServer2Form.cs</DependentUpon>
+    <Compile Include="Forms\AddCustomServerForm.Designer.cs">
+      <DependentUpon>AddCustomServerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddServer3Form.cs">
+    <Compile Include="Forms\AddShadowSocksServerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddServer3Form.Designer.cs">
-      <DependentUpon>AddServer3Form.cs</DependentUpon>
+    <Compile Include="Forms\AddShadowSocksServerForm.Designer.cs">
+      <DependentUpon>AddShadowSocksServerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\QRCodeControl.cs">
       <SubType>UserControl</SubType>
@@ -198,11 +198,11 @@
     <Compile Include="Base\StringEx.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Forms\AddServerForm.cs">
+    <Compile Include="Forms\AddVmessServerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddServerForm.Designer.cs">
-      <DependentUpon>AddServerForm.cs</DependentUpon>
+    <Compile Include="Forms\AddVmessServerForm.Designer.cs">
+      <DependentUpon>AddVmessServerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\BaseForm.cs">
       <SubType>Form</SubType>
@@ -233,40 +233,40 @@
     <Compile Include="Tool\UI.cs" />
     <Compile Include="Tool\Utils.cs" />
     <Compile Include="Handler\V2rayConfigHandler.cs" />
-    <EmbeddedResource Include="Forms\AddServer2Form.zh-Hans.resx">
-      <DependentUpon>AddServer2Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddCustomServerForm.zh-Hans.resx">
+      <DependentUpon>AddCustomServerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddServer6Form.resx">
-      <DependentUpon>AddServer6Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddTrojanServerForm.resx">
+      <DependentUpon>AddTrojanServerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddServer6Form.zh-Hans.resx">
-      <DependentUpon>AddServer6Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddTrojanServerForm.zh-Hans.resx">
+      <DependentUpon>AddTrojanServerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddServer4Form.resx">
-      <DependentUpon>AddServer4Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddSocksServerForm.resx">
+      <DependentUpon>AddSocksServerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddServer4Form.zh-Hans.resx">
-      <DependentUpon>AddServer4Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddSocksServerForm.zh-Hans.resx">
+      <DependentUpon>AddSocksServerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddServer3Form.zh-Hans.resx">
-      <DependentUpon>AddServer3Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddShadowSocksServerForm.zh-Hans.resx">
+      <DependentUpon>AddShadowSocksServerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddServer5Form.resx">
-      <DependentUpon>AddServer5Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddVLESSServerForm.resx">
+      <DependentUpon>AddVLESSServerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddServer5Form.zh-Hans.resx">
-      <DependentUpon>AddServer5Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddVLESSServerForm.zh-Hans.resx">
+      <DependentUpon>AddVLESSServerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddServerForm.zh-Hans.resx">
-      <DependentUpon>AddServerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddVmessServerForm.zh-Hans.resx">
+      <DependentUpon>AddVmessServerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BaseServerForm.resx">
@@ -298,8 +298,8 @@
       <DependentUpon>SubSettingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddServerForm.resx">
-      <DependentUpon>AddServerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddVmessServerForm.resx">
+      <DependentUpon>AddVmessServerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BaseForm.resx">
@@ -313,12 +313,12 @@
       <DependentUpon>QRCodeControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddServer2Form.resx">
-      <DependentUpon>AddServer2Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddCustomServerForm.resx">
+      <DependentUpon>AddCustomServerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddServer3Form.resx">
-      <DependentUpon>AddServer3Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddShadowSocksServerForm.resx">
+      <DependentUpon>AddShadowSocksServerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SubSettingForm.zh-Hans.resx">
