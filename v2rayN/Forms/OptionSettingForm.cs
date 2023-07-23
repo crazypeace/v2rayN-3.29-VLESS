@@ -16,6 +16,19 @@ namespace v2rayN.Forms
 
         private void OptionSettingForm_Load(object sender, EventArgs e)
         {
+            int screenWidth = Screen.FromHandle(this.Handle).WorkingArea.Width;
+            int screenHeight = Screen.FromHandle(this.Handle).WorkingArea.Height;
+
+            // 设置窗口的尺寸不大于屏幕的尺寸
+            if (this.Width > screenWidth)
+            {
+                this.Width = screenWidth;
+            }
+            if (this.Height > screenHeight)
+            {
+                this.Height = screenHeight;
+            }
+
             InitBase();
 
             InitRouting();

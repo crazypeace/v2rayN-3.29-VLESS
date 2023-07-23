@@ -394,6 +394,8 @@
             // 
             // menuServer
             // 
+            this.menuServer.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuServer.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuServer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem1});
             resources.ApplyResources(this.menuServer, "menuServer");
@@ -432,7 +434,7 @@
             resources.ApplyResources(this.MenuItemImportClipboard, "MenuItemImportClipboard");
             this.MenuItemImportClipboard.Click += new System.EventHandler(this.MenuItemImportClipboard_Click);
             // 
-            // AddServer5Form
+            // AddVLESSServerForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -442,8 +444,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuServer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "AddServer5Form";
-            this.Load += new System.EventHandler(this.AddServer5Form_Load);
+            this.Name = "AddVLESSServerForm";
+            this.Load += new System.EventHandler(this.AddVLESSServerForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

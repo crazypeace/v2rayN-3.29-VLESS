@@ -51,15 +51,14 @@
             // 
             // btnClose
             // 
-            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.Name = "btnClose";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtRequestHost);
             this.groupBox1.Controls.Add(this.label13);
@@ -71,6 +70,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtAddress);
             this.groupBox1.Controls.Add(this.label1);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -131,9 +131,9 @@
             // 
             // panel2
             // 
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.btnOK);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // btnOK
@@ -148,7 +148,7 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // AddServer6Form
+            // AddTrojanServerForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -158,8 +158,8 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = true;
-            this.Name = "AddServer6Form";
-            this.Load += new System.EventHandler(this.AddServer6Form_Load);
+            this.Name = "AddTrojanServerForm";
+            this.Load += new System.EventHandler(this.AddTrojanServerForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);

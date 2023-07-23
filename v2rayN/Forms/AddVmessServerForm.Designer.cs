@@ -177,13 +177,13 @@
             // 
             // cmbAllowInsecure
             // 
+            resources.ApplyResources(this.cmbAllowInsecure, "cmbAllowInsecure");
             this.cmbAllowInsecure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAllowInsecure.FormattingEnabled = true;
             this.cmbAllowInsecure.Items.AddRange(new object[] {
             resources.GetString("cmbAllowInsecure.Items"),
             resources.GetString("cmbAllowInsecure.Items1"),
             resources.GetString("cmbAllowInsecure.Items2")});
-            resources.ApplyResources(this.cmbAllowInsecure, "cmbAllowInsecure");
             this.cmbAllowInsecure.Name = "cmbAllowInsecure";
             // 
             // label9
@@ -389,6 +389,8 @@
             // 
             // menuServer
             // 
+            this.menuServer.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuServer.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuServer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem1});
             resources.ApplyResources(this.menuServer, "menuServer");
@@ -427,7 +429,7 @@
             resources.ApplyResources(this.MenuItemImportClipboard, "MenuItemImportClipboard");
             this.MenuItemImportClipboard.Click += new System.EventHandler(this.MenuItemImportClipboard_Click);
             // 
-            // AddServerForm
+            // AddVmessServerForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -437,8 +439,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuServer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "AddServerForm";
-            this.Load += new System.EventHandler(this.AddServerForm_Load);
+            this.Name = "AddVmessServerForm";
+            this.Load += new System.EventHandler(this.AddVmessServerForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

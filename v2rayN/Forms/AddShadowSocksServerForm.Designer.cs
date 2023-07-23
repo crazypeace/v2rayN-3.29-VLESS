@@ -55,15 +55,14 @@
             // 
             // btnClose
             // 
-            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.Name = "btnClose";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.cmbSecurity);
             this.groupBox1.Controls.Add(this.txtRemarks);
@@ -75,6 +74,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtAddress);
             this.groupBox1.Controls.Add(this.label1);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -85,7 +85,6 @@
             // 
             // cmbSecurity
             // 
-            resources.ApplyResources(this.cmbSecurity, "cmbSecurity");
             this.cmbSecurity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecurity.FormattingEnabled = true;
             this.cmbSecurity.Items.AddRange(new object[] {
@@ -97,6 +96,7 @@
             resources.GetString("cmbSecurity.Items5"),
             resources.GetString("cmbSecurity.Items6"),
             resources.GetString("cmbSecurity.Items7")});
+            resources.ApplyResources(this.cmbSecurity, "cmbSecurity");
             this.cmbSecurity.Name = "cmbSecurity";
             // 
             // txtRemarks
@@ -146,9 +146,9 @@
             // 
             // panel2
             // 
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.btnOK);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // btnOK
@@ -165,25 +165,27 @@
             // 
             // menuServer
             // 
-            resources.ApplyResources(this.menuServer, "menuServer");
+            this.menuServer.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuServer.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuServer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem1});
+            resources.ApplyResources(this.menuServer, "menuServer");
             this.menuServer.Name = "menuServer";
             // 
             // MenuItem1
             // 
-            resources.ApplyResources(this.MenuItem1, "MenuItem1");
             this.MenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemImportClipboard});
             this.MenuItem1.Name = "MenuItem1";
+            resources.ApplyResources(this.MenuItem1, "MenuItem1");
             // 
             // menuItemImportClipboard
             // 
-            resources.ApplyResources(this.menuItemImportClipboard, "menuItemImportClipboard");
             this.menuItemImportClipboard.Name = "menuItemImportClipboard";
+            resources.ApplyResources(this.menuItemImportClipboard, "menuItemImportClipboard");
             this.menuItemImportClipboard.Click += new System.EventHandler(this.menuItemImportClipboard_Click);
             // 
-            // AddServer3Form
+            // AddShadowSocksServerForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -194,8 +196,8 @@
             this.Controls.Add(this.menuServer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = true;
-            this.Name = "AddServer3Form";
-            this.Load += new System.EventHandler(this.AddServer3Form_Load);
+            this.Name = "AddShadowSocksServerForm";
+            this.Load += new System.EventHandler(this.AddShadowSocksServerForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);

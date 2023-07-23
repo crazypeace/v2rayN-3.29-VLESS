@@ -126,6 +126,7 @@
             this.tsbPromotion = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbClose = new System.Windows.Forms.ToolStripButton();
+            this.v2rayCoreV4321ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -723,6 +724,7 @@
             this.tsbCheckUpdate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbCheckUpdateN,
             this.tsbCheckUpdateCore,
+            this.v2rayCoreV4321ToolStripMenuItem,
             this.tsbCheckUpdatePACList,
             this.toolStripSeparator13,
             this.tsbCheckClearPACList});
@@ -825,6 +827,12 @@
             this.tsbClose.Name = "tsbClose";
             this.tsbClose.Click += new System.EventHandler(this.tsbClose_Click);
             // 
+            // v2rayCoreV4321ToolStripMenuItem
+            // 
+            this.v2rayCoreV4321ToolStripMenuItem.Name = "v2rayCoreV4321ToolStripMenuItem";
+            resources.ApplyResources(this.v2rayCoreV4321ToolStripMenuItem, "v2rayCoreV4321ToolStripMenuItem");
+            this.v2rayCoreV4321ToolStripMenuItem.Click += new System.EventHandler(this.v2rayCoreV4321ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -859,7 +867,7 @@
 
         }
 
-#endregion
+        #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -957,6 +965,7 @@
         private System.Windows.Forms.ToolStripButton tsbQRCodeSwitch;
         private System.Windows.Forms.ToolStripMenuItem menuAddVlessServer;
         private System.Windows.Forms.ToolStripMenuItem menuAddTrojanServer;
+        private System.Windows.Forms.ToolStripMenuItem v2rayCoreV4321ToolStripMenuItem;
     }
 }
 

@@ -133,6 +133,11 @@ namespace v2rayN.Forms
                 this.Width = config.uiItem.mainSize.Width;
                 this.Height = config.uiItem.mainSize.Height;
             }
+            if (!config.uiItem.mainLoc.IsEmpty)
+            {
+                this.Left = config.uiItem.mainLoc.X;
+                this.Top = config.uiItem.mainLoc.Y;
+            }
 
             for (int k = 0; k < lvServers.Columns.Count; k++)
             {
@@ -144,6 +149,7 @@ namespace v2rayN.Forms
         private void StorageUI()
         {
             config.uiItem.mainSize = new Size(this.Width, this.Height);
+            config.uiItem.mainLoc = new Point(this.Left, this.Top);
 
             for (int k = 0; k < lvServers.Columns.Count; k++)
             {
@@ -1306,6 +1312,10 @@ namespace v2rayN.Forms
 
         private void tsbCheckUpdateCore_Click(object sender, EventArgs e)
         {
+            Process.Start(Global.v2rayCore4_45_2Url);
+
+            return;
+
             DownloadHandle downloadHandle = null;
             if (downloadHandle == null)
             {
@@ -1588,6 +1598,13 @@ namespace v2rayN.Forms
         private void tsbCheckUpdate_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void v2rayCoreV4321ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(Global.v2rayCore4_32_1Url);
+
+            return;
         }
     }
 }
