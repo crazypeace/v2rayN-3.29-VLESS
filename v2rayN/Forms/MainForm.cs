@@ -78,7 +78,6 @@ namespace v2rayN.Forms
             LoadV2ray();
 
             HideForm();
-
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -143,6 +142,43 @@ namespace v2rayN.Forms
             {
                 var width = ConfigHandler.GetformMainLvColWidth(ref config, ((EServerColName)k).ToString(), lvServers.Columns[k].Width);
                 lvServers.Columns[k].Width = width;
+            }
+
+            // 获取当前屏幕的尺寸
+            var workingArea = Screen.FromHandle(Process.GetCurrentProcess().MainWindowHandle).WorkingArea;
+            var screenWidth = workingArea.Width;
+            var screenHeight = workingArea.Height;
+            var screenTop = workingArea.Top;
+            var screenLeft = workingArea.Left;
+            var screenBottom = workingArea.Bottom;
+            var screenRight = workingArea.Right;
+
+            // 设置窗口尺寸不超过当前屏幕的尺寸
+            if (this.Width > screenWidth)
+            {
+                this.Width = screenWidth;
+            }
+            if (this.Height > screenHeight)
+            {
+                this.Height = screenHeight;
+            }
+
+            // 设置窗口不要显示在屏幕外面
+            if (this.Top < screenTop)
+            {
+                this.Top = screenTop;
+            }
+            if (this.Left < screenLeft)
+            {
+                this.Left = screenLeft;
+            }
+            if (this.Top + this.Height > screenBottom)
+            {
+                this.Top = screenBottom - this.Height;
+            }
+            if (this.Left + this.Width > screenRight)
+            {
+                this.Left = screenRight - this.Width;
             }
         }
 
