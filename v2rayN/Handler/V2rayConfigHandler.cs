@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using v2rayN.Base;
 using v2rayN.Mode;
+using ZXing.QrCode.Internal;
 
 namespace v2rayN.Handler
 {
@@ -480,11 +481,11 @@ namespace v2rayN.Handler
                     boundStreamSettings(config, "out", ref streamSettings);
 
                     //if xtls
-                    if (config.streamSecurity() == Global.StreamSecurityX)
+                    if (config.streamSecurity() == Global.StreamSecurityReality)
                     {
                         if (Utils.IsNullOrEmpty(config.flow()))
                         {
-                            usersItem.flow = "xtls-rprx-origin";
+                            usersItem.flow = "xtls-rprx-vision";
                         }
                         else
                         {
@@ -550,6 +551,8 @@ namespace v2rayN.Handler
                 //远程服务器底层传输配置
                 streamSettings.network = config.network();
                 string host = config.requestHost();
+                string sni = config.sni();
+                //string useragent = "";
                 //if tls
                 if (config.streamSecurity() == Global.StreamSecurity)
                 {
@@ -566,22 +569,24 @@ namespace v2rayN.Handler
                     streamSettings.tlsSettings = tlsSettings;
                 }
 
-                //if xtls
-                if (config.streamSecurity() == Global.StreamSecurityX)
+
+                //if Reality
+                if (config.streamSecurity() == Global.StreamSecurityReality)
                 {
                     streamSettings.security = config.streamSecurity();
 
-                    TlsSettings xtlsSettings = new TlsSettings
+                    TlsSettings realitySettings = new TlsSettings()
                     {
-                        allowInsecure = config.allowInsecure()
+                        fingerprint = config.fingerprint().IsNullOrEmpty() ? "auto" : config.fingerprint(),
+                        serverName = sni,
+                        publicKey = config.publicKey(),
+                        shortId = config.shortId(),
+                        spiderX = config.spiderX(),
                     };
-                    if (!string.IsNullOrWhiteSpace(host))
-                    {
-                        xtlsSettings.serverName = Utils.String2List(host)[0];
-                    }
-                    streamSettings.xtlsSettings = xtlsSettings;
-                }
 
+                    streamSettings.realitySettings = realitySettings;
+                }
+            
                 //streamSettings
                 switch (config.network())
                 {
@@ -866,10 +871,10 @@ namespace v2rayN.Handler
 
         #endregion
 
-        #region 生成服务端端配置
+        #region 生成服务端配置
 
         /// <summary>
-        /// 生成v2ray的客户端配置文件
+        /// 生成v2ray的服务端配置文件
         /// </summary>
         /// <param name="config"></param>
         /// <param name="fileName"></param>
@@ -1140,6 +1145,20 @@ namespace v2rayN.Handler
                     && outbound.streamSettings.security == Global.StreamSecurity)
                 {
                     vmessItem.streamSecurity = Global.StreamSecurity;
+                }
+
+                //VLESS Reality
+                if (outbound.streamSettings != null
+                    && outbound.streamSettings.security != null
+                    && outbound.streamSettings.security == Global.StreamSecurityReality)
+                {
+                    vmessItem.streamSecurity = Global.StreamSecurityReality;
+
+                    //vmessItem.sni = outbound.sni;
+                    vmessItem.fingerprint = outbound.streamSettings.realitySettings.fingerprint;
+                    vmessItem.publicKey = outbound.streamSettings.realitySettings.publicKey;
+                    vmessItem.shortId = outbound.streamSettings.realitySettings.shortId;
+                    vmessItem.spiderX = outbound.streamSettings.realitySettings.spiderX;
                 }
             }
             catch
@@ -1490,6 +1509,14 @@ namespace v2rayN.Handler
         {
             item.flow = query["flow"] ?? "";
             item.streamSecurity = query["security"] ?? "";
+
+            item.sni = query["sni"] ?? "";
+            //item.alpn = WebUtility.UrlDecode(query["alpn"] ?? "");
+            item.fingerprint = WebUtility.UrlDecode(query["fp"] ?? "");
+            item.publicKey = WebUtility.UrlDecode(query["pbk"] ?? "");
+            item.shortId = WebUtility.UrlDecode(query["sid"] ?? "");
+            item.spiderX = WebUtility.UrlDecode(query["spx"] ?? "");
+
             item.network = query["type"] ?? "tcp";
             switch (item.network)
             {

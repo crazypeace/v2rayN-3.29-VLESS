@@ -36,6 +36,17 @@
             this.btnGUID = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panRealityMore = new System.Windows.Forms.Panel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtSNI = new System.Windows.Forms.TextBox();
+            this.txtSpiderX = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtFingerprint = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtShortID = new System.Windows.Forms.TextBox();
+            this.txtPublicKey = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.panTlsMore = new System.Windows.Forms.Panel();
@@ -80,6 +91,7 @@
             this.MenuItemImportClipboard = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panRealityMore.SuspendLayout();
             this.panTlsMore.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuServer.SuspendLayout();
@@ -120,10 +132,7 @@
             this.cmbFlow.FormattingEnabled = true;
             this.cmbFlow.Items.AddRange(new object[] {
             resources.GetString("cmbFlow.Items"),
-            resources.GetString("cmbFlow.Items1"),
-            resources.GetString("cmbFlow.Items2"),
-            resources.GetString("cmbFlow.Items3"),
-            resources.GetString("cmbFlow.Items4")});
+            resources.GetString("cmbFlow.Items1")});
             resources.ApplyResources(this.cmbFlow, "cmbFlow");
             this.cmbFlow.Name = "cmbFlow";
             // 
@@ -146,6 +155,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.panRealityMore);
             this.groupBox2.Controls.Add(this.label24);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.panTlsMore);
@@ -169,6 +179,71 @@
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // panRealityMore
+            // 
+            this.panRealityMore.Controls.Add(this.label26);
+            this.panRealityMore.Controls.Add(this.label25);
+            this.panRealityMore.Controls.Add(this.txtSNI);
+            this.panRealityMore.Controls.Add(this.txtSpiderX);
+            this.panRealityMore.Controls.Add(this.label28);
+            this.panRealityMore.Controls.Add(this.label22);
+            this.panRealityMore.Controls.Add(this.txtFingerprint);
+            this.panRealityMore.Controls.Add(this.label27);
+            this.panRealityMore.Controls.Add(this.txtShortID);
+            this.panRealityMore.Controls.Add(this.txtPublicKey);
+            resources.ApplyResources(this.panRealityMore, "panRealityMore");
+            this.panRealityMore.Name = "panRealityMore";
+            // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            // 
+            // label25
+            // 
+            resources.ApplyResources(this.label25, "label25");
+            this.label25.Name = "label25";
+            // 
+            // txtSNI
+            // 
+            resources.ApplyResources(this.txtSNI, "txtSNI");
+            this.txtSNI.Name = "txtSNI";
+            // 
+            // txtSpiderX
+            // 
+            resources.ApplyResources(this.txtSpiderX, "txtSpiderX");
+            this.txtSpiderX.Name = "txtSpiderX";
+            // 
+            // label28
+            // 
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
+            // 
+            // label22
+            // 
+            resources.ApplyResources(this.label22, "label22");
+            this.label22.Name = "label22";
+            // 
+            // txtFingerprint
+            // 
+            resources.ApplyResources(this.txtFingerprint, "txtFingerprint");
+            this.txtFingerprint.Name = "txtFingerprint";
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // txtShortID
+            // 
+            resources.ApplyResources(this.txtShortID, "txtShortID");
+            this.txtShortID.Name = "txtShortID";
+            // 
+            // txtPublicKey
+            // 
+            resources.ApplyResources(this.txtPublicKey, "txtPublicKey");
+            this.txtPublicKey.Name = "txtPublicKey";
             // 
             // label24
             // 
@@ -450,6 +525,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panRealityMore.ResumeLayout(false);
+            this.panRealityMore.PerformLayout();
             this.panTlsMore.ResumeLayout(false);
             this.panTlsMore.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -511,5 +588,16 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox cmbFlow;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox txtSpiderX;
+        private System.Windows.Forms.TextBox txtShortID;
+        private System.Windows.Forms.TextBox txtPublicKey;
+        private System.Windows.Forms.TextBox txtFingerprint;
+        private System.Windows.Forms.TextBox txtSNI;
+        private System.Windows.Forms.Panel panRealityMore;
     }
 }

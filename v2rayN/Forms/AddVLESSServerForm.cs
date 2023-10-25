@@ -59,6 +59,12 @@ namespace v2rayN.Forms
             txtPath.Text = vmessItem.path;
             cmbStreamSecurity.Text = vmessItem.streamSecurity;
             cmbAllowInsecure.Text = vmessItem.allowInsecure;
+
+            txtSNI.Text = vmessItem.sni;
+            txtFingerprint.Text = vmessItem.fingerprint;
+            txtPublicKey.Text = vmessItem.publicKey;
+            txtShortID.Text = vmessItem.shortId;
+            txtSpiderX.Text = vmessItem.spiderX;
         }
 
 
@@ -137,6 +143,15 @@ namespace v2rayN.Forms
             string streamSecurity = cmbStreamSecurity.Text;
             string allowInsecure = cmbAllowInsecure.Text;
 
+            string sni = txtSNI.Text;
+            // string alpn =;
+            // int preSocksPort =;
+            string fingerprint = txtFingerprint.Text;
+            // bool displayLog = ;
+            string publicKey = txtPublicKey.Text;
+            string shortId = txtShortID.Text;
+            string spiderX = txtSpiderX.Text;
+
             if (Utils.IsNullOrEmpty(address))
             {
                 UI.Show(UIRes.I18N("FillServerAddress"));
@@ -167,6 +182,12 @@ namespace v2rayN.Forms
             vmessItem.path = path.Replace(" ", "");
             vmessItem.streamSecurity = streamSecurity;
             vmessItem.allowInsecure = allowInsecure;
+
+            vmessItem.sni = sni;
+            vmessItem.fingerprint = fingerprint;
+            vmessItem.publicKey = publicKey;
+            vmessItem.shortId = shortId;
+            vmessItem.spiderX = spiderX; 
 
             if (ConfigHandler.AddVlessServer(ref config, vmessItem, EditIndex) == 0)
             {
@@ -266,6 +287,12 @@ namespace v2rayN.Forms
             txtRequestHost.Text = vmessItem.requestHost;
             txtPath.Text = vmessItem.path;
             cmbStreamSecurity.Text = vmessItem.streamSecurity;
+
+            txtSNI.Text = vmessItem.sni;
+            txtFingerprint.Text = vmessItem.fingerprint;
+            txtPublicKey.Text = vmessItem.publicKey;
+            txtShortID.Text = vmessItem.shortId;
+            txtSpiderX.Text = vmessItem.spiderX;
         }
 
         /// <summary>
@@ -287,12 +314,20 @@ namespace v2rayN.Forms
             txtAddress.Text = vmessItem.address;
             txtPort.Text = vmessItem.port.ToString();
             txtId.Text = vmessItem.id;
+            cmbFlow.Text = vmessItem.flow;
+            cmbSecurity.Text = vmessItem.security;
             txtRemarks.Text = vmessItem.remarks;
             cmbNetwork.Text = vmessItem.network;
             cmbHeaderType.Text = vmessItem.headerType;
             txtRequestHost.Text = vmessItem.requestHost;
             txtPath.Text = vmessItem.path;
             cmbStreamSecurity.Text = vmessItem.streamSecurity;
+
+            txtSNI.Text = vmessItem.sni;
+            txtFingerprint.Text = vmessItem.fingerprint;
+            txtPublicKey.Text = vmessItem.publicKey;
+            txtShortID.Text = vmessItem.shortId;
+            txtSpiderX.Text = vmessItem.spiderX;
         }
         #endregion
 

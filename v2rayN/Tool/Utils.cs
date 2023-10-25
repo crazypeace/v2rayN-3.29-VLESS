@@ -683,10 +683,19 @@ namespace v2rayN
         {
             try
             {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+
+                // 读取程序集的标题
+                AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)Attribute.GetCustomAttribute(assembly, typeof(AssemblyTitleAttribute));
+                string title = titleAttribute.Title;
+
                 string location = GetExePath();
-                return string.Format("v2rayN - VLESS - V{0} - {1}",
-                        FileVersionInfo.GetVersionInfo(location).FileVersion.ToString(),
-                        File.GetLastWriteTime(location).ToString("yyyy/MM/dd"));
+
+                return string.Format("{0} - V{1} - {2} - {3}",
+                    title,
+                    FileVersionInfo.GetVersionInfo(location).FileVersion.ToString(),
+                    File.GetLastWriteTime(location).ToString("yyyy/MM/dd"),
+                    Path.GetFileName(location));
             }
             catch
             {

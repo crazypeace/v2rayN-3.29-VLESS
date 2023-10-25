@@ -1348,7 +1348,7 @@ namespace v2rayN.Forms
 
         private void tsbCheckUpdateCore_Click(object sender, EventArgs e)
         {
-            Process.Start(Global.v2rayCore4_45_2Url);
+            Process.Start(Global.XrayCore_Url);
 
             return;
 
@@ -1625,16 +1625,6 @@ namespace v2rayN.Forms
 
 
         #endregion
-
-        private void tsbQRCodeSwitch_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbCheckUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void v2rayCoreV4321ToolStripMenuItem_Click(object sender, EventArgs e)
         {

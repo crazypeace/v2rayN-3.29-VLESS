@@ -5,15 +5,15 @@ namespace v2rayN
     {
         #region 常量
 
-
-        public const string v2rayWebsiteUrl = @"https://www.v2fly.org/";
         public const string AboutUrl = @"https://github.com/2dust/v2rayN";
         public const string UpdateUrl = @"https://github.com/crazypeace/v2rayN-3.29-VLESS/releases";
         public const string IssueUrl = @"https://github.com/crazypeace/v2rayN-3.29-VLESS/issues";
-        public const string BloggerUrl = "https://zelikk.blogspot.com";
-        public const string v2rayCore4_45_2Url = "https://github.com/v2fly/v2ray-core/releases/tag/v4.45.2";
-        public const string v2rayCore4_32_1Url = "https://github.com/v2fly/v2ray-core/releases/tag/v4.32.1";
-
+        public const string BloggerUrl = @"https://zelikk.blogspot.com";
+        public const string v2rayWebsiteUrl = @"https://www.v2fly.org/";
+        public const string v2rayCore4_45_2Url = @"https://github.com/v2fly/v2ray-core/releases/tag/v4.45.2";
+        public const string v2rayCore4_32_1Url = @"https://github.com/v2fly/v2ray-core/releases/tag/v4.32.1";
+        public const string XrayWebsiteUrl = @"https://xtls.github.io/";
+        public const string XrayCore_Url = @"https://github.com/XTLS/Xray-core/releases/latest";
 
         /// <summary>
         /// SpeedTestUrl
@@ -27,7 +27,7 @@ namespace v2rayN
         /// </summary>
         public const string CustomRoutingListUrl = @"https://raw.githubusercontent.com/2dust/v2rayCustomRoutingList/master/";
 
-        public const string GFWLIST_URL = "https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt";
+        public const string GFWLIST_URL = @"https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt";
 
         /// <summary>
         /// PromotionUrl
@@ -107,7 +107,7 @@ namespace v2rayN
         /// 
         /// </summary>
         public const string StreamSecurity = "tls";
-        public const string StreamSecurityX = "xtls";
+        public const string StreamSecurityReality = "reality";
 
         public const string InboundSocks = "socks";
         public const string InboundHttp = "http";
@@ -206,63 +206,37 @@ namespace v2rayN
         /// <summary>
         /// 是否需要重启服务V2ray
         /// </summary>
-        public static bool reloadV2ray
-        {
-            get; set;
-        }
+        public static bool reloadV2ray { get; set; }
 
         /// <summary>
         /// 是否开启全局代理(http)
         /// </summary>
-        public static bool sysAgent
-        {
-            get; set;
-        }
+        public static bool sysAgent { get; set; }
 
         /// <summary>
         /// socks端口
         /// </summary>
-        public static int socksPort
-        {
-            get; set;
-        }
+        public static int socksPort { get; set; }
 
         /// <summary>
         /// http端口
         /// </summary>
-        public static int httpPort
-        {
-            get; set;
-        }
+        public static int httpPort { get; set; }
 
         /// <summary>
         /// PAC端口
         /// </summary>
-        public static int pacPort
-        {
-            get; set;
-        }
+        public static int pacPort { get; set; }
 
         /// <summary>
         ///  
         /// </summary>
-        public static int statePort
-        {
-            get; set;
-        }
+        public static int statePort { get; set; }
 
-        public static Job processJob
-        {
-            get; set;
-        }
-        public static System.Threading.Mutex mutexObj
-        {
-            get; set;
-        }
+        public static Job processJob { get; set; }
+
+        public static System.Threading.Mutex mutexObj { get; set; }
 
         #endregion
-
-
-
     }
 }

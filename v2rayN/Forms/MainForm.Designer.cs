@@ -119,14 +119,13 @@
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbHelp = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsbAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbV2rayWebsite = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbXrayWebsite = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbLanguageDef = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbLanguageZhHans = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbPromotion = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbClose = new System.Windows.Forms.ToolStripButton();
-            this.v2rayCoreV4321ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -209,7 +208,6 @@
             this.menuExport2ShareUrl,
             this.menuExport2SubContent});
             this.cmsLv.Name = "cmsLv";
-            this.cmsLv.OwnerItem = this.tsbServer;
             resources.ApplyResources(this.cmsLv, "cmsLv");
             // 
             // menuAddVmessServer
@@ -689,7 +687,6 @@
             resources.ApplyResources(this.tsbQRCodeSwitch, "tsbQRCodeSwitch");
             this.tsbQRCodeSwitch.Name = "tsbQRCodeSwitch";
             this.tsbQRCodeSwitch.CheckedChanged += new System.EventHandler(this.tsbQRCodeSwitch_CheckedChanged);
-            this.tsbQRCodeSwitch.Click += new System.EventHandler(this.tsbQRCodeSwitch_Click);
             // 
             // toolStripSeparator8
             // 
@@ -724,14 +721,12 @@
             this.tsbCheckUpdate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbCheckUpdateN,
             this.tsbCheckUpdateCore,
-            this.v2rayCoreV4321ToolStripMenuItem,
             this.tsbCheckUpdatePACList,
             this.toolStripSeparator13,
             this.tsbCheckClearPACList});
             this.tsbCheckUpdate.Image = global::v2rayN.Properties.Resources.checkupdate;
             resources.ApplyResources(this.tsbCheckUpdate, "tsbCheckUpdate");
             this.tsbCheckUpdate.Name = "tsbCheckUpdate";
-            this.tsbCheckUpdate.Click += new System.EventHandler(this.tsbCheckUpdate_Click);
             // 
             // tsbCheckUpdateN
             // 
@@ -771,7 +766,7 @@
             // 
             this.tsbHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAbout,
-            this.tsbV2rayWebsite,
+            this.tsbXrayWebsite,
             this.toolStripSeparator12,
             this.tsbLanguageDef,
             this.tsbLanguageZhHans});
@@ -785,11 +780,11 @@
             resources.ApplyResources(this.tsbAbout, "tsbAbout");
             this.tsbAbout.Click += new System.EventHandler(this.tsbAbout_Click);
             // 
-            // tsbV2rayWebsite
+            // tsbXrayWebsite
             // 
-            this.tsbV2rayWebsite.Name = "tsbV2rayWebsite";
-            resources.ApplyResources(this.tsbV2rayWebsite, "tsbV2rayWebsite");
-            this.tsbV2rayWebsite.Click += new System.EventHandler(this.tsbV2rayWebsite_Click);
+            this.tsbXrayWebsite.Name = "tsbXrayWebsite";
+            resources.ApplyResources(this.tsbXrayWebsite, "tsbXrayWebsite");
+            this.tsbXrayWebsite.Click += new System.EventHandler(this.tsbV2rayWebsite_Click);
             // 
             // toolStripSeparator12
             // 
@@ -826,12 +821,6 @@
             resources.ApplyResources(this.tsbClose, "tsbClose");
             this.tsbClose.Name = "tsbClose";
             this.tsbClose.Click += new System.EventHandler(this.tsbClose_Click);
-            // 
-            // v2rayCoreV4321ToolStripMenuItem
-            // 
-            this.v2rayCoreV4321ToolStripMenuItem.Name = "v2rayCoreV4321ToolStripMenuItem";
-            resources.ApplyResources(this.v2rayCoreV4321ToolStripMenuItem, "v2rayCoreV4321ToolStripMenuItem");
-            this.v2rayCoreV4321ToolStripMenuItem.Click += new System.EventHandler(this.v2rayCoreV4321ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -957,7 +946,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuNotEnabledHttp;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripMenuItem menuUpdateSubscriptions;
-        private System.Windows.Forms.ToolStripMenuItem tsbV2rayWebsite;
+        private System.Windows.Forms.ToolStripMenuItem tsbXrayWebsite;
         private System.Windows.Forms.ToolStripMenuItem menuKeepNothing;
         private System.Windows.Forms.ToolStripMenuItem menuKeepPACNothing;
         private System.Windows.Forms.ToolStripMenuItem tsbTestMe;
@@ -965,7 +954,6 @@
         private System.Windows.Forms.ToolStripButton tsbQRCodeSwitch;
         private System.Windows.Forms.ToolStripMenuItem menuAddVlessServer;
         private System.Windows.Forms.ToolStripMenuItem menuAddTrojanServer;
-        private System.Windows.Forms.ToolStripMenuItem v2rayCoreV4321ToolStripMenuItem;
     }
 }
 

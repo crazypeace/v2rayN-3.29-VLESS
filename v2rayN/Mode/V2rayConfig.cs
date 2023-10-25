@@ -138,7 +138,10 @@ namespace v2rayN.Mode
         /// VLESS
         /// </summary>
         public string decryption { get; set; }
-        
+
+        public bool allowTransparent { get; set; }
+
+        public List<AccountsItem> accounts { get; set; }
     }
 
     public class UsersItem
@@ -180,6 +183,7 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public List<string> destOverride { get; set; }
+        public bool routeOnly { get; set; }
     }
 
     public class Outbounds
@@ -221,6 +225,15 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public Response response { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public string domainStrategy { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public int userLevel { get; set; }
     }
 
     public class VnextItem
@@ -270,6 +283,9 @@ namespace v2rayN.Mode
         public int level { get; set; }
 
         /// <summary>
+        /// trojan
+        /// </summary>
+        public string flow { get; set; }
         /// 
         /// </summary>
         public List<SocksUsersItem> users { get; set; }
@@ -321,6 +337,7 @@ namespace v2rayN.Mode
         public List<string> servers { get; set; }
     }
 
+
     public class RulesItem
     {
         /// <summary>
@@ -347,6 +364,8 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public List<string> domain { get; set; }
+
+        public List<string> protocol { get; set; }
     }
 
     public class Routing
@@ -355,6 +374,12 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public string domainStrategy { get; set; }
+				
+        /// <summary>
+        ///
+        /// </summary>
+        public string domainMatcher { get; set; }
+		
         /// <summary>
         /// 
         /// </summary>
@@ -402,8 +427,12 @@ namespace v2rayN.Mode
         /// <summary>
         /// VLESS xtls
         /// </summary>
-        public TlsSettings xtlsSettings { get; set; }
+        public TlsSettings realitySettings { get; set; }
 
+        /// <summary>
+        /// grpc
+        /// </summary>
+        public GrpcSettings grpcSettings { get; set; }
     }
 
     public class TlsSettings
@@ -417,6 +446,18 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public string serverName { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        //public List<string> alpn { get; set; }
+
+        public string fingerprint { get; set; }
+
+        public bool show { get; set; } = false;
+
+        public string publicKey { get; set; }
+        public string shortId { get; set; }
+        public string spiderX { get; set; }
     }
 
     public class TcpSettings
@@ -501,6 +542,11 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public string Host { get; set; }
+
+        /// <summary>
+        /// 用户代理
+        /// </summary>
+        public string UserAgent { get; set; }
     }
 
     public class HttpSettings
@@ -534,4 +580,26 @@ namespace v2rayN.Mode
         public Header header { get; set; }
     }
 
+    public class GrpcSettings
+    {
+        public string serviceName { get; set; }
+        public bool multiMode { get; set; }
+        public int idle_timeout { get; set; }
+        public int health_check_timeout { get; set; }
+        public bool permit_without_stream { get; set; }
+        public int initial_windows_size { get; set; }
+    }
+
+    public class AccountsItem
+    {
+        /// <summary>
+        ///
+        /// </summary>
+        public string user { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public string pass { get; set; }
+    }
 }

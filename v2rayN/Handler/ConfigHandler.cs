@@ -6,6 +6,7 @@ using v2rayN.Mode;
 using v2rayN.Base;
 using System.Linq;
 using v2rayN.Tool;
+using System.Security.Cryptography.X509Certificates;
 
 namespace v2rayN.Handler
 {
@@ -1091,6 +1092,12 @@ namespace v2rayN.Handler
             vmessItem.path = vmessItem.path.TrimEx();
             vmessItem.streamSecurity = vmessItem.streamSecurity.TrimEx();
 
+            vmessItem.sni = vmessItem.sni.TrimEx();
+            vmessItem.fingerprint = vmessItem.fingerprint.TrimEx();
+            vmessItem.publicKey = vmessItem.publicKey.TrimEx();
+            vmessItem.shortId = vmessItem.shortId.TrimEx();
+            vmessItem.spiderX = vmessItem.spiderX.TrimEx();
+
             if (index >= 0)
             {
                 //修改
@@ -1142,6 +1149,32 @@ namespace v2rayN.Handler
                 {
                     dicQuery.Add("security", securityDef);
                 }
+            }
+
+            // VLESS Reality
+            if (!Utils.IsNullOrEmpty(item.sni))
+            {
+                dicQuery.Add("sni", item.sni);
+            }
+            //if (!Utils.IsNullOrEmpty(item.alpn))
+            //{
+            //    dicQuery.Add("alpn", WebUtility.UrlEncode(item.alpn));
+            //}
+            if (!Utils.IsNullOrEmpty(item.fingerprint))
+            {
+                dicQuery.Add("fp", WebUtility.UrlEncode(item.fingerprint));
+            }
+            if (!Utils.IsNullOrEmpty(item.publicKey))
+            {
+                dicQuery.Add("pbk", WebUtility.UrlEncode(item.publicKey));
+            }
+            if (!Utils.IsNullOrEmpty(item.shortId))
+            {
+                dicQuery.Add("sid", WebUtility.UrlEncode(item.shortId));
+            }
+            if (!Utils.IsNullOrEmpty(item.spiderX))
+            {
+                dicQuery.Add("spx", WebUtility.UrlEncode(item.spiderX));
             }
 
             dicQuery.Add("type", !Utils.IsNullOrEmpty(item.network) ? item.network : "tcp");
