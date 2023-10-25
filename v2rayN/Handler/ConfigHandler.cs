@@ -285,6 +285,9 @@ namespace v2rayN.Handler
                 return -1;
             }
 
+            VmessItem vmessItem = Utils.DeepCopy(config.vmess[index]);
+            vmessItem.remarks = string.Format("{0}-clone", config.vmess[index].remarks);
+            /*
             VmessItem vmessItem = new VmessItem
             {
                 configVersion = config.vmess[index].configVersion,
@@ -302,6 +305,7 @@ namespace v2rayN.Handler
                 allowInsecure = config.vmess[index].allowInsecure,
                 configType = config.vmess[index].configType
             };
+            */
 
             config.vmess.Insert(index + 1, vmessItem); // 插入到下一项
 
