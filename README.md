@@ -1,7 +1,8 @@
 # v2rayN-3.29-VLESS
 A v2rayN-3.29 mod version. Support VLESS Reality
 
-![v2rayN_2022-07-20_22-02-43](https://user-images.githubusercontent.com/665889/180002616-c2c6da3c-78b0-4f46-8fa9-34021590646f.png)
+![image](https://github.com/crazypeace/v2rayN-3.29-VLESS/assets/665889/dde23c73-6885-47bf-8006-9f6ed3ef14a9)
+
 
 # 本repo的目的
 - 保留v2rayN 3.29的PAC功能
