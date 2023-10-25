@@ -13,6 +13,7 @@ A v2rayN-3.29 mod version. Support VLESS Reality
 
 # 打包v2rayN-VLESS-Core.zip时
 v3.29.0.3打包的是V2Ray v4.32.1版本，支持VLESS和XTLS的最后一个版本
+
 v3.29.0.4打包的是Xray v1.8.4版本
 
 # 本repo的其它修改
