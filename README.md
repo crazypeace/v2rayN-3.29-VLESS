@@ -1,5 +1,5 @@
 # v2rayN-3.29-VLESS
-A v2rayN-3.29 mod version. Can add VLESS server from clipboard, share VLESS server as link and QR code.
+A v2rayN-3.29 mod version. Support VLESS Reality
 
 ![v2rayN_2022-07-20_22-02-43](https://user-images.githubusercontent.com/665889/180002616-c2c6da3c-78b0-4f46-8fa9-34021590646f.png)
 
@@ -9,9 +9,11 @@ A v2rayN-3.29 mod version. Can add VLESS server from clipboard, share VLESS serv
 - 将VLESS节点分享为链接
 - 将VLESS节点分享为二维码
 - 订阅设置 增加 `Set TLS allowInsecure option to True` 的设置项，方便使用机场订阅
+- 支持 VLESS Reality
 
 # 打包v2rayN-VLESS-Core.zip时
-打包的是V2Ray v4.32.1版本，支持VLESS和XTLS的最后一个版本
+v3.29.0.3打包的是V2Ray v4.32.1版本，支持VLESS和XTLS的最后一个版本
+v3.29.0.4打包的是Xray v1.8.4版本
 
 # 本repo的其它修改
 - 窗口标题增加`- VLESS`表明非原版
