@@ -38,6 +38,8 @@ namespace v2rayN.Forms
             InitGUI();
 
             InitUserPAC();
+
+            InitSocksOut();
         }
 
         /// <summary>
@@ -164,6 +166,13 @@ namespace v2rayN.Forms
             txtuserPacRule.Text = Utils.List2String(config.userPacRule, true);
         }
 
+        private void InitSocksOut()
+        {
+            chkSocksOut.Checked = config.socksOutboundEnable;    
+            txtSocksOutboundIP.Text = config.socksOutboundIP; 
+            txtSocksOutboundPort.Text = Utils.ToString(config.socksOutboundPort);
+        }
+
         private void btnOK_Click(object sender, EventArgs e)
         {
             if (SaveBase() != 0)
@@ -187,6 +196,11 @@ namespace v2rayN.Forms
             }
 
             if (SaveUserPAC() != 0)
+            {
+                return;
+            }
+
+            if (SaveSocksOut() != 0)
             {
                 return;
             }
@@ -381,6 +395,14 @@ namespace v2rayN.Forms
             userPacRule = userPacRule.Replace("\"", "");
 
             config.userPacRule = Utils.String2List(userPacRule);
+
+            return 0;
+        }
+        private int SaveSocksOut()
+        {
+            config.socksOutboundEnable = chkSocksOut.Checked;
+            config.socksOutboundIP = txtSocksOutboundIP.Text.TrimEx();
+            config.socksOutboundPort = Utils.ToInt(txtSocksOutboundPort.Text);
 
             return 0;
         }

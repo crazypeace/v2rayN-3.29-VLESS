@@ -50,7 +50,12 @@ namespace v2rayN.Handler
                     enableStatistics = false,
 
                     // 默认中等刷新率
-                    statisticsFreshRate = (int)Global.StatisticsFreshRate.medium
+                    statisticsFreshRate = (int)Global.StatisticsFreshRate.medium,
+
+                    // Socksout
+                    socksOutboundEnable = false,
+                    socksOutboundIP = "127.0.0.1",
+                    socksOutboundPort = 10086
                 };
             }
 

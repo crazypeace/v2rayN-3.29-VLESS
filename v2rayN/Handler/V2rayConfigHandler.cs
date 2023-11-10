@@ -82,6 +82,9 @@ namespace v2rayN.Handler
                 //dns
                 dns(config, ref v2rayConfig);
 
+                // Socksout
+                socksOut(config, ref v2rayConfig);
+
                 // TODO: 统计配置
                 statistic(config, ref v2rayConfig);
 
@@ -586,7 +589,7 @@ namespace v2rayN.Handler
 
                     streamSettings.realitySettings = realitySettings;
                 }
-            
+
                 //streamSettings
                 switch (config.network())
                 {
@@ -629,7 +632,7 @@ namespace v2rayN.Handler
                     //ws
                     case "ws":
                         WsSettings wsSettings = new WsSettings
-                        {                            
+                        {
                         };
 
                         string path = config.path();
@@ -732,6 +735,7 @@ namespace v2rayN.Handler
             catch
             {
             }
+
             return 0;
         }
 
@@ -764,6 +768,34 @@ namespace v2rayN.Handler
                 {
                     servers = servers
                 };
+            }
+            catch
+            {
+            }
+            return 0;
+        }
+
+        /// <summary>
+        /// remoteDNS
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="v2rayConfig"></param>
+        /// <returns></returns>
+        private static int socksOut(Config config, ref V2rayConfig v2rayConfig)
+        {
+
+            try
+            {
+                Outbounds outbound = v2rayConfig.outbounds[3];
+                ServersItem server = outbound.settings.servers[0];
+                server.address = config.socksOutboundIP;
+                server.port = config.socksOutboundPort;
+
+                // 如果下一跳Socks功能不打开, 那么配置文件中要删除sockopt这一段
+                if (!config.socksOutboundEnable)
+                {
+                    v2rayConfig.outbounds[0].streamSettings.sockopt = null;
+                }
             }
             catch
             {

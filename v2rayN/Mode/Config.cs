@@ -133,6 +133,11 @@ namespace v2rayN.Mode
 
         public List<string> userPacRule { get; set; }
 
+        /// SocksOut
+        public bool socksOutboundEnable { get; set; }
+        public string socksOutboundIP { get; set; }
+        public int socksOutboundPort { get; set; }
+
         #region 函数
 
         public string address()

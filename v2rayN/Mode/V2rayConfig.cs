@@ -433,6 +433,9 @@ namespace v2rayN.Mode
         /// grpc
         /// </summary>
         public GrpcSettings grpcSettings { get; set; }
+
+        // 设置Socks出口
+        public SockoptObject sockopt { get; set; }
     }
 
     public class TlsSettings
@@ -588,6 +591,11 @@ namespace v2rayN.Mode
         public int health_check_timeout { get; set; }
         public bool permit_without_stream { get; set; }
         public int initial_windows_size { get; set; }
+    }
+
+    public class SockoptObject
+    {
+        public string dialerProxy { get; set; }
     }
 
     public class AccountsItem
