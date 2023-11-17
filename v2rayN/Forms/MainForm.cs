@@ -1632,5 +1632,10 @@ namespace v2rayN.Forms
 
             return;
         }
+
+        private void menuClearTestResult_Click(object sender, EventArgs e)
+        {
+            Speedtest("clear");
+        }
     }
 }

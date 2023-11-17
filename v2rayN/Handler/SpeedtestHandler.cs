@@ -28,7 +28,7 @@ namespace v2rayN.Handler
             {
                 Task.Run(() => RunPing());
             }
-            if (actionType == "tcping")
+            else if (actionType == "tcping")
             {
                 Task.Run(() => RunTcping());
             }
@@ -39,6 +39,10 @@ namespace v2rayN.Handler
             else if (actionType == "speedtest")
             {
                 Task.Run(() => RunSpeedTest());
+            }
+            else if (actionType == "clear")
+            {
+                // do nothing
             }
         }
 
