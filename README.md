@@ -11,6 +11,7 @@ A v2rayN-3.29 mod version. Support VLESS Reality
 - 将VLESS节点分享为二维码
 - 订阅设置 增加 `Set TLS allowInsecure option to True` 的设置项，方便使用机场订阅
 - 支持 VLESS Reality
+- 支持 Socks 出口
 
 # 打包v2rayN-VLESS-Core.zip时
 v3.29.0.3打包的是V2Ray v4.32.1版本，支持VLESS和XTLS的最后一个版本
