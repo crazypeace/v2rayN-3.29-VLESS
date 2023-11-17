@@ -11,7 +11,7 @@
 	},
 	"inbounds": [
 		{
-			"tag": "proxy",
+			"tag": "socks",
 			"port": 10808,
 			"protocol": "socks",
 			"listen": "127.0.0.1",
