@@ -128,6 +128,12 @@
   <metadata name="cmsLv.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>327, 17</value>
   </metadata>
+  <data name="subMenuAddServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>488, 30</value>
+  </data>
+  <data name="subMenuAddServer.Text" xml:space="preserve">
+    <value>Add Server</value>
+  </data>
   <data name="menuAddVmessServer.Size" type="System.Drawing.Size, System.Drawing">
     <value>488, 30</value>
   </data>
@@ -239,6 +245,12 @@
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
     <value>485, 6</value>
   </data>
+  <data name="subMenuTestServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>488, 30</value>
+  </data>
+  <data name="subMenuTestServer.Text" xml:space="preserve">
+    <value>Test Server</value>
+  </data>
   <data name="menuPingServer.Size" type="System.Drawing.Size, System.Drawing">
     <value>488, 30</value>
   </data>
@@ -271,6 +283,12 @@
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>485, 6</value>
+  </data>
+  <data name="subMenuExportServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>488, 30</value>
+  </data>
+  <data name="subMenuExportServer.Text" xml:space="preserve">
+    <value>Export Server</value>
   </data>
   <data name="menuExport2ClientConfig.Size" type="System.Drawing.Size, System.Drawing">
     <value>488, 30</value>
@@ -309,7 +327,7 @@
     <value>ImageAboveText</value>
   </data>
   <data name="cmsLv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>489, 808</value>
+    <value>489, 931</value>
   </data>
   <data name="&gt;&gt;cmsLv.Name" xml:space="preserve">
     <value>cmsLv</value>
@@ -1546,6 +1564,24 @@
   </data>
   <data name="&gt;&gt;tsbClose.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;subMenuAddServer.Name" xml:space="preserve">
+    <value>subMenuAddServer</value>
+  </data>
+  <data name="&gt;&gt;subMenuAddServer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;subMenuTestServer.Name" xml:space="preserve">
+    <value>subMenuTestServer</value>
+  </data>
+  <data name="&gt;&gt;subMenuTestServer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;subMenuExportServer.Name" xml:space="preserve">
+    <value>subMenuExportServer</value>
+  </data>
+  <data name="&gt;&gt;subMenuExportServer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

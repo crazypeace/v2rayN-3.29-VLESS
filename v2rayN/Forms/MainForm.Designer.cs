@@ -126,6 +126,9 @@
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbClose = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.subMenuAddServer = new System.Windows.Forms.ToolStripMenuItem();
+            this.subMenuTestServer = new System.Windows.Forms.ToolStripMenuItem();
+            this.subMenuExportServer = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -181,6 +184,7 @@
             // 
             this.cmsLv.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsLv.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.subMenuAddServer,
             this.menuAddVmessServer,
             this.menuAddVlessServer,
             this.menuAddShadowsocksServer,
@@ -201,12 +205,14 @@
             this.menuMoveBottom,
             this.menuSelectAll,
             this.toolStripSeparator9,
+            this.subMenuTestServer,
             this.menuPingServer,
             this.menuTcpingServer,
             this.menuRealPingServer,
             this.menuSpeedServer,
             this.tsbTestMe,
             this.toolStripSeparator6,
+            this.subMenuExportServer,
             this.menuExport2ClientConfig,
             this.menuExport2ServerConfig,
             this.menuExport2ShareUrl,
@@ -835,6 +841,21 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
             // 
+            // subMenuAddServer
+            // 
+            this.subMenuAddServer.Name = "subMenuAddServer";
+            resources.ApplyResources(this.subMenuAddServer, "subMenuAddServer");
+            // 
+            // subMenuTestServer
+            // 
+            this.subMenuTestServer.Name = "subMenuTestServer";
+            resources.ApplyResources(this.subMenuTestServer, "subMenuTestServer");
+            // 
+            // subMenuExportServer
+            // 
+            this.subMenuExportServer.Name = "subMenuExportServer";
+            resources.ApplyResources(this.subMenuExportServer, "subMenuExportServer");
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -969,6 +990,9 @@
         private System.Windows.Forms.ToolStripMenuItem menuAddVlessServer;
         private System.Windows.Forms.ToolStripMenuItem menuAddTrojanServer;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ToolStripMenuItem subMenuAddServer;
+        private System.Windows.Forms.ToolStripMenuItem subMenuTestServer;
+        private System.Windows.Forms.ToolStripMenuItem subMenuExportServer;
     }
 }
 
