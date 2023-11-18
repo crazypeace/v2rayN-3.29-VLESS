@@ -9,7 +9,6 @@ using System.Text.RegularExpressions;
 using System.Web;
 using v2rayN.Base;
 using v2rayN.Mode;
-using ZXing.QrCode.Internal;
 
 namespace v2rayN.Handler
 {
@@ -776,7 +775,7 @@ namespace v2rayN.Handler
         }
 
         /// <summary>
-        /// remoteDNS
+        /// socksOut
         /// </summary>
         /// <param name="config"></param>
         /// <param name="v2rayConfig"></param>
@@ -1861,6 +1860,9 @@ namespace v2rayN.Handler
                 //routing(config, ref v2rayConfig);
                 dns(configCopy, ref v2rayConfig);
 
+                // Socksout
+                socksOut(configCopy, ref v2rayConfig);
+
                 v2rayConfig.inbounds.RemoveAt(0); // Remove "proxy" service for speedtest, avoiding port conflicts.
 
                 int httpPort = configCopy.GetLocalPort("speedtest");
@@ -1885,6 +1887,10 @@ namespace v2rayN.Handler
 
                     V2rayConfig v2rayConfigCopy = Utils.FromJson<V2rayConfig>(result);
                     outbound(configCopy, ref v2rayConfigCopy);
+
+                    // Socksout
+                    socksOut(configCopy, ref v2rayConfigCopy);
+
                     v2rayConfigCopy.outbounds[0].tag = Global.agentTag + inbound.port.ToString();
                     v2rayConfig.outbounds.Add(v2rayConfigCopy.outbounds[0]);
 

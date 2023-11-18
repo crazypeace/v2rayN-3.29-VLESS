@@ -229,11 +229,6 @@ namespace v2rayN.Mode
         ///
         /// </summary>
         public string domainStrategy { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public int userLevel { get; set; }
     }
 
     public class VnextItem

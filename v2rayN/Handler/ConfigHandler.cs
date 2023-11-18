@@ -28,7 +28,7 @@ namespace v2rayN.Handler
             string result = Utils.LoadResource(Utils.GetPath(configRes));
             if (!Utils.IsNullOrEmpty(result))
             {
-                //转成Json
+                //从Json加载
                 config = Utils.FromJson<Config>(result);
             }
             if (config == null)
@@ -73,12 +73,6 @@ namespace v2rayN.Handler
 
                 config.inbound.Add(inItem);
 
-                //inItem = new InItem();
-                //inItem.protocol = "http";
-                //inItem.localPort = 1081;
-                //inItem.udpEnabled = true;
-
-                //config.inbound.Add(inItem);
             }
             else
             {
