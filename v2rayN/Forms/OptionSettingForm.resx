@@ -2267,12 +2267,13 @@
   <data name="&gt;&gt;tabPage10.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  
+
+
   <data name="txtSpeedTestUrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 375</value>
+    <value>33, 404</value>
   </data>
   <data name="txtSpeedTestUrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>346, 28</value>
+    <value>540, 28</value>
   </data>
   <data name="txtSpeedTestUrl.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -2289,12 +2290,12 @@
   <data name="&gt;&gt;txtSpeedTestUrl.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  
+
   <data name="txtDelayTestUrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 334</value>
+    <value>32, 334</value>
   </data>
   <data name="txtDelayTestUrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>346, 28</value>
+    <value>541, 28</value>
   </data>
   <data name="txtDelayTestUrl.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -2311,12 +2312,12 @@
   <data name="&gt;&gt;txtDelayTestUrl.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  
+
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 339</value>
+    <value>30, 315</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 18</value>
@@ -2370,7 +2371,8 @@
   <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  
+
+
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
