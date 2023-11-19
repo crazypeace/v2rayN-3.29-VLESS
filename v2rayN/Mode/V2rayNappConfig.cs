@@ -11,7 +11,7 @@ namespace v2rayN.Mode
     /// 本软件配置文件实体类
     /// </summary>
     [Serializable]
-    public class Config
+    public class V2rayNappConfig
     {
         /// <summary>
         /// 本地监听
@@ -34,9 +34,9 @@ namespace v2rayN.Mode
         public int index { get; set; }
 
         /// <summary>
-        /// vmess服务器信息
+        /// 节点服务器信息
         /// </summary>
-        public List<VmessItem> vmess { get; set; }
+        public List<NodeItem> outbound { get; set; }
 
         /// <summary>
         /// 允许Mux多路复用
@@ -85,7 +85,7 @@ namespace v2rayN.Mode
         /// <summary>
         /// 自定义“服务器真连接延迟”测试url
         /// </summary>
-        public string speedPingTestUrl { get; set; }
+        public string delayTestUrl { get; set; }
         /// <summary>
         /// 自定义GFWList url
         /// </summary>
@@ -146,7 +146,7 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].address.TrimEx();
+            return outbound[index].address.TrimEx();
         }
 
         public int port()
@@ -155,7 +155,7 @@ namespace v2rayN.Mode
             {
                 return 10808;
             }
-            return vmess[index].port;
+            return outbound[index].port;
         }
 
         public string id()
@@ -164,7 +164,7 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].id.TrimEx();
+            return outbound[index].id.TrimEx();
         }
 
         public int alterId()
@@ -173,7 +173,7 @@ namespace v2rayN.Mode
             {
                 return 0;
             }
-            return vmess[index].alterId;
+            return outbound[index].alterId;
         }
 
         public string security()
@@ -182,7 +182,7 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].security.TrimEx();
+            return outbound[index].security.TrimEx();
         }
 
         public string remarks()
@@ -191,55 +191,55 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].remarks.TrimEx();
+            return outbound[index].remarks.TrimEx();
         }
         public string network()
         {
-            if (index < 0 || Utils.IsNullOrEmpty(vmess[index].network))
+            if (index < 0 || Utils.IsNullOrEmpty(outbound[index].network))
             {
                 return Global.DefaultNetwork;
             }
-            return vmess[index].network.TrimEx();
+            return outbound[index].network.TrimEx();
         }
         public string headerType()
         {
-            if (index < 0 || Utils.IsNullOrEmpty(vmess[index].headerType))
+            if (index < 0 || Utils.IsNullOrEmpty(outbound[index].headerType))
             {
                 return Global.None;
             }
-            return vmess[index].headerType.Replace(" ", "").TrimEx();
+            return outbound[index].headerType.Replace(" ", "").TrimEx();
         }
         public string requestHost()
         {
-            if (index < 0 || Utils.IsNullOrEmpty(vmess[index].requestHost))
+            if (index < 0 || Utils.IsNullOrEmpty(outbound[index].requestHost))
             {
                 return string.Empty;
             }
-            return vmess[index].requestHost.Replace(" ", "").TrimEx();
+            return outbound[index].requestHost.Replace(" ", "").TrimEx();
         }
         public string path()
         {
-            if (index < 0 || Utils.IsNullOrEmpty(vmess[index].path))
+            if (index < 0 || Utils.IsNullOrEmpty(outbound[index].path))
             {
                 return string.Empty;
             }
-            return vmess[index].path.Replace(" ", "").TrimEx();
+            return outbound[index].path.Replace(" ", "").TrimEx();
         }
         public string streamSecurity()
         {
-            if (index < 0 || Utils.IsNullOrEmpty(vmess[index].streamSecurity))
+            if (index < 0 || Utils.IsNullOrEmpty(outbound[index].streamSecurity))
             {
                 return string.Empty;
             }
-            return vmess[index].streamSecurity;
+            return outbound[index].streamSecurity;
         }
         public bool allowInsecure()
         {
-            if (index < 0 || Utils.IsNullOrEmpty(vmess[index].allowInsecure))
+            if (index < 0 || Utils.IsNullOrEmpty(outbound[index].allowInsecure))
             {
                 return defAllowInsecure;
             }
-            return Convert.ToBoolean(vmess[index].allowInsecure);
+            return Convert.ToBoolean(outbound[index].allowInsecure);
         }
 
         public int GetLocalPort(string protocol)
@@ -275,7 +275,7 @@ namespace v2rayN.Mode
             {
                 return 0;
             }
-            return vmess[index].configType;
+            return outbound[index].configType;
         }
 
         public string getSummary()
@@ -284,7 +284,7 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].getSummary();
+            return outbound[index].getSummary();
         }
 
         public string getItemId()
@@ -294,7 +294,7 @@ namespace v2rayN.Mode
                 return string.Empty;
             }
 
-            return vmess[index].getItemId();
+            return outbound[index].getItemId();
         }
         public string flow()
         {
@@ -302,7 +302,7 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].flow.TrimEx();
+            return outbound[index].flow.TrimEx();
         }
 
         public string fingerprint()
@@ -311,7 +311,7 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].fingerprint.TrimEx();
+            return outbound[index].fingerprint.TrimEx();
         }
 
         public string sni()
@@ -320,7 +320,7 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].sni.TrimEx();
+            return outbound[index].sni.TrimEx();
         }
 
         public string publicKey()
@@ -329,7 +329,7 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].publicKey.TrimEx();
+            return outbound[index].publicKey.TrimEx();
         }
 
         public string shortId()
@@ -338,7 +338,7 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].shortId.TrimEx();
+            return outbound[index].shortId.TrimEx();
         }
 
         public string spiderX()
@@ -347,16 +347,16 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].spiderX.TrimEx();
+            return outbound[index].spiderX.TrimEx();
         }
         #endregion
 
     }
 
     [Serializable]
-    public class VmessItem
+    public class NodeItem
     {
-        public VmessItem()
+        public NodeItem()
         {
             configVersion = 1;
             address = string.Empty;
@@ -410,14 +410,14 @@ namespace v2rayN.Mode
             }
             return summary;
         }
-        public string getSubRemarks(Config config)
+        public string getSubRemarks(V2rayNappConfig appConfig)
         {
             string subRemarks = string.Empty;
             if (Utils.IsNullOrEmpty(subid))
             {
                 return subRemarks;
             }
-            foreach (SubItem sub in config.subItem)
+            foreach (SubItem sub in appConfig.subItem)
             {
                 if (sub.id.EndsWith(subid))
                 {
@@ -504,7 +504,7 @@ namespace v2rayN.Mode
         public string allowInsecure { get; set; }
 
         /// <summary>
-        /// config type(1=normal,2=custom)
+        /// appConfig type(1=normal,2=custom)
         /// </summary>
         public int configType { get; set; }
 

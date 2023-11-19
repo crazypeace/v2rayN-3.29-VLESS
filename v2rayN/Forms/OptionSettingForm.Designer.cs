@@ -97,16 +97,16 @@
             this.txtuserPacRule = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.txtSocksOutboundPort = new System.Windows.Forms.TextBox();
+            this.txtSocksOutboundIP = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.chkSocksOut = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnOK = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tabPage10 = new System.Windows.Forms.TabPage();
-            this.label12 = new System.Windows.Forms.Label();
-            this.chkSocksOut = new System.Windows.Forms.CheckBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtSocksOutboundIP = new System.Windows.Forms.TextBox();
-            this.txtSocksOutboundPort = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -122,8 +122,8 @@
             this.tabPage7.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.tabPage10.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -612,6 +612,49 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.txtSocksOutboundPort);
+            this.tabPage10.Controls.Add(this.txtSocksOutboundIP);
+            this.tabPage10.Controls.Add(this.label17);
+            this.tabPage10.Controls.Add(this.label15);
+            this.tabPage10.Controls.Add(this.chkSocksOut);
+            this.tabPage10.Controls.Add(this.label12);
+            resources.ApplyResources(this.tabPage10, "tabPage10");
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // txtSocksOutboundPort
+            // 
+            resources.ApplyResources(this.txtSocksOutboundPort, "txtSocksOutboundPort");
+            this.txtSocksOutboundPort.Name = "txtSocksOutboundPort";
+            // 
+            // txtSocksOutboundIP
+            // 
+            resources.ApplyResources(this.txtSocksOutboundIP, "txtSocksOutboundIP");
+            this.txtSocksOutboundIP.Name = "txtSocksOutboundIP";
+            // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
+            // chkSocksOut
+            // 
+            resources.ApplyResources(this.chkSocksOut, "chkSocksOut");
+            this.chkSocksOut.Name = "chkSocksOut";
+            this.chkSocksOut.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnClose);
@@ -630,49 +673,6 @@
             // 
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
-            // tabPage10
-            // 
-            this.tabPage10.Controls.Add(this.txtSocksOutboundPort);
-            this.tabPage10.Controls.Add(this.txtSocksOutboundIP);
-            this.tabPage10.Controls.Add(this.label17);
-            this.tabPage10.Controls.Add(this.label15);
-            this.tabPage10.Controls.Add(this.chkSocksOut);
-            this.tabPage10.Controls.Add(this.label12);
-            resources.ApplyResources(this.tabPage10, "tabPage10");
-            this.tabPage10.Name = "tabPage10";
-            this.tabPage10.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
-            // chkSocksOut
-            // 
-            resources.ApplyResources(this.chkSocksOut, "chkSocksOut");
-            this.chkSocksOut.Name = "chkSocksOut";
-            this.chkSocksOut.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
-            // 
-            // label17
-            // 
-            resources.ApplyResources(this.label17, "label17");
-            this.label17.Name = "label17";
-            // 
-            // txtSocksOutboundIP
-            // 
-            resources.ApplyResources(this.txtSocksOutboundIP, "txtSocksOutboundIP");
-            this.txtSocksOutboundIP.Name = "txtSocksOutboundIP";
-            // 
-            // txtSocksOutboundPort
-            // 
-            resources.ApplyResources(this.txtSocksOutboundPort, "txtSocksOutboundPort");
-            this.txtSocksOutboundPort.Name = "txtSocksOutboundPort";
             // 
             // OptionSettingForm
             // 
@@ -708,9 +708,9 @@
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

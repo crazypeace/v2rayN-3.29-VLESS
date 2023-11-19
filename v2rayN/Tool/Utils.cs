@@ -324,12 +324,12 @@ namespace v2rayN
             return $"{string.Format("{0:f1}", result)} {unit}";
         }
 
-        public static void DedupServerList(List<Mode.VmessItem> source, out List<Mode.VmessItem> result, bool keepOlder)
+        public static void DedupServerList(List<Mode.NodeItem> source, out List<Mode.NodeItem> result, bool keepOlder)
         {
-            List<Mode.VmessItem> list = new List<Mode.VmessItem>();
+            List<Mode.NodeItem> list = new List<Mode.NodeItem>();
             if (!keepOlder) source.Reverse(); // Remove the early items first
 
-            bool _isAdded(Mode.VmessItem o, Mode.VmessItem n)
+            bool _isAdded(Mode.NodeItem o, Mode.NodeItem n)
             {
                 return o.configVersion == n.configVersion &&
                     o.configType == n.configType &&
@@ -345,7 +345,7 @@ namespace v2rayN
                     o.streamSecurity == n.streamSecurity;
                 // skip (will remove) different remarks
             }
-            foreach (Mode.VmessItem item in source)
+            foreach (Mode.NodeItem item in source)
             {
                 if (!list.Exists(i => _isAdded(i, item)))
                 {

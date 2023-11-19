@@ -17,7 +17,7 @@ namespace v2rayN.HttpProxyHandler
         private static int pacPort = 0;
         private static HttpWebServer server;
         private static HttpWebServerB serverB;
-        private static Config _config;
+        private static V2rayNappConfig _appConfig;
 
         public static bool IsRunning
         {
@@ -27,10 +27,10 @@ namespace v2rayN.HttpProxyHandler
             }
         }
 
-        public static void Init(Config config)
+        public static void Init(V2rayNappConfig appConfig)
         {
-            _config = config;
-            Global.pacPort = config.GetLocalPort("pac");
+            _appConfig = appConfig;
+            Global.pacPort = appConfig.GetLocalPort("pac");
 
             if (InitServer("*"))
             {
@@ -186,12 +186,12 @@ namespace v2rayN.HttpProxyHandler
                 string pac = File.ReadAllText(strPacfile, Encoding.UTF8);
                 pac = pac.Replace("__PROXY__", proxy);
 
-                if (_config.userPacRule.Count > 0)
+                if (_appConfig.userPacRule.Count > 0)
                 {
                     string keyWords = "var rules = [";
                     if (pac.IndexOf(keyWords) >= 0)
                     {
-                        string userPac = string.Join($"\",{Environment.NewLine}\"", _config.userPacRule.ToArray());
+                        string userPac = string.Join($"\",{Environment.NewLine}\"", _appConfig.userPacRule.ToArray());
                         userPac = string.Format("\"{0}\",", userPac);
                         pac = pac.Replace(keyWords, keyWords + userPac);
                     }

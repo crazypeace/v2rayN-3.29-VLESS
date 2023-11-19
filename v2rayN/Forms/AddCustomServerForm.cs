@@ -43,9 +43,9 @@ namespace v2rayN.Forms
         /// </summary>
         private void BindingServer()
         {
-            vmessItem = config.vmess[EditIndex];
-            txtRemarks.Text = vmessItem.remarks;
-            txtAddress.Text = vmessItem.address;
+            nodeItem = appConfig.outbound[EditIndex];
+            txtRemarks.Text = nodeItem.remarks;
+            txtAddress.Text = nodeItem.address;
             txtAddress.ReadOnly = true;
         }
 
@@ -66,9 +66,9 @@ namespace v2rayN.Forms
                 UI.Show(UIRes.I18N("PleaseFillRemarks"));
                 return;
             }
-            vmessItem.remarks = remarks;
+            nodeItem.remarks = remarks;
 
-            if (ConfigHandler.EditCustomServer(ref config, vmessItem, EditIndex) == 0)
+            if (AppConfigHandler.EditCustomServer(ref appConfig, nodeItem, EditIndex) == 0)
             {
                 this.DialogResult = DialogResult.OK;
             }

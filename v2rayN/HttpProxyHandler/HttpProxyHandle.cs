@@ -23,9 +23,9 @@ namespace v2rayN.HttpProxyHandler
     /// </summary>
     class HttpProxyHandle
     {
-        private static bool Update(Config config, bool forceDisable)
+        private static bool Update(V2rayNappConfig appConfig, bool forceDisable)
         {
-            ListenerType type = config.listenerType;
+            ListenerType type = appConfig.listenerType;
 
             if (forceDisable)
             {
@@ -53,7 +53,7 @@ namespace v2rayN.HttpProxyHandler
                         //ProxySetting.SetProxy(pacUrl, "", 4);
                         SysProxyHandle.SetIEProxy(true, false, pacUrl);
                         //PACServerHandle.Stop();
-                        PACServerHandle.Init(config);
+                        PACServerHandle.Init(appConfig);
                     }
                     else if (type == ListenerType.HttpOpenAndClear)
                     {
@@ -65,7 +65,7 @@ namespace v2rayN.HttpProxyHandler
                         string pacUrl = GetPacUrl();
                         SysProxyHandle.ResetIEProxy();
                         //PACServerHandle.Stop();
-                        PACServerHandle.Init(config);
+                        PACServerHandle.Init(appConfig);
                     }
                     else if (type == ListenerType.HttpOpenOnly)
                     {
@@ -77,7 +77,7 @@ namespace v2rayN.HttpProxyHandler
                         string pacUrl = GetPacUrl();
                         //SysProxyHandle.ResetIEProxy();
                         //PACServerHandle.Stop();
-                        PACServerHandle.Init(config);
+                        PACServerHandle.Init(appConfig);
                     }
                 }
                 else
@@ -96,21 +96,21 @@ namespace v2rayN.HttpProxyHandler
         /// <summary>
         /// 启用系统代理(http)
         /// </summary>
-        /// <param name="config"></param>
-        private static void StartHttpAgent(Config config)
+        /// <param name="appConfig"></param>
+        private static void StartHttpAgent(V2rayNappConfig appConfig)
         {
             try
             {
-                int localPort = config.GetLocalPort(Global.InboundSocks);
+                int localPort = appConfig.GetLocalPort(Global.InboundSocks);
                 if (localPort > 0)
                 {
-                    PrivoxyHandler.Instance.Restart(localPort, config);
+                    PrivoxyHandler.Instance.Restart(localPort, appConfig);
                     if (PrivoxyHandler.Instance.RunningPort > 0)
                     {
                         Global.sysAgent = true;
                         Global.socksPort = localPort;
                         Global.httpPort = PrivoxyHandler.Instance.RunningPort;
-                        Global.pacPort = config.GetLocalPort("pac");
+                        Global.pacPort = appConfig.GetLocalPort("pac");
                     }
                 }
             }
@@ -122,14 +122,14 @@ namespace v2rayN.HttpProxyHandler
         /// <summary>
         /// 关闭系统代理
         /// </summary>
-        /// <param name="config"></param>
-        public static void CloseHttpAgent(Config config)
+        /// <param name="appConfig"></param>
+        public static void CloseHttpAgent(V2rayNappConfig appConfig)
         {
             try
             {
-                if (config.listenerType != ListenerType.HttpOpenOnly && config.listenerType != ListenerType.PacOpenOnly)
+                if (appConfig.listenerType != ListenerType.HttpOpenOnly && appConfig.listenerType != ListenerType.PacOpenOnly)
                 {
-                    Update(config, true);
+                    Update(appConfig, true);
                 }
 
                 PrivoxyHandler.Instance.Stop();
@@ -146,12 +146,12 @@ namespace v2rayN.HttpProxyHandler
         /// <summary>
         /// 重启系统代理(http)
         /// </summary>
-        /// <param name="config"></param>
+        /// <param name="appConfig"></param>
         /// <param name="forced"></param>
-        public static void RestartHttpAgent(Config config, bool forced)
+        public static void RestartHttpAgent(V2rayNappConfig appConfig, bool forced)
         {
             bool isRestart = false;
-            if (config.listenerType == ListenerType.noHttpProxy)
+            if (appConfig.listenerType == ListenerType.noHttpProxy)
             {
                 // 关闭http proxy时，直接返回
                 return;
@@ -163,7 +163,7 @@ namespace v2rayN.HttpProxyHandler
             }
             else
             {
-                int localPort = config.GetLocalPort(Global.InboundSocks);
+                int localPort = appConfig.GetLocalPort(Global.InboundSocks);
                 if (localPort != Global.socksPort)
                 {
                     isRestart = true;
@@ -171,10 +171,10 @@ namespace v2rayN.HttpProxyHandler
             }
             if (isRestart)
             {
-                CloseHttpAgent(config);
-                StartHttpAgent(config);
+                CloseHttpAgent(appConfig);
+                StartHttpAgent(appConfig);
             }
-            Update(config, false);
+            Update(appConfig, false);
         }
 
         public static string GetPacUrl()

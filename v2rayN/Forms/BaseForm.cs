@@ -6,7 +6,7 @@ namespace v2rayN.Forms
 {
     public partial class BaseForm : Form
     {
-        protected static Config config;
+        protected static V2rayNappConfig appConfig;
         protected static System.Drawing.Icon icon;
 
         public BaseForm()

@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>3.29.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -217,10 +217,10 @@
     <Compile Include="Handler\QRCodeHelper.cs" />
     <Compile Include="Mode\VmessQRCode.cs" />
     <Compile Include="Mode\V2rayTcpRequest.cs" />
-    <Compile Include="Handler\ConfigHandler.cs" />
+    <Compile Include="Handler\AppConfigHandler.cs" />
     <Compile Include="Handler\V2rayHandler.cs" />
-    <Compile Include="Mode\V2rayConfig.cs" />
-    <Compile Include="Mode\Config.cs" />
+    <Compile Include="Mode\V2raySrvConfig.cs" />
+    <Compile Include="Mode\V2rayNappConfig.cs" />
     <Compile Include="Forms\OptionSettingForm.cs">
       <SubType>Form</SubType>
     </Compile>

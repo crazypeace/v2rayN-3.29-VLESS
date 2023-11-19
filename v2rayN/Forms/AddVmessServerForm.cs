@@ -30,12 +30,12 @@ namespace v2rayN.Forms
 
             if (EditIndex >= 0)
             {
-                vmessItem = config.vmess[EditIndex];
+                nodeItem = appConfig.outbound[EditIndex];
                 BindingServer();
             }
             else
             {
-                vmessItem = new VmessItem();
+                nodeItem = new NodeItem();
                 ClearServer();
             }
         }
@@ -45,19 +45,19 @@ namespace v2rayN.Forms
         /// </summary>
         private void BindingServer()
         {
-            txtAddress.Text = vmessItem.address;
-            txtPort.Text = vmessItem.port.ToString();
-            txtId.Text = vmessItem.id;
-            txtAlterId.Text = vmessItem.alterId.ToString();
-            cmbSecurity.Text = vmessItem.security;
-            cmbNetwork.Text = vmessItem.network;
-            txtRemarks.Text = vmessItem.remarks;
+            txtAddress.Text = nodeItem.address;
+            txtPort.Text = nodeItem.port.ToString();
+            txtId.Text = nodeItem.id;
+            txtAlterId.Text = nodeItem.alterId.ToString();
+            cmbSecurity.Text = nodeItem.security;
+            cmbNetwork.Text = nodeItem.network;
+            txtRemarks.Text = nodeItem.remarks;
 
-            cmbHeaderType.Text = vmessItem.headerType;
-            txtRequestHost.Text = vmessItem.requestHost;
-            txtPath.Text = vmessItem.path;
-            cmbStreamSecurity.Text = vmessItem.streamSecurity;
-            cmbAllowInsecure.Text = vmessItem.allowInsecure;
+            cmbHeaderType.Text = nodeItem.headerType;
+            txtRequestHost.Text = nodeItem.requestHost;
+            txtPath.Text = nodeItem.path;
+            cmbStreamSecurity.Text = nodeItem.streamSecurity;
+            cmbAllowInsecure.Text = nodeItem.allowInsecure;
         }
 
 
@@ -157,21 +157,21 @@ namespace v2rayN.Forms
                 return;
             }
 
-            vmessItem.address = address;
-            vmessItem.port = Utils.ToInt(port);
-            vmessItem.id = id;
-            vmessItem.alterId = Utils.ToInt(alterId);
-            vmessItem.security = security;
-            vmessItem.network = network;
-            vmessItem.remarks = remarks;
+            nodeItem.address = address;
+            nodeItem.port = Utils.ToInt(port);
+            nodeItem.id = id;
+            nodeItem.alterId = Utils.ToInt(alterId);
+            nodeItem.security = security;
+            nodeItem.network = network;
+            nodeItem.remarks = remarks;
 
-            vmessItem.headerType = headerType;
-            vmessItem.requestHost = requestHost.Replace(" ", "");
-            vmessItem.path = path.Replace(" ", "");
-            vmessItem.streamSecurity = streamSecurity;
-            vmessItem.allowInsecure = allowInsecure;
+            nodeItem.headerType = headerType;
+            nodeItem.requestHost = requestHost.Replace(" ", "");
+            nodeItem.path = path.Replace(" ", "");
+            nodeItem.streamSecurity = streamSecurity;
+            nodeItem.allowInsecure = allowInsecure;
 
-            if (ConfigHandler.AddServer(ref config, vmessItem, EditIndex) == 0)
+            if (AppConfigHandler.AddServer(ref appConfig, nodeItem, EditIndex) == 0)
             {
                 this.DialogResult = DialogResult.OK;
             }
@@ -245,7 +245,7 @@ namespace v2rayN.Forms
                 return;
             }
             string msg;
-            VmessItem vmessItem;
+            NodeItem vmessItem;
             if (type.Equals(1))
             {
                 vmessItem = V2rayConfigHandler.ImportFromClientConfig(fileName, out msg);
@@ -281,7 +281,7 @@ namespace v2rayN.Forms
         {
             ClearServer();
 
-            VmessItem vmessItem = V2rayConfigHandler.ImportFromClipboardConfig(Utils.GetClipboardData(), out string msg);
+            NodeItem vmessItem = V2rayConfigHandler.ImportFromClipboardConfig(Utils.GetClipboardData(), out string msg);
             if (vmessItem == null)
             {
                 UI.ShowWarning(msg);

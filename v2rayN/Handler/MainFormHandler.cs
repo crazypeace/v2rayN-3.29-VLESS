@@ -9,12 +9,6 @@ namespace v2rayN.Handler
     {
         private static MainFormHandler instance;
 
-        //private DownloadHandle downloadHandle2;
-        //private Config _config;
-        //private V2rayHandler _v2rayHandler;
-        //private List<int> _selecteds;
-        //private Thread _workThread;
-        //Action<int, string> _updateFunc;
         public static MainFormHandler Instance
         {
             get
@@ -27,12 +21,12 @@ namespace v2rayN.Handler
             }
         }
 
-        public Icon GetNotifyIcon(Config config, Icon def)
+        public Icon GetNotifyIcon(V2rayNappConfig appConfig, Icon def)
         {
             try
             {
                 Color color = ColorTranslator.FromHtml("#3399CC");
-                int index = (int)config.listenerType;
+                int index = (int)appConfig.listenerType;
                 if (index > 0)
                 {
                     color = (new Color[] { Color.Red, Color.Purple, Color.DarkGreen, Color.Orange, Color.DarkSlateBlue, Color.RoyalBlue })[index - 1];
@@ -65,15 +59,15 @@ namespace v2rayN.Handler
             }
         }
 
-        public void Export2ClientConfig(int index, Config config)
+        public void Export2ClientConfig(int index, V2rayNappConfig appConfig)
         {
             //int index = GetLvSelectedIndex();
             if (index < 0)
             {
                 return;
             }
-            if (config.vmess[index].configType != (int)EConfigType.Vmess
-                && config.vmess[index].configType != (int)EConfigType.VLESS)
+            if (appConfig.outbound[index].configType != (int)EConfigType.Vmess
+                && appConfig.outbound[index].configType != (int)EConfigType.VLESS)
             {
                 UI.Show(UIRes.I18N("NonVmessService"));
                 return;
@@ -94,9 +88,9 @@ namespace v2rayN.Handler
             {
                 return;
             }
-            Config configCopy = Utils.DeepCopy(config);
-            configCopy.index = index;
-            if (V2rayConfigHandler.Export2ClientConfig(configCopy, fileName, out string msg) != 0)
+            V2rayNappConfig appConfigCopy = Utils.DeepCopy(appConfig);
+            appConfigCopy.index = index;
+            if (V2rayConfigHandler.Export2ClientConfig(appConfigCopy, fileName, out string msg) != 0)
             {
                 UI.Show(msg);
             }
@@ -106,15 +100,15 @@ namespace v2rayN.Handler
             }
         }
 
-        public void Export2ServerConfig(int index, Config config)
+        public void Export2ServerConfig(int index, V2rayNappConfig appConfig)
         {
             //int index = GetLvSelectedIndex();
             if (index < 0)
             {
                 return;
             }
-            if (config.vmess[index].configType != (int)EConfigType.Vmess
-                && config.vmess[index].configType != (int)EConfigType.VLESS)
+            if (appConfig.outbound[index].configType != (int)EConfigType.Vmess
+                && appConfig.outbound[index].configType != (int)EConfigType.VLESS)
             {
                 UI.Show(UIRes.I18N("NonVmessService"));
                 return;
@@ -135,9 +129,9 @@ namespace v2rayN.Handler
             {
                 return;
             }
-            Config configCopy = Utils.DeepCopy(config);
-            configCopy.index = index;
-            if (V2rayConfigHandler.Export2ServerConfig(configCopy, fileName, out string msg) != 0)
+            V2rayNappConfig appConfigCopy = Utils.DeepCopy(appConfig);
+            appConfigCopy.index = index;
+            if (V2rayConfigHandler.Export2ServerConfig(appConfigCopy, fileName, out string msg) != 0)
             {
                 UI.Show(msg);
             }

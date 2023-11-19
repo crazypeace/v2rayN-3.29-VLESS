@@ -20,11 +20,11 @@ namespace v2rayN.Forms
             txtUrl.SelectAll();
         }
 
-        public void showQRCode(int Index, Config config)
+        public void showQRCode(int Index, V2rayNappConfig appConfig)
         {
             if (Index >= 0)
             {
-                string url = ConfigHandler.GetVmessQRCode(config, Index);
+                string url = AppConfigHandler.GetVmessQRCode(appConfig, Index);
                 if (Utils.IsNullOrEmpty(url))
                 {
                     picQRCode.Image = null;

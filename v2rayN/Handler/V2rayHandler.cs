@@ -39,12 +39,12 @@ namespace v2rayN.Handler
         /// <summary>
         /// 载入V2ray
         /// </summary>
-        public void LoadV2ray(Config config)
+        public void LoadV2ray(V2rayNappConfig appConfig)
         {
             if (Global.reloadV2ray)
             {
                 string fileName = Utils.GetPath(v2rayConfigRes);
-                if (V2rayConfigHandler.GenerateClientConfig(config, fileName, false, out string msg) != 0)
+                if (V2rayConfigHandler.GenerateClientConfig(appConfig, fileName, false, out string msg) != 0)
                 {
                     ShowMsg(false, msg);
                 }
@@ -60,10 +60,10 @@ namespace v2rayN.Handler
         /// 新建进程，载入V2ray配置文件字符串
         /// 返回新进程pid。
         /// </summary>
-        public int LoadV2rayConfigString(Config config, List<int> _selecteds)
+        public int LoadV2rayConfigString(V2rayNappConfig appConfig, List<int> _selecteds)
         {
             int pid = -1;
-            string configStr = V2rayConfigHandler.GenerateClientSpeedtestConfigString(config, _selecteds, out string msg);
+            string configStr = V2rayConfigHandler.GenerateClientSpeedtestConfigString(appConfig, _selecteds, out string msg);
             if (configStr == "")
             {
                 ShowMsg(false, msg);
@@ -73,7 +73,7 @@ namespace v2rayN.Handler
                 ShowMsg(false, msg);
                 pid = V2rayStartNew(configStr);
                 //V2rayRestart();
-                // start with -config
+                // start with -appConfig
             }
             return pid;
         }

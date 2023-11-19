@@ -29,12 +29,12 @@ namespace v2rayN.Forms
 
             if (EditIndex >= 0)
             {
-                vmessItem = config.vmess[EditIndex];
+                nodeItem = appConfig.outbound[EditIndex];
                 BindingServer();
             }
             else
             {
-                vmessItem = new VmessItem();
+                nodeItem = new NodeItem();
                 ClearServer();
             }
         }
@@ -45,11 +45,11 @@ namespace v2rayN.Forms
         private void BindingServer()
         {
 
-            txtAddress.Text = vmessItem.address;
-            txtPort.Text = vmessItem.port.ToString();
-            txtId.Text = vmessItem.id;
-            txtRequestHost.Text = vmessItem.requestHost;
-            txtRemarks.Text = vmessItem.remarks;
+            txtAddress.Text = nodeItem.address;
+            txtPort.Text = nodeItem.port.ToString();
+            txtId.Text = nodeItem.id;
+            txtRequestHost.Text = nodeItem.requestHost;
+            txtRemarks.Text = nodeItem.remarks;
         }
 
 
@@ -89,13 +89,13 @@ namespace v2rayN.Forms
                 return;
             } 
 
-            vmessItem.address = address;
-            vmessItem.port = Utils.ToInt(port);
-            vmessItem.id = id;
-            vmessItem.requestHost = requestHost.Replace(" ", "");
-            vmessItem.remarks = remarks;
+            nodeItem.address = address;
+            nodeItem.port = Utils.ToInt(port);
+            nodeItem.id = id;
+            nodeItem.requestHost = requestHost.Replace(" ", "");
+            nodeItem.remarks = remarks;
 
-            if (ConfigHandler.AddTrojanServer(ref config, vmessItem, EditIndex) == 0)
+            if (AppConfigHandler.AddTrojanServer(ref appConfig, nodeItem, EditIndex) == 0)
             {
                 this.DialogResult = DialogResult.OK;
             }

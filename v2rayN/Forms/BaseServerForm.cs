@@ -7,7 +7,7 @@ namespace v2rayN.Forms
     public partial class BaseServerForm : BaseForm
     {
         public int EditIndex { get; set; }
-        protected VmessItem vmessItem = null;
+        protected NodeItem nodeItem = null;
 
         public BaseServerForm()
         {

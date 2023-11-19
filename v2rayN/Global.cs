@@ -5,21 +5,19 @@ namespace v2rayN
     {
         #region 常量
 
-        public const string AboutUrl = @"https://github.com/2dust/v2rayN";
         public const string UpdateUrl = @"https://github.com/crazypeace/v2rayN-3.29-VLESS/releases";
         public const string IssueUrl = @"https://github.com/crazypeace/v2rayN-3.29-VLESS/issues";
-        public const string BloggerUrl = @"https://zelikk.blogspot.com";
+        public const string BloggerUrl = @"https://zelikk.blogspot.com/search/label/v2rayN-3.29-VLESS";
         public const string v2rayWebsiteUrl = @"https://www.v2fly.org/";
         public const string v2rayCore4_45_2Url = @"https://github.com/v2fly/v2ray-core/releases/tag/v4.45.2";
         public const string v2rayCore4_32_1Url = @"https://github.com/v2fly/v2ray-core/releases/tag/v4.32.1";
-        public const string XrayWebsiteUrl = @"https://xtls.github.io/";
         public const string XrayCore_Url = @"https://github.com/XTLS/Xray-core/releases/latest";
 
         /// <summary>
         /// SpeedTestUrl
         /// </summary>
         public const string SpeedTestUrl = @"http://cachefly.cachefly.net/10mb.test";
-        public const string SpeedPingTestUrl = @"https://www.google.com/generate_204";
+        public const string DelayTestUrl = @"https://www.google.com/generate_204";
         public const string AvailabilityTestUrl = @"https://www.google.com/generate_204";
 
         /// <summary>
@@ -28,11 +26,6 @@ namespace v2rayN
         public const string CustomRoutingListUrl = @"https://raw.githubusercontent.com/2dust/v2rayCustomRoutingList/master/";
 
         public const string GFWLIST_URL = @"https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt";
-
-        /// <summary>
-        /// PromotionUrl
-        /// </summary>
-        public const string PromotionUrl = @"aHR0cHM6Ly85LjIzNDQ1Ni54eXovYWJjLmh0bWw=";
 
         /// <summary>
         /// 本软件配置文件名

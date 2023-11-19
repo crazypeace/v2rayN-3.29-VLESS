@@ -12,13 +12,13 @@ namespace v2rayN.Handler
 {
     class StatisticsHandler
     {
-        private Mode.Config config_;
-        private ServerStatistics serverStatistics_;
-        private Channel channel_;
-        private StatsService.StatsServiceClient client_;
-        private bool exitFlag_;
+        private Mode.V2rayNappConfig _appConfig;
+        private ServerStatistics _serverStatistics;
+        private Channel _channel;
+        private StatsService.StatsServiceClient _client;
+        private bool _exitFlag;
 
-        Action<ulong, ulong, List<ServerStatItem>> updateFunc_;
+        Action<ulong, ulong, List<ServerStatItem>> _updateFunc;
 
         public bool Enable { get; set; }
 
@@ -28,11 +28,11 @@ namespace v2rayN.Handler
         {
             get
             {
-                return serverStatistics_.server;
+                return _serverStatistics.server;
             }
         }
 
-        public StatisticsHandler(Mode.Config config, Action<ulong, ulong, List<ServerStatItem>> update)
+        public StatisticsHandler(Mode.V2rayNappConfig appConfig, Action<ulong, ulong, List<ServerStatItem>> update)
         {
             //try
             //{
@@ -51,11 +51,11 @@ namespace v2rayN.Handler
 
             //}
 
-            config_ = config;
-            Enable = config.enableStatistics;
+            _appConfig = appConfig;
+            Enable = appConfig.enableStatistics;
             UpdateUI = false;
-            updateFunc_ = update;
-            exitFlag_ = false;
+            _updateFunc = update;
+            _exitFlag = false;
 
             LoadFromFile();
 
@@ -66,13 +66,13 @@ namespace v2rayN.Handler
 
         private void GrpcInit()
         {
-            if (channel_ == null)
+            if (_channel == null)
             {
                 Global.statePort = GetFreePort();
 
-                channel_ = new Channel($"{Global.Loopback}:{Global.statePort}", ChannelCredentials.Insecure);
-                channel_.ConnectAsync();
-                client_ = new StatsService.StatsServiceClient(channel_);
+                _channel = new Channel($"{Global.Loopback}:{Global.statePort}", ChannelCredentials.Insecure);
+                _channel.ConnectAsync();
+                _client = new StatsService.StatsServiceClient(_channel);
             }
         }
 
@@ -80,8 +80,8 @@ namespace v2rayN.Handler
         {
             try
             {
-                exitFlag_ = true;
-                channel_.ShutdownAsync();
+                _exitFlag = true;
+                _channel.ShutdownAsync();
             }
             catch (Exception ex)
             {
@@ -91,16 +91,16 @@ namespace v2rayN.Handler
 
         public void Run()
         {
-            while (!exitFlag_)
+            while (!_exitFlag)
             {
                 try
                 {
-                    if (Enable && channel_.State == ChannelState.Ready)
+                    if (Enable && _channel.State == ChannelState.Ready)
                     {
                         QueryStatsResponse res = null;
                         try
                         {
-                            res = client_.QueryStats(new QueryStatsRequest() { Pattern = "", Reset = true });
+                            res = _client.QueryStats(new QueryStatsRequest() { Pattern = "", Reset = true });
                         }
                         catch (Exception ex)
                         {
@@ -109,7 +109,7 @@ namespace v2rayN.Handler
 
                         if (res != null)
                         {
-                            string itemId = config_.getItemId();
+                            string itemId = _appConfig.getItemId();
                             ServerStatItem serverStatItem = GetServerStatItem(itemId);
 
                             //TODO: parse output
@@ -122,12 +122,12 @@ namespace v2rayN.Handler
 
                             if (UpdateUI)
                             {
-                                updateFunc_(up, down, new List<ServerStatItem> { serverStatItem });
+                                _updateFunc(up, down, new List<ServerStatItem> { serverStatItem });
                             }
                         }
                     }
-                    Thread.Sleep(config_.statisticsFreshRate);
-                    channel_.ConnectAsync();
+                    Thread.Sleep(_appConfig.statisticsFreshRate);
+                    _channel.ConnectAsync();
                 }
                 catch (Exception ex)
                 {
@@ -144,20 +144,20 @@ namespace v2rayN.Handler
                 if (!Utils.IsNullOrEmpty(result))
                 {
                     //转成Json
-                    serverStatistics_ = Utils.FromJson<ServerStatistics>(result);
+                    _serverStatistics = Utils.FromJson<ServerStatistics>(result);
                 }
 
-                if (serverStatistics_ == null)
+                if (_serverStatistics == null)
                 {
-                    serverStatistics_ = new ServerStatistics();
+                    _serverStatistics = new ServerStatistics();
                 }
-                if (serverStatistics_.server == null)
+                if (_serverStatistics.server == null)
                 {
-                    serverStatistics_.server = new List<ServerStatItem>();
+                    _serverStatistics.server = new List<ServerStatItem>();
                 }
 
                 long ticks = DateTime.Now.Date.Ticks;
-                foreach (ServerStatItem item in serverStatistics_.server)
+                foreach (ServerStatItem item in _serverStatistics.server)
                 {
                     if (item.dateNow != ticks)
                     {
@@ -177,7 +177,7 @@ namespace v2rayN.Handler
         {
             try
             {
-                Utils.ToJsonFile(serverStatistics_, Utils.GetPath(Global.StatisticLogOverall));
+                Utils.ToJsonFile(_serverStatistics, Utils.GetPath(Global.StatisticLogOverall));
             }
             catch (Exception ex)
             {

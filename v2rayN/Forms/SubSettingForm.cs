@@ -30,9 +30,9 @@ namespace v2rayN.Forms
                 this.Height = screenHeight;
             }
 
-            if (config.subItem == null)
+            if (appConfig.subItem == null)
             {
-                config.subItem = new List<SubItem>();
+                appConfig.subItem = new List<SubItem>();
             }
 
             RefreshSubsView();
@@ -46,21 +46,21 @@ namespace v2rayN.Forms
             panCon.Controls.Clear();
             lstControls.Clear();
 
-            for (int k = config.subItem.Count - 1; k >= 0; k--)
+            for (int k = appConfig.subItem.Count - 1; k >= 0; k--)
             {
-                SubItem item = config.subItem[k];
+                SubItem item = appConfig.subItem[k];
                 if (Utils.IsNullOrEmpty(item.remarks)
                     && Utils.IsNullOrEmpty(item.url))
                 {
                     if (!Utils.IsNullOrEmpty(item.id))
                     {
-                        ConfigHandler.RemoveServerViaSubid(ref config, item.id);
+                        AppConfigHandler.RemoveServerViaSubid(ref appConfig, item.id);
                     }
-                    config.subItem.RemoveAt(k);
+                    appConfig.subItem.RemoveAt(k);
                 }
             }
 
-            foreach (SubItem item in config.subItem)
+            foreach (SubItem item in appConfig.subItem)
             {
                 SubSettingControl control = new SubSettingControl();
                 control.OnButtonClicked += Control_OnButtonClicked;
@@ -81,12 +81,12 @@ namespace v2rayN.Forms
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (config.subItem.Count <= 0)
+            if (appConfig.subItem.Count <= 0)
             {
                 AddSub();
             }
 
-            if (ConfigHandler.SaveSubItem(ref config) == 0)
+            if (AppConfigHandler.SaveSubItem(ref appConfig) == 0)
             {
                 this.DialogResult = DialogResult.OK;
             }
@@ -117,7 +117,7 @@ namespace v2rayN.Forms
                 remarks = "remarks",
                 url = "url"
             };
-            config.subItem.Add(subItem);
+            appConfig.subItem.Add(subItem);
         }
     }
 }

@@ -31,12 +31,12 @@ namespace v2rayN.Forms
             
             if (EditIndex >= 0)
             {
-                vmessItem = config.vmess[EditIndex];
+                nodeItem = appConfig.outbound[EditIndex];
                 BindingServer();
             }
             else
             {
-                vmessItem = new VmessItem();
+                nodeItem = new NodeItem();
                 ClearServer();
             }
         }
@@ -46,25 +46,25 @@ namespace v2rayN.Forms
         /// </summary>
         private void BindingServer()
         {
-            txtAddress.Text = vmessItem.address;
-            txtPort.Text = vmessItem.port.ToString();
-            txtId.Text = vmessItem.id;
-            cmbFlow.Text = vmessItem.flow;
-            cmbSecurity.Text = vmessItem.security;
-            cmbNetwork.Text = vmessItem.network;
-            txtRemarks.Text = vmessItem.remarks;
+            txtAddress.Text = nodeItem.address;
+            txtPort.Text = nodeItem.port.ToString();
+            txtId.Text = nodeItem.id;
+            cmbFlow.Text = nodeItem.flow;
+            cmbSecurity.Text = nodeItem.security;
+            cmbNetwork.Text = nodeItem.network;
+            txtRemarks.Text = nodeItem.remarks;
 
-            cmbHeaderType.Text = vmessItem.headerType;
-            txtRequestHost.Text = vmessItem.requestHost;
-            txtPath.Text = vmessItem.path;
-            cmbStreamSecurity.Text = vmessItem.streamSecurity;
-            cmbAllowInsecure.Text = vmessItem.allowInsecure;
+            cmbHeaderType.Text = nodeItem.headerType;
+            txtRequestHost.Text = nodeItem.requestHost;
+            txtPath.Text = nodeItem.path;
+            cmbStreamSecurity.Text = nodeItem.streamSecurity;
+            cmbAllowInsecure.Text = nodeItem.allowInsecure;
 
-            txtSNI.Text = vmessItem.sni;
-            txtFingerprint.Text = vmessItem.fingerprint;
-            txtPublicKey.Text = vmessItem.publicKey;
-            txtShortID.Text = vmessItem.shortId;
-            txtSpiderX.Text = vmessItem.spiderX;
+            txtSNI.Text = nodeItem.sni;
+            txtFingerprint.Text = nodeItem.fingerprint;
+            txtPublicKey.Text = nodeItem.publicKey;
+            txtShortID.Text = nodeItem.shortId;
+            txtSpiderX.Text = nodeItem.spiderX;
         }
 
 
@@ -169,27 +169,27 @@ namespace v2rayN.Forms
             }
 
 
-            vmessItem.address = address;
-            vmessItem.port = Utils.ToInt(port);
-            vmessItem.id = id;
-            vmessItem.flow = flow;
-            vmessItem.security = security;
-            vmessItem.network = network;
-            vmessItem.remarks = remarks;
+            nodeItem.address = address;
+            nodeItem.port = Utils.ToInt(port);
+            nodeItem.id = id;
+            nodeItem.flow = flow;
+            nodeItem.security = security;
+            nodeItem.network = network;
+            nodeItem.remarks = remarks;
 
-            vmessItem.headerType = headerType;
-            vmessItem.requestHost = requestHost.Replace(" ", "");
-            vmessItem.path = path.Replace(" ", "");
-            vmessItem.streamSecurity = streamSecurity;
-            vmessItem.allowInsecure = allowInsecure;
+            nodeItem.headerType = headerType;
+            nodeItem.requestHost = requestHost.Replace(" ", "");
+            nodeItem.path = path.Replace(" ", "");
+            nodeItem.streamSecurity = streamSecurity;
+            nodeItem.allowInsecure = allowInsecure;
 
-            vmessItem.sni = sni;
-            vmessItem.fingerprint = fingerprint;
-            vmessItem.publicKey = publicKey;
-            vmessItem.shortId = shortId;
-            vmessItem.spiderX = spiderX; 
+            nodeItem.sni = sni;
+            nodeItem.fingerprint = fingerprint;
+            nodeItem.publicKey = publicKey;
+            nodeItem.shortId = shortId;
+            nodeItem.spiderX = spiderX; 
 
-            if (ConfigHandler.AddVlessServer(ref config, vmessItem, EditIndex) == 0)
+            if (AppConfigHandler.AddVlessServer(ref appConfig, nodeItem, EditIndex) == 0)
             {
                 this.DialogResult = DialogResult.OK;
             }
@@ -263,36 +263,36 @@ namespace v2rayN.Forms
                 return;
             }
             string msg;
-            VmessItem vmessItem;
+            NodeItem vlessItem;
             if (type.Equals(1))
             {
-                vmessItem = V2rayConfigHandler.ImportFromClientConfig(fileName, out msg);
+                vlessItem = V2rayConfigHandler.ImportFromClientConfig(fileName, out msg);
             }
             else
             {
-                vmessItem = V2rayConfigHandler.ImportFromServerConfig(fileName, out msg);
+                vlessItem = V2rayConfigHandler.ImportFromServerConfig(fileName, out msg);
             }
-            if (vmessItem == null)
+            if (vlessItem == null)
             {
                 UI.ShowWarning(msg);
                 return;
             }
 
-            txtAddress.Text = vmessItem.address;
-            txtPort.Text = vmessItem.port.ToString();
-            txtId.Text = vmessItem.id;
-            txtRemarks.Text = vmessItem.remarks;
-            cmbNetwork.Text = vmessItem.network;
-            cmbHeaderType.Text = vmessItem.headerType;
-            txtRequestHost.Text = vmessItem.requestHost;
-            txtPath.Text = vmessItem.path;
-            cmbStreamSecurity.Text = vmessItem.streamSecurity;
+            txtAddress.Text = vlessItem.address;
+            txtPort.Text = vlessItem.port.ToString();
+            txtId.Text = vlessItem.id;
+            txtRemarks.Text = vlessItem.remarks;
+            cmbNetwork.Text = vlessItem.network;
+            cmbHeaderType.Text = vlessItem.headerType;
+            txtRequestHost.Text = vlessItem.requestHost;
+            txtPath.Text = vlessItem.path;
+            cmbStreamSecurity.Text = vlessItem.streamSecurity;
 
-            txtSNI.Text = vmessItem.sni;
-            txtFingerprint.Text = vmessItem.fingerprint;
-            txtPublicKey.Text = vmessItem.publicKey;
-            txtShortID.Text = vmessItem.shortId;
-            txtSpiderX.Text = vmessItem.spiderX;
+            txtSNI.Text = vlessItem.sni;
+            txtFingerprint.Text = vlessItem.fingerprint;
+            txtPublicKey.Text = vlessItem.publicKey;
+            txtShortID.Text = vlessItem.shortId;
+            txtSpiderX.Text = vlessItem.spiderX;
         }
 
         /// <summary>
@@ -304,30 +304,30 @@ namespace v2rayN.Forms
         {
             ClearServer();
 
-            VmessItem vmessItem = V2rayConfigHandler.ImportFromClipboardConfig(Utils.GetClipboardData(), out string msg);
-            if (vmessItem == null)
+            NodeItem vlessItem = V2rayConfigHandler.ImportFromClipboardConfig(Utils.GetClipboardData(), out string msg);
+            if (vlessItem == null)
             {
                 UI.ShowWarning(msg);
                 return;
             }
 
-            txtAddress.Text = vmessItem.address;
-            txtPort.Text = vmessItem.port.ToString();
-            txtId.Text = vmessItem.id;
-            cmbFlow.Text = vmessItem.flow;
-            cmbSecurity.Text = vmessItem.security;
-            txtRemarks.Text = vmessItem.remarks;
-            cmbNetwork.Text = vmessItem.network;
-            cmbHeaderType.Text = vmessItem.headerType;
-            txtRequestHost.Text = vmessItem.requestHost;
-            txtPath.Text = vmessItem.path;
-            cmbStreamSecurity.Text = vmessItem.streamSecurity;
+            txtAddress.Text = vlessItem.address;
+            txtPort.Text = vlessItem.port.ToString();
+            txtId.Text = vlessItem.id;
+            cmbFlow.Text = vlessItem.flow;
+            cmbSecurity.Text = vlessItem.security;
+            txtRemarks.Text = vlessItem.remarks;
+            cmbNetwork.Text = vlessItem.network;
+            cmbHeaderType.Text = vlessItem.headerType;
+            txtRequestHost.Text = vlessItem.requestHost;
+            txtPath.Text = vlessItem.path;
+            cmbStreamSecurity.Text = vlessItem.streamSecurity;
 
-            txtSNI.Text = vmessItem.sni;
-            txtFingerprint.Text = vmessItem.fingerprint;
-            txtPublicKey.Text = vmessItem.publicKey;
-            txtShortID.Text = vmessItem.shortId;
-            txtSpiderX.Text = vmessItem.spiderX;
+            txtSNI.Text = vlessItem.sni;
+            txtFingerprint.Text = vlessItem.fingerprint;
+            txtPublicKey.Text = vlessItem.publicKey;
+            txtShortID.Text = vlessItem.shortId;
+            txtSpiderX.Text = vlessItem.spiderX;
         }
         #endregion
 

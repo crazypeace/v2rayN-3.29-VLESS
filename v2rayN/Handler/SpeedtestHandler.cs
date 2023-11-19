@@ -11,15 +11,15 @@ namespace v2rayN.Handler
 {
     class SpeedtestHandler
     {
-        private Config _config;
+        private V2rayNappConfig _appConfig;
         private V2rayHandler _v2rayHandler;
         private List<int> _selecteds;
         Action<int, string> _updateFunc;
 
 
-        public SpeedtestHandler(ref Config config, ref V2rayHandler v2rayHandler, List<int> selecteds, string actionType, Action<int, string> update)
+        public SpeedtestHandler(ref V2rayNappConfig appConfig, ref V2rayHandler v2rayHandler, List<int> selecteds, string actionType, Action<int, string> update)
         {
-            _config = config;
+            _appConfig = appConfig;
             _v2rayHandler = v2rayHandler;
             _selecteds = Utils.DeepCopy(selecteds);
             _updateFunc = update;
@@ -52,7 +52,7 @@ namespace v2rayN.Handler
             {
                 foreach (int index in _selecteds)
                 {
-                    if (_config.vmess[index].configType == (int)EConfigType.Custom)
+                    if (_appConfig.outbound[index].configType == (int)EConfigType.Custom)
                     {
                         continue;
                     }
@@ -79,7 +79,7 @@ namespace v2rayN.Handler
         {
             RunPingSub((int index) =>
             {
-                long time = Utils.Ping(_config.vmess[index].address);
+                long time = Utils.Ping(_appConfig.outbound[index].address);
                 _updateFunc(index, FormatOut(time, "ms"));
             });
         }
@@ -88,7 +88,7 @@ namespace v2rayN.Handler
         {
             RunPingSub((int index) =>
             {
-                int time = GetTcpingTime(_config.vmess[index].address, _config.vmess[index].port);
+                int time = GetTcpingTime(_appConfig.outbound[index].address, _appConfig.outbound[index].port);
                 _updateFunc(index, FormatOut(time, "ms"));
             });
         }
@@ -100,14 +100,14 @@ namespace v2rayN.Handler
             {
                 string msg = string.Empty;
 
-                pid = _v2rayHandler.LoadV2rayConfigString(_config, _selecteds);
+                pid = _v2rayHandler.LoadV2rayConfigString(_appConfig, _selecteds);
 
                 //Thread.Sleep(5000);
-                int httpPort = _config.GetLocalPort("speedtest");
+                int httpPort = _appConfig.GetLocalPort("speedtest");
                 List<Task> tasks = new List<Task>();
                 foreach (int itemIndex in _selecteds)
                 {
-                    if (_config.vmess[itemIndex].configType == (int)EConfigType.Custom)
+                    if (_appConfig.outbound[itemIndex].configType == (int)EConfigType.Custom)
                     {
                         continue;
                     }
@@ -117,7 +117,7 @@ namespace v2rayN.Handler
                         {
                             WebProxy webProxy = new WebProxy(Global.Loopback, httpPort + itemIndex);
                             int responseTime = -1;
-                            string status = GetRealPingTime(_config.speedPingTestUrl, webProxy, out responseTime);
+                            string status = GetRealPingTime(_appConfig.delayTestUrl, webProxy, out responseTime);
                             string output = Utils.IsNullOrEmpty(status) ? FormatOut(responseTime, "ms") : FormatOut(status, "");
                             _updateFunc(itemIndex, output);
                         }
@@ -144,7 +144,7 @@ namespace v2rayN.Handler
         {
             try
             {
-                int httpPort = _config.GetLocalPort(Global.InboundHttp);
+                int httpPort = _appConfig.GetLocalPort(Global.InboundHttp);
 
                 Task<int> t = Task.Run(() =>
                 {
@@ -176,14 +176,14 @@ namespace v2rayN.Handler
             int testCounter = 0;
             int pid = -1;
 
-            if (_config.vmess.Count <= 0)
+            if (_appConfig.outbound.Count <= 0)
             {
                 return;
             }
 
-            pid = _v2rayHandler.LoadV2rayConfigString(_config, _selecteds);
+            pid = _v2rayHandler.LoadV2rayConfigString(_appConfig, _selecteds);
 
-            string url = _config.speedTestUrl;
+            string url = _appConfig.speedTestUrl;
             DownloadHandle downloadHandle2 = new DownloadHandle();
             downloadHandle2.UpdateCompleted += (sender2, args) =>
             {
@@ -197,17 +197,17 @@ namespace v2rayN.Handler
             var timeout = 10;
             foreach (int itemIndex in _selecteds)
             {
-                if (itemIndex >= _config.vmess.Count)
+                if (itemIndex >= _appConfig.outbound.Count)
                 {
                     break;
                 }
 
-                if (_config.vmess[itemIndex].configType == (int)EConfigType.Custom)
+                if (_appConfig.outbound[itemIndex].configType == (int)EConfigType.Custom)
                 {
                     continue;
                 }
                 testCounter = itemIndex;
-                int httpPort = _config.GetLocalPort("speedtest");
+                int httpPort = _appConfig.GetLocalPort("speedtest");
 
                 WebProxy webProxy = new WebProxy(Global.Loopback, httpPort + itemIndex);
                 var ws = downloadHandle2.DownloadFileAsync(url, webProxy, timeout - 2);

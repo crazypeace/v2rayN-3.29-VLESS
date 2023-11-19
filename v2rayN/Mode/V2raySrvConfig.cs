@@ -6,7 +6,7 @@ namespace v2rayN.Mode
     /// v2ray配置文件实体类
     /// 例子SampleConfig.txt
     /// </summary>
-    public class V2rayConfig
+    public class V2raySrvConfig
     {
         /// <summary>
         /// 日志配置

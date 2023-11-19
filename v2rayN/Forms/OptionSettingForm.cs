@@ -48,29 +48,29 @@ namespace v2rayN.Forms
         private void InitBase()
         {
             //日志
-            chklogEnabled.Checked = config.logEnabled;
-            cmbloglevel.Text = config.loglevel;
+            chklogEnabled.Checked = appConfig.logEnabled;
+            cmbloglevel.Text = appConfig.loglevel;
 
             //Mux
-            chkmuxEnabled.Checked = config.muxEnabled;
+            chkmuxEnabled.Checked = appConfig.muxEnabled;
 
             //本地监听
-            if (config.inbound.Count > 0)
+            if (appConfig.inbound.Count > 0)
             {
-                txtlocalPort.Text = config.inbound[0].localPort.ToString();
-                cmbprotocol.Text = config.inbound[0].protocol.ToString();
-                chkudpEnabled.Checked = config.inbound[0].udpEnabled;
-                chksniffingEnabled.Checked = config.inbound[0].sniffingEnabled;
+                txtlocalPort.Text = appConfig.inbound[0].localPort.ToString();
+                cmbprotocol.Text = appConfig.inbound[0].protocol.ToString();
+                chkudpEnabled.Checked = appConfig.inbound[0].udpEnabled;
+                chksniffingEnabled.Checked = appConfig.inbound[0].sniffingEnabled;
 
-                txtlocalPort2.Text = $"{config.inbound[0].localPort + 1}";
+                txtlocalPort2.Text = $"{appConfig.inbound[0].localPort + 1}";
                 cmbprotocol2.Text = Global.InboundHttp;
 
-                if (config.inbound.Count > 1)
+                if (appConfig.inbound.Count > 1)
                 {
-                    txtlocalPort2.Text = config.inbound[1].localPort.ToString();
-                    cmbprotocol2.Text = config.inbound[1].protocol.ToString();
-                    chkudpEnabled2.Checked = config.inbound[1].udpEnabled;
-                    chksniffingEnabled2.Checked = config.inbound[1].sniffingEnabled;
+                    txtlocalPort2.Text = appConfig.inbound[1].localPort.ToString();
+                    cmbprotocol2.Text = appConfig.inbound[1].protocol.ToString();
+                    chkudpEnabled2.Checked = appConfig.inbound[1].udpEnabled;
+                    chksniffingEnabled2.Checked = appConfig.inbound[1].sniffingEnabled;
                     chkAllowIn2.Checked = true;
                 }
                 else
@@ -81,11 +81,11 @@ namespace v2rayN.Forms
             }
 
             //remoteDNS
-            txtremoteDNS.Text = config.remoteDNS;
+            txtremoteDNS.Text = appConfig.remoteDNS;
 
-            cmblistenerType.SelectedIndex = (int)config.listenerType;
+            cmblistenerType.SelectedIndex = (int)appConfig.listenerType;
 
-            chkdefAllowInsecure.Checked = config.defAllowInsecure;
+            chkdefAllowInsecure.Checked = appConfig.defAllowInsecure;
         }
 
         /// <summary>
@@ -94,13 +94,13 @@ namespace v2rayN.Forms
         private void InitRouting()
         {
             //路由
-            cmbdomainStrategy.Text = config.domainStrategy;
-            int.TryParse(config.routingMode, out int routingMode);
+            cmbdomainStrategy.Text = appConfig.domainStrategy;
+            int.TryParse(appConfig.routingMode, out int routingMode);
             cmbroutingMode.SelectedIndex = routingMode;
 
-            txtUseragent.Text = Utils.List2String(config.useragent, true);
-            txtUserdirect.Text = Utils.List2String(config.userdirect, true);
-            txtUserblock.Text = Utils.List2String(config.userblock, true);
+            txtUseragent.Text = Utils.List2String(appConfig.useragent, true);
+            txtUserdirect.Text = Utils.List2String(appConfig.userdirect, true);
+            txtUserblock.Text = Utils.List2String(appConfig.userblock, true);
         }
 
         /// <summary>
@@ -108,13 +108,13 @@ namespace v2rayN.Forms
         /// </summary>
         private void InitKCP()
         {
-            txtKcpmtu.Text = config.kcpItem.mtu.ToString();
-            txtKcptti.Text = config.kcpItem.tti.ToString();
-            txtKcpuplinkCapacity.Text = config.kcpItem.uplinkCapacity.ToString();
-            txtKcpdownlinkCapacity.Text = config.kcpItem.downlinkCapacity.ToString();
-            txtKcpreadBufferSize.Text = config.kcpItem.readBufferSize.ToString();
-            txtKcpwriteBufferSize.Text = config.kcpItem.writeBufferSize.ToString();
-            chkKcpcongestion.Checked = config.kcpItem.congestion;
+            txtKcpmtu.Text = appConfig.kcpItem.mtu.ToString();
+            txtKcptti.Text = appConfig.kcpItem.tti.ToString();
+            txtKcpuplinkCapacity.Text = appConfig.kcpItem.uplinkCapacity.ToString();
+            txtKcpdownlinkCapacity.Text = appConfig.kcpItem.downlinkCapacity.ToString();
+            txtKcpreadBufferSize.Text = appConfig.kcpItem.readBufferSize.ToString();
+            txtKcpwriteBufferSize.Text = appConfig.kcpItem.writeBufferSize.ToString();
+            chkKcpcongestion.Checked = appConfig.kcpItem.congestion;
         }
 
         /// <summary>
@@ -126,11 +126,11 @@ namespace v2rayN.Forms
             chkAutoRun.Checked = Utils.IsAutoRun();
 
             //自定义GFWList
-            txturlGFWList.Text = config.urlGFWList;
+            txturlGFWList.Text = appConfig.urlGFWList;
 
-            chkAllowLANConn.Checked = config.allowLANConn;
-            chkEnableStatistics.Checked = config.enableStatistics;
-            chkKeepOlderDedupl.Checked = config.keepOlderDedupl;
+            chkAllowLANConn.Checked = appConfig.allowLANConn;
+            chkEnableStatistics.Checked = appConfig.enableStatistics;
+            chkKeepOlderDedupl.Checked = appConfig.keepOlderDedupl;
 
 
 
@@ -146,7 +146,7 @@ namespace v2rayN.Forms
             cbFreshrate.DisplayMember = "Text";
             cbFreshrate.ValueMember = "ID";
 
-            switch (config.statisticsFreshRate)
+            switch (appConfig.statisticsFreshRate)
             {
                 case (int)Global.StatisticsFreshRate.quick:
                     cbFreshrate.SelectedItem = cbSource[0];
@@ -163,14 +163,14 @@ namespace v2rayN.Forms
 
         private void InitUserPAC()
         {
-            txtuserPacRule.Text = Utils.List2String(config.userPacRule, true);
+            txtuserPacRule.Text = Utils.List2String(appConfig.userPacRule, true);
         }
 
         private void InitSocksOut()
         {
-            chkSocksOut.Checked = config.socksOutboundEnable;    
-            txtSocksOutboundIP.Text = config.socksOutboundIP; 
-            txtSocksOutboundPort.Text = Utils.ToString(config.socksOutboundPort);
+            chkSocksOut.Checked = appConfig.socksOutboundEnable;    
+            txtSocksOutboundIP.Text = appConfig.socksOutboundIP; 
+            txtSocksOutboundPort.Text = Utils.ToString(appConfig.socksOutboundPort);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -205,7 +205,7 @@ namespace v2rayN.Forms
                 return;
             }
 
-            if (ConfigHandler.SaveConfig(ref config) == 0)
+            if (AppConfigHandler.SaveConfig(ref appConfig) == 0)
             {
                 this.DialogResult = DialogResult.OK;
             }
@@ -243,10 +243,10 @@ namespace v2rayN.Forms
                 UI.Show(UIRes.I18N("PleaseSelectProtocol"));
                 return -1;
             }
-            config.inbound[0].localPort = Utils.ToInt(localPort);
-            config.inbound[0].protocol = protocol;
-            config.inbound[0].udpEnabled = udpEnabled;
-            config.inbound[0].sniffingEnabled = sniffingEnabled;
+            appConfig.inbound[0].localPort = Utils.ToInt(localPort);
+            appConfig.inbound[0].protocol = protocol;
+            appConfig.inbound[0].udpEnabled = udpEnabled;
+            appConfig.inbound[0].sniffingEnabled = sniffingEnabled;
 
             //本地监听2
             string localPort2 = txtlocalPort2.Text.TrimEx();
@@ -265,36 +265,36 @@ namespace v2rayN.Forms
                     UI.Show(UIRes.I18N("PleaseSelectProtocol"));
                     return -1;
                 }
-                if (config.inbound.Count < 2)
+                if (appConfig.inbound.Count < 2)
                 {
-                    config.inbound.Add(new Mode.InItem());
+                    appConfig.inbound.Add(new Mode.InItem());
                 }
-                config.inbound[1].localPort = Utils.ToInt(localPort2);
-                config.inbound[1].protocol = protocol2;
-                config.inbound[1].udpEnabled = udpEnabled2;
-                config.inbound[1].sniffingEnabled = sniffingEnabled2;
+                appConfig.inbound[1].localPort = Utils.ToInt(localPort2);
+                appConfig.inbound[1].protocol = protocol2;
+                appConfig.inbound[1].udpEnabled = udpEnabled2;
+                appConfig.inbound[1].sniffingEnabled = sniffingEnabled2;
             }
             else
             {
-                if (config.inbound.Count > 1)
+                if (appConfig.inbound.Count > 1)
                 {
-                    config.inbound.RemoveAt(1);
+                    appConfig.inbound.RemoveAt(1);
                 }
             }
 
             //日志     
-            config.logEnabled = logEnabled;
-            config.loglevel = loglevel;
+            appConfig.logEnabled = logEnabled;
+            appConfig.loglevel = loglevel;
 
             //Mux
-            config.muxEnabled = muxEnabled;
+            appConfig.muxEnabled = muxEnabled;
 
             //remoteDNS
-            config.remoteDNS = txtremoteDNS.Text.TrimEx();
+            appConfig.remoteDNS = txtremoteDNS.Text.TrimEx();
 
-            config.listenerType = (ListenerType)Enum.ToObject(typeof(ListenerType), cmblistenerType.SelectedIndex);
+            appConfig.listenerType = (ListenerType)Enum.ToObject(typeof(ListenerType), cmblistenerType.SelectedIndex);
 
-            config.defAllowInsecure = chkdefAllowInsecure.Checked;
+            appConfig.defAllowInsecure = chkdefAllowInsecure.Checked;
 
             return 0;
         }
@@ -313,12 +313,12 @@ namespace v2rayN.Forms
             string userdirect = txtUserdirect.Text.TrimEx();
             string userblock = txtUserblock.Text.TrimEx();
 
-            config.domainStrategy = domainStrategy;
-            config.routingMode = routingMode;
+            appConfig.domainStrategy = domainStrategy;
+            appConfig.routingMode = routingMode;
 
-            config.useragent = Utils.String2List(useragent);
-            config.userdirect = Utils.String2List(userdirect);
-            config.userblock = Utils.String2List(userblock);
+            appConfig.useragent = Utils.String2List(useragent);
+            appConfig.userdirect = Utils.String2List(userdirect);
+            appConfig.userblock = Utils.String2List(userblock);
 
             return 0;
         }
@@ -347,13 +347,13 @@ namespace v2rayN.Forms
                 UI.Show(UIRes.I18N("FillKcpParameters"));
                 return -1;
             }
-            config.kcpItem.mtu = Utils.ToInt(mtu);
-            config.kcpItem.tti = Utils.ToInt(tti);
-            config.kcpItem.uplinkCapacity = Utils.ToInt(uplinkCapacity);
-            config.kcpItem.downlinkCapacity = Utils.ToInt(downlinkCapacity);
-            config.kcpItem.readBufferSize = Utils.ToInt(readBufferSize);
-            config.kcpItem.writeBufferSize = Utils.ToInt(writeBufferSize);
-            config.kcpItem.congestion = congestion;
+            appConfig.kcpItem.mtu = Utils.ToInt(mtu);
+            appConfig.kcpItem.tti = Utils.ToInt(tti);
+            appConfig.kcpItem.uplinkCapacity = Utils.ToInt(uplinkCapacity);
+            appConfig.kcpItem.downlinkCapacity = Utils.ToInt(downlinkCapacity);
+            appConfig.kcpItem.readBufferSize = Utils.ToInt(readBufferSize);
+            appConfig.kcpItem.writeBufferSize = Utils.ToInt(writeBufferSize);
+            appConfig.kcpItem.congestion = congestion;
 
             return 0;
         }
@@ -368,16 +368,16 @@ namespace v2rayN.Forms
             Utils.SetAutoRun(chkAutoRun.Checked);
 
             //自定义GFWList
-            config.urlGFWList = txturlGFWList.Text.TrimEx();
+            appConfig.urlGFWList = txturlGFWList.Text.TrimEx();
 
-            config.allowLANConn = chkAllowLANConn.Checked;
+            appConfig.allowLANConn = chkAllowLANConn.Checked;
 
-            bool lastEnableStatistics = config.enableStatistics;
-            config.enableStatistics = chkEnableStatistics.Checked;
-            config.statisticsFreshRate = (int)cbFreshrate.SelectedValue;
-            config.keepOlderDedupl = chkKeepOlderDedupl.Checked;
+            bool lastEnableStatistics = appConfig.enableStatistics;
+            appConfig.enableStatistics = chkEnableStatistics.Checked;
+            appConfig.statisticsFreshRate = (int)cbFreshrate.SelectedValue;
+            appConfig.keepOlderDedupl = chkKeepOlderDedupl.Checked;
 
-            //if(lastEnableStatistics != config.enableStatistics)
+            //if(lastEnableStatistics != appConfig.enableStatistics)
             //{
             //    /// https://stackoverflow.com/questions/779405/how-do-i-restart-my-c-sharp-winform-application
             //    // Shut down the current app instance.
@@ -394,15 +394,15 @@ namespace v2rayN.Forms
             string userPacRule = txtuserPacRule.Text.TrimEx();
             userPacRule = userPacRule.Replace("\"", "");
 
-            config.userPacRule = Utils.String2List(userPacRule);
+            appConfig.userPacRule = Utils.String2List(userPacRule);
 
             return 0;
         }
         private int SaveSocksOut()
         {
-            config.socksOutboundEnable = chkSocksOut.Checked;
-            config.socksOutboundIP = txtSocksOutboundIP.Text.TrimEx();
-            config.socksOutboundPort = Utils.ToInt(txtSocksOutboundPort.Text);
+            appConfig.socksOutboundEnable = chkSocksOut.Checked;
+            appConfig.socksOutboundIP = txtSocksOutboundIP.Text.TrimEx();
+            appConfig.socksOutboundPort = Utils.ToInt(txtSocksOutboundPort.Text);
 
             return 0;
         }
@@ -479,7 +479,7 @@ namespace v2rayN.Forms
 
         private void linkLabelRoutingDoc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.v2fly.org/config/routing.html");
+            System.Diagnostics.Process.Start("https://www.v2fly.org/appConfig/routing.html");
         }
     }
 

@@ -57,14 +57,14 @@ namespace v2rayN.HttpProxyHandler
 
         public int RunningPort { get; set; }
 
-        public void Restart(int localPort, Config config)
+        public void Restart(int localPort, V2rayNappConfig appConfig)
         {
             Stop();
-            Start(localPort, config);
+            Start(localPort, appConfig);
         }
 
 
-        public void Start(int localPort, Config config)
+        public void Start(int localPort, V2rayNappConfig appConfig)
         {
             try
             {
@@ -72,10 +72,10 @@ namespace v2rayN.HttpProxyHandler
                 {
 
                     string privoxyConfig = Resources.privoxy_conf;
-                    RunningPort = config.GetLocalPort(Global.InboundHttp);
+                    RunningPort = appConfig.GetLocalPort(Global.InboundHttp);
                     privoxyConfig = privoxyConfig.Replace("__SOCKS_PORT__", localPort.ToString());
                     privoxyConfig = privoxyConfig.Replace("__PRIVOXY_BIND_PORT__", RunningPort.ToString());
-                    if (config.allowLANConn)
+                    if (appConfig.allowLANConn)
                     {
                         privoxyConfig = privoxyConfig.Replace("__PRIVOXY_BIND_IP__", "0.0.0.0");
                     }
