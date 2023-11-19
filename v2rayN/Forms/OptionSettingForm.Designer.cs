@@ -85,6 +85,10 @@
             this.txtKcpmtu = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtDelayTestUrl = new System.Windows.Forms.TextBox();
+            this.txtSpeedTestUrl = new System.Windows.Forms.TextBox();
             this.chkKeepOlderDedupl = new System.Windows.Forms.CheckBox();
             this.cbFreshrate = new System.Windows.Forms.ComboBox();
             this.lbFreshrate = new System.Windows.Forms.Label();
@@ -529,6 +533,10 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.label19);
+            this.tabPage7.Controls.Add(this.label18);
+            this.tabPage7.Controls.Add(this.txtDelayTestUrl);
+            this.tabPage7.Controls.Add(this.txtSpeedTestUrl);
             this.tabPage7.Controls.Add(this.chkKeepOlderDedupl);
             this.tabPage7.Controls.Add(this.cbFreshrate);
             this.tabPage7.Controls.Add(this.lbFreshrate);
@@ -540,6 +548,26 @@
             resources.ApplyResources(this.tabPage7, "tabPage7");
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
+            // 
+            // label18
+            // 
+            resources.ApplyResources(this.label18, "label18");
+            this.label18.Name = "label18";
+            // 
+            // txtDelayTestUrl
+            // 
+            resources.ApplyResources(this.txtDelayTestUrl, "txtDelayTestUrl");
+            this.txtDelayTestUrl.Name = "txtDelayTestUrl";
+            // 
+            // txtSpeedTestUrl
+            // 
+            resources.ApplyResources(this.txtSpeedTestUrl, "txtSpeedTestUrl");
+            this.txtSpeedTestUrl.Name = "txtSpeedTestUrl";
             // 
             // chkKeepOlderDedupl
             // 
@@ -795,5 +823,9 @@
         private System.Windows.Forms.TextBox txtSocksOutboundPort;
         private System.Windows.Forms.TextBox txtSocksOutboundIP;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtDelayTestUrl;
+        private System.Windows.Forms.TextBox txtSpeedTestUrl;
     }
 }
