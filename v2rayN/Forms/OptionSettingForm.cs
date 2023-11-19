@@ -132,8 +132,10 @@ namespace v2rayN.Forms
             chkEnableStatistics.Checked = appConfig.enableStatistics;
             chkKeepOlderDedupl.Checked = appConfig.keepOlderDedupl;
 
-
-
+            // 自定义测速链接
+            txtSpeedTestUrl.Text = appConfig.speedTestUrl;
+            // 自定义测延迟链接
+            txtDelayTestUrl.Text = appConfig.delayTestUrl;
 
             ComboItem[] cbSource = new ComboItem[]
             {
@@ -372,11 +374,14 @@ namespace v2rayN.Forms
 
             appConfig.allowLANConn = chkAllowLANConn.Checked;
 
-            bool lastEnableStatistics = appConfig.enableStatistics;
             appConfig.enableStatistics = chkEnableStatistics.Checked;
             appConfig.statisticsFreshRate = (int)cbFreshrate.SelectedValue;
             appConfig.keepOlderDedupl = chkKeepOlderDedupl.Checked;
 
+            appConfig.speedTestUrl = txtSpeedTestUrl.Text.TrimEx();
+            appConfig.delayTestUrl = txtDelayTestUrl.Text.TrimEx();
+
+            //bool lastEnableStatistics = appConfig.enableStatistics;
             //if(lastEnableStatistics != appConfig.enableStatistics)
             //{
             //    /// https://stackoverflow.com/questions/779405/how-do-i-restart-my-c-sharp-winform-application
