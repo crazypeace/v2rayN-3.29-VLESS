@@ -88,8 +88,8 @@
 	"routing": {
 		"domainStrategy": "IPIfNonMatch",
 		"rules": [{
-                    "inboundTag": ["api"],
-                    "outboundTag": "api",
+                    "inboundTag": ["socks"],
+                    "outboundTag": "proxy",
                     "type": "field"
 		}]
 	}
