@@ -18,6 +18,9 @@ v3.29.0.3打包的是V2Ray v4.32.1版本，支持VLESS和XTLS的最后一个版�
 
 v3.29.0.4打包的是Xray v1.8.4版本
 
+v3.29.0.7打包的是Xray v1.8.6版本
+win 7 如果无法使用请降级 [v1.8.4](https://github.com/XTLS/Xray-core/releases/tag/v1.8.4)
+ 
 # 本repo的其它修改
 - 窗口标题增加`- VLESS`表明非原版
 - 版本号使用`3.29.xx.yy`表明非原版，且基于原版 v3.29
