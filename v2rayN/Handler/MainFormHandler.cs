@@ -66,12 +66,14 @@ namespace v2rayN.Handler
             {
                 return;
             }
+            /* 2024-1-2 去掉屏蔽试一试
             if (appConfig.outbound[index].configType != (int)EConfigType.Vmess
                 && appConfig.outbound[index].configType != (int)EConfigType.VLESS)
             {
                 UI.Show(UIRes.I18N("NonVmessService"));
                 return;
             }
+            */
 
             SaveFileDialog fileDialog = new SaveFileDialog
             {
