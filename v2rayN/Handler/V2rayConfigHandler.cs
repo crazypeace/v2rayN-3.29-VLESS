@@ -59,7 +59,7 @@ namespace v2rayN.Handler
                 }
 
                 //从Json加载
-                V2raySrvConfig v2rayConfig = Utils.FromJson<V2raySrvConfig>(result);
+                V2rayClientConfig v2rayConfig = Utils.FromJson<V2rayClientConfig>(result);
                 if (v2rayConfig == null)
                 {
                     msg = UIRes.I18N("FailedGenDefaultConfiguration");
@@ -105,7 +105,7 @@ namespace v2rayN.Handler
         /// <param name="appConfig"></param>
         /// <param name="v2rayConfig"></param>
         /// <returns></returns>
-        private static int log(V2rayNappConfig appConfig, ref V2raySrvConfig v2rayConfig, bool blExport)
+        private static int log(V2rayNappConfig appConfig, ref V2rayClientConfig v2rayConfig, bool blExport)
         {
             try
             {
@@ -150,7 +150,7 @@ namespace v2rayN.Handler
         /// <param name="appConfig"></param>
         /// <param name="v2rayConfig"></param>
         /// <returns></returns>
-        private static int inbound(V2rayNappConfig appConfig, ref V2raySrvConfig v2rayConfig)
+        private static int inbound(V2rayNappConfig appConfig, ref V2rayClientConfig v2rayConfig)
         {
             try
             {
@@ -182,7 +182,7 @@ namespace v2rayN.Handler
         /// <param name="appConfig"></param>
         /// <param name="v2rayConfig"></param>
         /// <returns></returns>
-        private static int routing(V2rayNappConfig appConfig, ref V2raySrvConfig v2rayConfig)
+        private static int routing(V2rayNappConfig appConfig, ref V2rayClientConfig v2rayConfig)
         {
             try
             {
@@ -223,7 +223,7 @@ namespace v2rayN.Handler
             }
             return 0;
         }
-        private static int routingUserRule(List<string> userRule, string tag, ref V2raySrvConfig v2rayConfig)
+        private static int routingUserRule(List<string> userRule, string tag, ref V2rayClientConfig v2rayConfig)
         {
             try
             {
@@ -283,7 +283,7 @@ namespace v2rayN.Handler
         }
 
 
-        private static int routingGeo(string ipOrDomain, string code, string tag, ref V2raySrvConfig v2rayConfig)
+        private static int routingGeo(string ipOrDomain, string code, string tag, ref V2rayClientConfig v2rayConfig)
         {
             try
             {
@@ -328,7 +328,7 @@ namespace v2rayN.Handler
         /// <param name="appConfig"></param>
         /// <param name="v2rayConfig"></param>
         /// <returns></returns>
-        private static int outbound(V2rayNappConfig appConfig, ref V2raySrvConfig v2rayConfig)
+        private static int outbound(V2rayNappConfig appConfig, ref V2rayClientConfig v2rayConfig)
         {
             try
             {
@@ -732,7 +732,7 @@ namespace v2rayN.Handler
         /// <param name="appConfig"></param>
         /// <param name="v2rayConfig"></param>
         /// <returns></returns>
-        private static int dns(V2rayNappConfig appConfig, ref V2raySrvConfig v2rayConfig)
+        private static int dns(V2rayNappConfig appConfig, ref V2rayClientConfig v2rayConfig)
         {
             try
             {
@@ -768,7 +768,7 @@ namespace v2rayN.Handler
         /// <param name="appConfig"></param>
         /// <param name="v2rayConfig"></param>
         /// <returns></returns>
-        private static int socksOut(V2rayNappConfig appConfig, ref V2raySrvConfig v2rayConfig)
+        private static int socksOut(V2rayNappConfig appConfig, ref V2rayClientConfig v2rayConfig)
         {
 
             try
@@ -791,7 +791,7 @@ namespace v2rayN.Handler
             return 0;
         }
 
-        public static int statistic(V2rayNappConfig appConfig, ref V2raySrvConfig v2rayConfig)
+        public static int statistic(V2rayNappConfig appConfig, ref V2rayClientConfig v2rayConfig)
         {
             if (appConfig.enableStatistics)
             {
@@ -926,7 +926,7 @@ namespace v2rayN.Handler
                 }
 
                 //从Json加载
-                V2raySrvConfig v2rayConfig = Utils.FromJson<V2raySrvConfig>(result);
+                V2rayClientConfig v2rayConfig = Utils.FromJson<V2rayClientConfig>(result);
                 if (v2rayConfig == null)
                 {
                     msg = UIRes.I18N("FailedGenDefaultConfiguration");
@@ -960,7 +960,7 @@ namespace v2rayN.Handler
         /// <param name="appConfig"></param>
         /// <param name="v2rayConfig"></param>
         /// <returns></returns>
-        private static int ServerInbound(V2rayNappConfig appConfig, ref V2raySrvConfig v2rayConfig)
+        private static int ServerInbound(V2rayNappConfig appConfig, ref V2rayClientConfig v2rayConfig)
         {
             try
             {
@@ -1012,7 +1012,7 @@ namespace v2rayN.Handler
         /// <param name="appConfig"></param>
         /// <param name="v2rayConfig"></param>
         /// <returns></returns>
-        private static int ServerOutbound(V2rayNappConfig appConfig, ref V2raySrvConfig v2rayConfig)
+        private static int ServerOutbound(V2rayNappConfig appConfig, ref V2rayClientConfig v2rayConfig)
         {
             try
             {
@@ -1052,7 +1052,7 @@ namespace v2rayN.Handler
                 }
 
                 //从Json加载
-                V2raySrvConfig v2rayConfig = Utils.FromJson<V2raySrvConfig>(result);
+                V2rayClientConfig v2rayConfig = Utils.FromJson<V2rayClientConfig>(result);
                 if (v2rayConfig == null)
                 {
                     msg = UIRes.I18N("FailedConversionConfiguration");
@@ -1212,7 +1212,7 @@ namespace v2rayN.Handler
                 }
 
                 //从Json加载
-                V2raySrvConfig v2rayConfig = Utils.FromJson<V2raySrvConfig>(result);
+                V2rayClientConfig v2rayConfig = Utils.FromJson<V2rayClientConfig>(result);
                 if (v2rayConfig == null)
                 {
                     msg = UIRes.I18N("FailedConversionConfiguration");
@@ -1840,7 +1840,7 @@ namespace v2rayN.Handler
                 }
 
                 //从Json加载
-                V2raySrvConfig v2rayConfig = Utils.FromJson<V2raySrvConfig>(result);
+                V2rayClientConfig v2rayConfig = Utils.FromJson<V2rayClientConfig>(result);
                 if (v2rayConfig == null)
                 {
                     msg = UIRes.I18N("FailedGenDefaultConfiguration");
@@ -1876,7 +1876,7 @@ namespace v2rayN.Handler
                     v2rayConfig.inbounds.Add(inbound);
 
 
-                    V2raySrvConfig v2rayConfigCopy = Utils.FromJson<V2raySrvConfig>(result);
+                    V2rayClientConfig v2rayConfigCopy = Utils.FromJson<V2rayClientConfig>(result);
                     outbound(appConfigCopy, ref v2rayConfigCopy);
 
                     // Socksout

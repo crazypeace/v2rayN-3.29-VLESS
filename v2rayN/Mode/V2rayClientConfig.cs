@@ -6,7 +6,7 @@ namespace v2rayN.Mode
     /// v2ray配置文件实体类
     /// 例子SampleConfig.txt
     /// </summary>
-    public class V2raySrvConfig
+    public class V2rayClientConfig
     {
         /// <summary>
         /// 日志配置
@@ -208,6 +208,9 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public Mux mux { get; set; }
+
+        /// tlshello 分片
+        public Fragment fragment { get; set; }
     }
 
     public class Outboundsettings
@@ -314,6 +317,16 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public int concurrency { get; set; }
+    }
+
+    // tlshello 分片
+    public class Fragment
+    {
+        public string packets { get; set; }
+
+        public string length { get; set; }
+
+        public string interval { get; set; }
     }
 
     public class Response

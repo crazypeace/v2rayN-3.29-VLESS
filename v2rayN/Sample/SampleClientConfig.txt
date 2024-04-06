@@ -56,6 +56,11 @@
       },
       "mux": {
         "enabled": false
+      },
+      "fragment": {
+        "packets": "tlshello",
+        "length": "100-200",
+        "interval": "10-20"
       }
     },
     {
