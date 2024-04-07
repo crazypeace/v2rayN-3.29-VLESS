@@ -81,8 +81,8 @@ namespace v2rayN.Handler
                 //dns
                 dns(appConfig, ref v2rayConfig);
 
-                // Socksout
-                socksOut(appConfig, ref v2rayConfig);
+                // Sockopt
+                sockopt(appConfig, ref v2rayConfig);
 
                 // TODO: 统计配置
                 statistic(appConfig, ref v2rayConfig);
@@ -763,27 +763,28 @@ namespace v2rayN.Handler
         }
 
         /// <summary>
-        /// socksOut
-        /// </summary>
+        /// sockopt
+        /// </summary> 从v2rayN程序的配置项 转换为 节点的参数
         /// <param name="appConfig"></param>
         /// <param name="v2rayConfig"></param>
         /// <returns></returns>
-        private static int socksOut(V2rayNappConfig appConfig, ref V2rayClientConfig v2rayConfig)
+        private static int sockopt(V2rayNappConfig appConfig, ref V2rayClientConfig v2rayConfig)
         {
 
             try
             {
                 // 对应 SampleClientConfig 里的配置, outbounds[3] 就是下一跳Socks出口
-                Outbounds outbound = v2rayConfig.outbounds[3];
-                ServersItem server = outbound.settings.servers[0];
+                Outbounds nextSocks = v2rayConfig.outbounds[3];
+                ServersItem server = nextSocks.settings.servers[0];
                 server.address = appConfig.socksOutboundIP;
                 server.port = appConfig.socksOutboundPort;
 
-                // 如果下一跳Socks功能不打开, 那么配置文件中 outbounds[0] 要删除sockopt这一段
-                if (!appConfig.socksOutboundEnable)
-                {
-                    v2rayConfig.outbounds[0].streamSettings.sockopt = null;
-                }
+                // 对应 SampleClientConfig 里的配置, outbounds[4] 就是tls hello分片
+                Outbounds tlsHelloFrg = v2rayConfig.outbounds[4];
+                tlsHelloFrg.settings.fragment.length = appConfig.tlsHelloFgmLength;
+                tlsHelloFrg.settings.fragment.interval = appConfig.tlsHelloFgmInterval;
+
+                v2rayConfig.outbounds[0].streamSettings.sockopt.dialerProxy = appConfig.sockoptTag;
             }
             catch
             {
@@ -1069,7 +1070,7 @@ namespace v2rayN.Handler
                 Outbounds outbound = v2rayConfig.outbounds[0];
                 if (outbound == null
                     || Utils.IsNullOrEmpty(outbound.protocol)
-                    || outbound.protocol != Global.vmessProtocolLite
+                    //|| outbound.protocol != Global.vmessProtocolLite
                     || outbound.settings == null
                     || outbound.settings.vnext == null
                     || outbound.settings.vnext.Count <= 0
@@ -1851,8 +1852,8 @@ namespace v2rayN.Handler
 
                 dns(appConfigCopy, ref v2rayConfig);
 
-                // Socksout
-                socksOut(appConfigCopy, ref v2rayConfig);
+                // Sockopt
+                sockopt(appConfigCopy, ref v2rayConfig);
 
                 v2rayConfig.inbounds.RemoveAt(0); // Remove "proxy" service for speedtest, avoiding port conflicts.
 
@@ -1879,8 +1880,8 @@ namespace v2rayN.Handler
                     V2rayClientConfig v2rayConfigCopy = Utils.FromJson<V2rayClientConfig>(result);
                     outbound(appConfigCopy, ref v2rayConfigCopy);
 
-                    // Socksout
-                    socksOut(appConfigCopy, ref v2rayConfigCopy);
+                    // Sockopt
+                    sockopt(appConfigCopy, ref v2rayConfigCopy);
 
                     v2rayConfigCopy.outbounds[0].tag = Global.agentTag + inbound.port.ToString();
                     v2rayConfig.outbounds.Add(v2rayConfigCopy.outbounds[0]);

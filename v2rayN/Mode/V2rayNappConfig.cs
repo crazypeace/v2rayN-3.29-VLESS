@@ -133,10 +133,16 @@ namespace v2rayN.Mode
 
         public List<string> userPacRule { get; set; }
 
-        /// SocksOut
-        public bool socksOutboundEnable { get; set; }
+        // sockopt
+        public string sockoptTag { get; set; }
+
+        /// SocksOut tag: "tunnel"
         public string socksOutboundIP { get; set; }
         public int socksOutboundPort { get; set; }
+
+        /// tlsHelloFragment tag: "fragment"
+        public string tlsHelloFgmLength { get; set; }
+        public string tlsHelloFgmInterval { get; set; }
 
         #region 函数
 

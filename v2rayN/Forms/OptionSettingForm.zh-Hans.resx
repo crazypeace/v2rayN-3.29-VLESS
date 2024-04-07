@@ -229,12 +229,7 @@
   <data name="tabPage2.Text" xml:space="preserve">
     <value>  Core:路由设置  </value>
   </data>
-  <data name="tabControl2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 89</value>
-  </data>
-  <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>642, 481</value>
-  </data>
+
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
     <value>634, 455</value>
   </data>
@@ -286,9 +281,7 @@
   <data name="cmbroutingMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 20</value>
   </data>
-  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>642, 72</value>
-  </data>
+
   <data name="linkLabelRoutingDoc.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 12</value>
   </data>
@@ -299,12 +292,8 @@
   <data name="btnSetDefRountingRule.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnSetDefRountingRule.Location" type="System.Drawing.Point, System.Drawing">
-    <value>351, 14</value>
-  </data>
-  <data name="btnSetDefRountingRule.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 23</value>
-  </data>
+
+
   <data name="btnSetDefRountingRule.Text" xml:space="preserve">
     <value>一键设置默认自定义路由规则</value>
   </data>

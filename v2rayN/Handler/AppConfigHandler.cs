@@ -52,10 +52,16 @@ namespace v2rayN.Handler
                     // 默认中等刷新率
                     statisticsFreshRate = (int)Global.StatisticsFreshRate.medium,
 
-                    // Socksout
-                    socksOutboundEnable = false,
+                    // Sockopt
+                    sockoptTag = "",
+
+                    // 下一跳socks端口
                     socksOutboundIP = "127.0.0.1",
-                    socksOutboundPort = 10086
+                    socksOutboundPort = 10086,
+
+                    // tls hello 分片
+                    tlsHelloFgmLength = "40-60",
+                    tlsHelloFgmInterval = "30-50"
                 };
             }
 

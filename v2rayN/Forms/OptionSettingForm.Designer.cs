@@ -102,12 +102,20 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtTlsHelloFgmInterval = new System.Windows.Forms.TextBox();
+            this.txtTlsHelloFgmLength = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.sockoptNullBtn = new System.Windows.Forms.RadioButton();
+            this.tlsHelloFragmentBtn = new System.Windows.Forms.RadioButton();
+            this.socks5TunnelBtn = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtSocksOutboundPort = new System.Windows.Forms.TextBox();
             this.txtSocksOutboundIP = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.chkSocksOut = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnOK = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -127,6 +135,9 @@
             this.tabPage9.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabPage10.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -642,15 +653,79 @@
             // 
             // tabPage10
             // 
-            this.tabPage10.Controls.Add(this.txtSocksOutboundPort);
-            this.tabPage10.Controls.Add(this.txtSocksOutboundIP);
-            this.tabPage10.Controls.Add(this.label17);
-            this.tabPage10.Controls.Add(this.label15);
-            this.tabPage10.Controls.Add(this.chkSocksOut);
-            this.tabPage10.Controls.Add(this.label12);
+            this.tabPage10.Controls.Add(this.groupBox5);
+            this.tabPage10.Controls.Add(this.groupBox4);
+            this.tabPage10.Controls.Add(this.groupBox3);
             resources.ApplyResources(this.tabPage10, "tabPage10");
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.txtTlsHelloFgmInterval);
+            this.groupBox5.Controls.Add(this.txtTlsHelloFgmLength);
+            this.groupBox5.Controls.Add(this.label21);
+            this.groupBox5.Controls.Add(this.label20);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            // 
+            // txtTlsHelloFgmInterval
+            // 
+            resources.ApplyResources(this.txtTlsHelloFgmInterval, "txtTlsHelloFgmInterval");
+            this.txtTlsHelloFgmInterval.Name = "txtTlsHelloFgmInterval";
+            // 
+            // txtTlsHelloFgmLength
+            // 
+            resources.ApplyResources(this.txtTlsHelloFgmLength, "txtTlsHelloFgmLength");
+            this.txtTlsHelloFgmLength.Name = "txtTlsHelloFgmLength";
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            // 
+            // label20
+            // 
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.sockoptNullBtn);
+            this.groupBox4.Controls.Add(this.tlsHelloFragmentBtn);
+            this.groupBox4.Controls.Add(this.socks5TunnelBtn);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // sockoptNullBtn
+            // 
+            resources.ApplyResources(this.sockoptNullBtn, "sockoptNullBtn");
+            this.sockoptNullBtn.Name = "sockoptNullBtn";
+            this.sockoptNullBtn.UseVisualStyleBackColor = true;
+            // 
+            // tlsHelloFragmentBtn
+            // 
+            resources.ApplyResources(this.tlsHelloFragmentBtn, "tlsHelloFragmentBtn");
+            this.tlsHelloFragmentBtn.Name = "tlsHelloFragmentBtn";
+            this.tlsHelloFragmentBtn.UseVisualStyleBackColor = true;
+            // 
+            // socks5TunnelBtn
+            // 
+            resources.ApplyResources(this.socks5TunnelBtn, "socks5TunnelBtn");
+            this.socks5TunnelBtn.Name = "socks5TunnelBtn";
+            this.socks5TunnelBtn.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtSocksOutboundPort);
+            this.groupBox3.Controls.Add(this.txtSocksOutboundIP);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.label15);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
             // 
             // txtSocksOutboundPort
             // 
@@ -671,17 +746,6 @@
             // 
             resources.ApplyResources(this.label15, "label15");
             this.label15.Name = "label15";
-            // 
-            // chkSocksOut
-            // 
-            resources.ApplyResources(this.chkSocksOut, "chkSocksOut");
-            this.chkSocksOut.Name = "chkSocksOut";
-            this.chkSocksOut.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
             // 
             // panel2
             // 
@@ -737,7 +801,12 @@
             this.tabPage9.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
-            this.tabPage10.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -817,8 +886,6 @@
         private System.Windows.Forms.LinkLabel linkLabelRoutingDoc;
         private System.Windows.Forms.CheckBox chkdefAllowInsecure;
         private System.Windows.Forms.TabPage tabPage10;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.CheckBox chkSocksOut;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtSocksOutboundPort;
         private System.Windows.Forms.TextBox txtSocksOutboundIP;
@@ -827,5 +894,15 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtDelayTestUrl;
         private System.Windows.Forms.TextBox txtSpeedTestUrl;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RadioButton tlsHelloFragmentBtn;
+        private System.Windows.Forms.RadioButton socks5TunnelBtn;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtTlsHelloFgmInterval;
+        private System.Windows.Forms.TextBox txtTlsHelloFgmLength;
+        private System.Windows.Forms.RadioButton sockoptNullBtn;
     }
 }

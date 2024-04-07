@@ -39,7 +39,7 @@ namespace v2rayN.Forms
 
             InitUserPAC();
 
-            InitSocksOut();
+            InitSockopt();
         }
 
         /// <summary>
@@ -168,11 +168,28 @@ namespace v2rayN.Forms
             txtuserPacRule.Text = Utils.List2String(appConfig.userPacRule, true);
         }
 
-        private void InitSocksOut()
+        private void InitSockopt()
         {
-            chkSocksOut.Checked = appConfig.socksOutboundEnable;    
+            if (appConfig.sockoptTag == "")
+            {
+                sockoptNullBtn.Checked = true;
+            }
+            else if (appConfig.sockoptTag == "tunnel")
+            {
+                socks5TunnelBtn.Checked = true;
+            }
+            else if (appConfig.sockoptTag == "fragment")
+            {
+                tlsHelloFragmentBtn.Checked = true;
+            }
+            
+            // 下一跳socks端口
             txtSocksOutboundIP.Text = appConfig.socksOutboundIP; 
             txtSocksOutboundPort.Text = Utils.ToString(appConfig.socksOutboundPort);
+
+            // tls hello 分片
+            txtTlsHelloFgmLength.Text = appConfig.tlsHelloFgmLength;
+            txtTlsHelloFgmInterval.Text = appConfig.tlsHelloFgmInterval;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -202,7 +219,7 @@ namespace v2rayN.Forms
                 return;
             }
 
-            if (SaveSocksOut() != 0)
+            if (SaveSockopt() != 0)
             {
                 return;
             }
@@ -403,11 +420,28 @@ namespace v2rayN.Forms
 
             return 0;
         }
-        private int SaveSocksOut()
+        private int SaveSockopt()
         {
-            appConfig.socksOutboundEnable = chkSocksOut.Checked;
+            if (sockoptNullBtn.Checked)
+            {
+                appConfig.sockoptTag = "";
+            }
+            else if (socks5TunnelBtn.Checked)
+            {
+                appConfig.sockoptTag = "tunnel";
+            }
+            else if (tlsHelloFragmentBtn.Checked)
+            {
+                appConfig.sockoptTag = "fragment";
+            }
+
+            // 下一跳socks端口
             appConfig.socksOutboundIP = txtSocksOutboundIP.Text.TrimEx();
             appConfig.socksOutboundPort = Utils.ToInt(txtSocksOutboundPort.Text);
+
+            // tls hello 分片
+            appConfig.tlsHelloFgmLength = txtTlsHelloFgmLength.Text.TrimEx();
+            appConfig.tlsHelloFgmInterval = txtTlsHelloFgmInterval.Text.TrimEx();
 
             return 0;
         }

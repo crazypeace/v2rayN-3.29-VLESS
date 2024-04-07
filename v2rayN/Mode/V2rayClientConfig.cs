@@ -208,9 +208,6 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public Mux mux { get; set; }
-
-        /// tlshello 分片
-        public Fragment fragment { get; set; }
     }
 
     public class Outboundsettings
@@ -232,6 +229,9 @@ namespace v2rayN.Mode
         ///
         /// </summary>
         public string domainStrategy { get; set; }
+
+        /// tlshello 分片
+        public Fragment fragment { get; set; }
     }
 
     public class VnextItem
@@ -464,7 +464,7 @@ namespace v2rayN.Mode
 
         public string fingerprint { get; set; }
 
-        public bool show { get; set; } = false;
+        // public bool show { get; set; } = false;
 
         public string publicKey { get; set; }
         public string shortId { get; set; }
@@ -604,6 +604,8 @@ namespace v2rayN.Mode
     public class SockoptObject
     {
         public string dialerProxy { get; set; }
+
+        public bool TcpNoDelay { get; set; } = true;
     }
 
     public class AccountsItem

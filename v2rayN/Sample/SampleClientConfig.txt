@@ -56,11 +56,6 @@
       },
       "mux": {
         "enabled": false
-      },
-      "fragment": {
-        "packets": "tlshello",
-        "length": "100-200",
-        "interval": "10-20"
       }
     },
     {
@@ -85,6 +80,22 @@
             "address": "127.0.0.1",
             "port": 10086
         }]
+      }
+    },
+    {
+      "tag": "fragment",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "40-60",
+          "interval": "30-50"
+        }
+      },
+      "streamSettings": {
+        "sockopt": {
+          "TcpNoDelay": true
+        }
       }
     }
   ],
