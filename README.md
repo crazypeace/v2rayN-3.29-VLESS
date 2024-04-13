@@ -22,11 +22,6 @@ v3.29.0.8打包的是Xray v1.8.10版本
 win7如果无法使用请降级 [v1.8.4](https://github.com/XTLS/Xray-core/releases/tag/v1.8.4)  
 32位用户请自行下载内核
 
-# 本repo的其它修改
-- 窗口标题增加`- VLESS`表明非原版
-- 版本号使用`3.29.xx.yy`表明非原版，且基于原版 v3.29
-- 一些小修改 https://zelikk.blogspot.com/2023/01/v2rayn-vless-v32902.html
-
 # 本项目会永远保持 .NET Framework 4.8
 https://learn.microsoft.com/zh-CN/lifecycle/faq/dotnet-framework
 ![image](https://github.com/crazypeace/v2rayN-3.29-VLESS/assets/665889/8efc502f-c216-4091-b111-7f127cfff79f)
