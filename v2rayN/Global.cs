@@ -82,6 +82,11 @@ namespace v2rayN
         public const string None = "none";
 
         /// <summary>
+        /// 本地 tag值
+        /// </summary>
+        public const string localTag = "socks";
+
+        /// <summary>
         /// 代理 tag值
         /// </summary>
         public const string agentTag = "proxy";

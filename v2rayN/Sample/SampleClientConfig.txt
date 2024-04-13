@@ -11,7 +11,7 @@
   },
   "inbounds": [
     {
-      "tag": "proxy",
+      "tag": "socks",
       "port": 10808,
       "protocol": "socks",
       "listen": "127.0.0.1",
@@ -103,7 +103,7 @@
     "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
-        "inboundTag": ["proxy"],
+        "inboundTag": ["socks"],
         "outboundTag": "proxy",
         "type": "field"
       },

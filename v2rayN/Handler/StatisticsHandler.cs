@@ -230,7 +230,7 @@ namespace v2rayN.Handler
                     name = nStr[1];
                     type = nStr[3];
 
-                    if (name == Global.agentTag)
+                    if (name == Global.localTag)
                     {
                         if (type == "uplink")
                         {
