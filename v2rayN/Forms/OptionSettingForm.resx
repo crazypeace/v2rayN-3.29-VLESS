@@ -253,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="chksniffingEnabled2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>468, 60</value>
+    <value>690, 59</value>
   </data>
   <data name="chksniffingEnabled2.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 22</value>
@@ -391,7 +391,7 @@
     <value>True</value>
   </data>
   <data name="chkAllowIn2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 63</value>
+    <value>7, 60</value>
   </data>
   <data name="chkAllowIn2.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 22</value>
@@ -421,7 +421,7 @@
     <value>True</value>
   </data>
   <data name="chkudpEnabled2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>369, 62</value>
+    <value>533, 61</value>
   </data>
   <data name="chkudpEnabled2.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 22</value>
@@ -454,7 +454,7 @@
     <value>http</value>
   </data>
   <data name="cmbprotocol2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>257, 60</value>
+    <value>384, 61</value>
   </data>
   <data name="cmbprotocol2.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 26</value>
@@ -481,7 +481,7 @@
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>206, 64</value>
+    <value>298, 62</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 18</value>
@@ -508,7 +508,7 @@
     <value>11</value>
   </data>
   <data name="txtlocalPort2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 60</value>
+    <value>190, 60</value>
   </data>
   <data name="txtlocalPort2.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 28</value>
@@ -706,7 +706,7 @@
     <value>18</value>
   </data>
   <data name="txtlocalPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 29</value>
+    <value>190, 29</value>
   </data>
   <data name="txtlocalPort.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 28</value>
@@ -880,7 +880,7 @@
     <value>Vertical</value>
   </data>
   <data name="txtUserdirect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>959, 772</value>
+    <value>959, 763</value>
   </data>
   <data name="txtUserdirect.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -904,7 +904,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>965, 778</value>
+    <value>965, 769</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -940,7 +940,7 @@
     <value>Vertical</value>
   </data>
   <data name="txtUserblock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>959, 772</value>
+    <value>959, 763</value>
   </data>
   <data name="txtUserblock.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -964,7 +964,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>965, 778</value>
+    <value>965, 769</value>
   </data>
   <data name="tabPage5.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1024,7 +1024,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>965, 778</value>
+    <value>965, 769</value>
   </data>
   <data name="tabPage8.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
