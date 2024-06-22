@@ -27,5 +27,5 @@ https://learn.microsoft.com/zh-CN/lifecycle/faq/dotnet-framework
 ![image](https://github.com/crazypeace/v2rayN-3.29-VLESS/assets/665889/8efc502f-c216-4091-b111-7f127cfff79f)
 
 # 32位系统可以自己编译
-就是下载源码, 下载安装VS, 再点一点编译按钮  
+就是下载源码, 下载安装VS, 再点一下编译按钮  
 https://zelikk.blogspot.com/2022/07/v2rayn-vless-v329.html
