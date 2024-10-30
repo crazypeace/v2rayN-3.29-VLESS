@@ -19,13 +19,14 @@ v3.29.0.3打包的是V2Ray v4.32.1版本，支持VLESS和XTLS的最后一个版�
 v3.29.0.4打包的是Xray v1.8.4版本  
 v3.29.0.7打包的是Xray v1.8.6版本  
 v3.29.0.8打包的是Xray v1.8.10版本  
-win7如果无法使用请降级 [v1.8.4](https://github.com/XTLS/Xray-core/releases/tag/v1.8.4)  
-32位用户请自行下载内核
+因为go v1.21以后不支持windows7 系统，所以要么降级 [v1.8.4](https://github.com/XTLS/Xray-core/releases/tag/v1.8.4)  
+要么去下载对应特殊的core，比如写了 win7 https://github.com/XTLS/Xray-core/releases/tag/v1.8.24  
+32位用户请自行下载或编译内核
 
 # 本项目会永远保持 .NET Framework 4.8
 https://learn.microsoft.com/zh-CN/lifecycle/faq/dotnet-framework
 ![image](https://github.com/crazypeace/v2rayN-3.29-VLESS/assets/665889/8efc502f-c216-4091-b111-7f127cfff79f)
 
-# 32位系统可以自己编译
+# 32位系统可以自己编译v2rayN
 就是下载源码, 下载安装VS, 再点一下编译按钮  
 https://zelikk.blogspot.com/2022/07/v2rayn-vless-v329.html
