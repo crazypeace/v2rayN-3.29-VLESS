@@ -48,8 +48,9 @@ namespace v2rayN.Forms
 
             txtAddress.Text = nodeItem.address;
             txtPort.Text = nodeItem.port.ToString();
-            txtId.Text = nodeItem.id;
-            cmbSecurity.Text = nodeItem.security;
+            txtId.Text = nodeItem.id; // 密码放在 ID 属性中
+            cmbStreamSecurity.Text = nodeItem.streamSecurity;
+            cmbAllowInsecure.Text = nodeItem.allowInsecure;
             txtRemarks.Text = nodeItem.remarks;
         }
 
@@ -62,7 +63,8 @@ namespace v2rayN.Forms
             txtAddress.Text = "";
             txtPort.Text = "";
             txtId.Text = "";
-            cmbSecurity.Text = Global.DefaultSecurity;
+            cmbStreamSecurity.Text = "";
+            cmbAllowInsecure.Text = "";
             txtRemarks.Text = "";
         }
 
@@ -71,7 +73,8 @@ namespace v2rayN.Forms
             string address = txtAddress.Text;
             string port = txtPort.Text;
             string id = txtId.Text;
-            string security = cmbSecurity.Text;
+            string streamSecurity = cmbStreamSecurity.Text;
+            string allowInsecure = cmbAllowInsecure.Text;
             string remarks = txtRemarks.Text;
 
             if (Utils.IsNullOrEmpty(address))
@@ -89,16 +92,12 @@ namespace v2rayN.Forms
                 UI.Show(UIRes.I18N("FillPassword"));
                 return;
             }
-            if (Utils.IsNullOrEmpty(security))
-            {
-                UI.Show(UIRes.I18N("PleaseSelectEncryption"));
-                return;
-            }
 
             nodeItem.address = address;
             nodeItem.port = Utils.ToInt(port);
-            nodeItem.id = id;
-            nodeItem.security = security;
+            nodeItem.id = id; // 密码放在 ID 属性中
+            nodeItem.streamSecurity = streamSecurity;
+            nodeItem.allowInsecure = allowInsecure;
             nodeItem.remarks = remarks;
 
             if (AppConfigHandler.AddShadowsocksServer(ref appConfig, nodeItem, EditIndex) == 0)
@@ -132,18 +131,19 @@ namespace v2rayN.Forms
         {
             ClearServer();
 
-            NodeItem ssItem = V2rayConfigHandler.ImportFromClipboardConfig(Utils.GetClipboardData(), out string msg);
-            if (ssItem == null)
+            NodeItem hy2Item = V2rayConfigHandler.ImportFromClipboardConfig(Utils.GetClipboardData(), out string msg);
+            if (hy2Item == null)
             {
                 UI.ShowWarning(msg);
                 return;
             }
 
-            txtAddress.Text = ssItem.address;
-            txtPort.Text = ssItem.port.ToString();
-            cmbSecurity.Text = ssItem.security;
-            txtId.Text = ssItem.id;
-            txtRemarks.Text = ssItem.remarks;
+            txtAddress.Text = hy2Item.address;
+            txtPort.Text = hy2Item.port.ToString();
+            cmbStreamSecurity.Text = hy2Item.streamSecurity;
+            cmbAllowInsecure.Text = hy2Item.allowInsecure;
+            txtId.Text = hy2Item.id;
+            txtRemarks.Text = hy2Item.remarks;
         }
          
         #endregion
