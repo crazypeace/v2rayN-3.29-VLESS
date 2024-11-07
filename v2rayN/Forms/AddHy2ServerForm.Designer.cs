@@ -50,6 +50,8 @@
             this.cmbStreamSecurity = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.cmbAllowInsecure = new System.Windows.Forms.ComboBox();
+            this.cmbNetwork = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.menuServer.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -151,6 +153,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbNetwork);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.cmbStreamSecurity);
             this.groupBox1.Controls.Add(this.label21);
@@ -199,6 +203,21 @@
             resources.GetString("cmbAllowInsecure.Items2")});
             this.cmbAllowInsecure.Name = "cmbAllowInsecure";
             // 
+            // cmbNetwork
+            // 
+            this.cmbNetwork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNetwork.FormattingEnabled = true;
+            this.cmbNetwork.Items.AddRange(new object[] {
+            resources.GetString("cmbNetwork.Items"),
+            resources.GetString("cmbNetwork.Items1")});
+            resources.ApplyResources(this.cmbNetwork, "cmbNetwork");
+            this.cmbNetwork.Name = "cmbNetwork";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
             // AddHy2ServerForm
             // 
             resources.ApplyResources(this, "$this");
@@ -244,5 +263,7 @@
         private System.Windows.Forms.ComboBox cmbStreamSecurity;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox cmbAllowInsecure;
+        private System.Windows.Forms.ComboBox cmbNetwork;
+        private System.Windows.Forms.Label label7;
     }
 }

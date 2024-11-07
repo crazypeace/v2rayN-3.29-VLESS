@@ -1161,6 +1161,7 @@ namespace v2rayN.Handler
 
             hy2Item.address = hy2Item.address.TrimEx();
             hy2Item.id = hy2Item.id.TrimEx();
+            hy2Item.network = hy2Item.network.TrimEx();
             hy2Item.streamSecurity = hy2Item.streamSecurity.TrimEx();
             hy2Item.allowInsecure = hy2Item.allowInsecure.TrimEx();
 

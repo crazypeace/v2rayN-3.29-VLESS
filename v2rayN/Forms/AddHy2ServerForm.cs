@@ -49,6 +49,7 @@ namespace v2rayN.Forms
             txtAddress.Text = nodeItem.address;
             txtPort.Text = nodeItem.port.ToString();
             txtId.Text = nodeItem.id; // 密码放在 ID 属性中
+            cmbNetwork.Text = nodeItem.network;
             cmbStreamSecurity.Text = nodeItem.streamSecurity;
             cmbAllowInsecure.Text = nodeItem.allowInsecure;
             txtRemarks.Text = nodeItem.remarks;
@@ -63,6 +64,7 @@ namespace v2rayN.Forms
             txtAddress.Text = "";
             txtPort.Text = "";
             txtId.Text = "";
+            cmbNetwork.Text = "";
             cmbStreamSecurity.Text = "";
             cmbAllowInsecure.Text = "";
             txtRemarks.Text = "";
@@ -73,6 +75,7 @@ namespace v2rayN.Forms
             string address = txtAddress.Text;
             string port = txtPort.Text;
             string id = txtId.Text;
+            string network = cmbNetwork.Text;
             string streamSecurity = cmbStreamSecurity.Text;
             string allowInsecure = cmbAllowInsecure.Text;
             string remarks = txtRemarks.Text;
@@ -96,6 +99,7 @@ namespace v2rayN.Forms
             nodeItem.address = address;
             nodeItem.port = Utils.ToInt(port);
             nodeItem.id = id; // 密码放在 ID 属性中
+            nodeItem.network = network;
             nodeItem.streamSecurity = streamSecurity;
             nodeItem.allowInsecure = allowInsecure;
             nodeItem.remarks = remarks;
@@ -140,6 +144,7 @@ namespace v2rayN.Forms
 
             txtAddress.Text = hy2Item.address;
             txtPort.Text = hy2Item.port.ToString();
+            cmbNetwork.Text = hy2Item.network;
             cmbStreamSecurity.Text = hy2Item.streamSecurity;
             cmbAllowInsecure.Text = hy2Item.allowInsecure;
             txtId.Text = hy2Item.id;
