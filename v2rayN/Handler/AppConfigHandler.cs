@@ -1136,6 +1136,48 @@ namespace v2rayN.Handler
             return 0;
         }
 
+        /// <summary>
+        /// 添加服务器或编辑
+        /// </summary>
+        /// <param name="appConfig"></param>
+        /// <param name="hy2Item"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static int AddHysteria2Server(ref V2rayNappConfig appConfig, NodeItem hy2Item, int index)
+        {
+            hy2Item.configVersion = 2;
+            hy2Item.configType = (int)EConfigType.Hysteria2;
+
+            hy2Item.address = hy2Item.address.TrimEx();
+            hy2Item.id = hy2Item.id.TrimEx();
+            hy2Item.streamSecurity = hy2Item.streamSecurity.TrimEx();
+            hy2Item.allowInsecure = hy2Item.allowInsecure.TrimEx();
+
+            if (index >= 0)
+            {
+                //修改
+                appConfig.outbound[index] = hy2Item;
+                if (appConfig.index.Equals(index))
+                {
+                    Global.reloadV2ray = true;
+                }
+            }
+            else
+            {
+                //添加
+                appConfig.outbound.Add(hy2Item);
+                if (appConfig.outbound.Count == 1)
+                {
+                    appConfig.index = 0;
+                    Global.reloadV2ray = true;
+                }
+            }
+
+            ToJsonFile(appConfig);
+
+            return 0;
+        }
+
         private static string GetIpv6(string address)
         {
             return Utils.IsIpv6(address) ? $"[{address}]" : address;

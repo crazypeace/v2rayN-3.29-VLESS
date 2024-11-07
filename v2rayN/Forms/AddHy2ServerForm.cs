@@ -100,7 +100,7 @@ namespace v2rayN.Forms
             nodeItem.allowInsecure = allowInsecure;
             nodeItem.remarks = remarks;
 
-            if (AppConfigHandler.AddShadowsocksServer(ref appConfig, nodeItem, EditIndex) == 0)
+            if (AppConfigHandler.AddHysteria2Server(ref appConfig, nodeItem, EditIndex) == 0)
             {
                 this.DialogResult = DialogResult.OK;
             }
