@@ -146,8 +146,7 @@ namespace v2rayN.Forms
             txtRemarks.Text = hy2Item.remarks;
         }
          
-        #endregion
-         
+        #endregion        
 
     }
 }

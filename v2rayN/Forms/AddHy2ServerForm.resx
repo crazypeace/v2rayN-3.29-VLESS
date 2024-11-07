@@ -387,11 +387,8 @@
   <data name="txtId.Location" type="System.Drawing.Point, System.Drawing">
     <value>183, 93</value>
   </data>
-  <data name="txtId.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
-    <value>*</value>
-  </data>
   <data name="txtId.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 28</value>
+    <value>359, 28</value>
   </data>
   <data name="txtId.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -442,7 +439,7 @@
     <value>184, 188</value>
   </data>
   <data name="txtRemarks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>359, 28</value>
+    <value>358, 28</value>
   </data>
   <data name="txtRemarks.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>

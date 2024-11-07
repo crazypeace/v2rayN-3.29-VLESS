@@ -473,7 +473,7 @@ namespace v2rayN.Handler
                     usersItem.flow = string.Empty;
                     usersItem.email = Global.userEMail;
                     usersItem.encryption = appConfig.security();
-                    
+
                     //Mux
                     outbound.mux.enabled = appConfig.muxEnabled;
                     outbound.mux.concurrency = appConfig.muxEnabled ? 8 : -1;
@@ -493,7 +493,7 @@ namespace v2rayN.Handler
                         {
                             usersItem.flow = appConfig.flow();
                         }
-                        
+
                         outbound.mux.enabled = false;
                         outbound.mux.concurrency = -1;
                     }
@@ -1510,6 +1510,29 @@ namespace v2rayN.Handler
 
                     ResolveStdTransport(query, ref nodeItem);
 
+                }
+                else if (result.StartsWith(Global.hy2Protocol))
+                {
+                    nodeItem.configType = (int)EConfigType.Hysteria2;
+                    nodeItem.network = "hysteria2";
+
+                    Uri url = new Uri(result);
+                    nodeItem.address = url.IdnHost;
+                    nodeItem.port = url.Port;
+                    nodeItem.remarks = url.GetComponents(UriComponents.Fragment, UriFormat.Unescaped);
+                    nodeItem.id = url.UserInfo;
+
+                    nodeItem.streamSecurity = "tls";
+
+                    var query = HttpUtility.ParseQueryString(url.Query);
+                    if (query["insecure"] == "1")
+                    {
+                        nodeItem.allowInsecure = "true";
+                    }
+                    else if (query["insecure"] == "0")
+                    {
+                        nodeItem.allowInsecure = "false";
+                    }
                 }
                 else
                 {

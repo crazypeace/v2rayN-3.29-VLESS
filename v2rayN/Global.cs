@@ -162,6 +162,14 @@ namespace v2rayN
         /// trojan
         /// </summary>
         public const string trojanProtocolLite = "trojan";
+        /// <summary>
+        /// trojan
+        /// </summary>
+        public const string hy2Protocol = "hysteria2://";
+        /// <summary>
+        /// trojan
+        /// </summary>
+        public const string hy2ProtocolLite = "hysteria2";
 
         /// <summary>
         /// pac

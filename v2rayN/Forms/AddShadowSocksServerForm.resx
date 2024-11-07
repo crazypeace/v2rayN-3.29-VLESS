@@ -293,9 +293,6 @@
   <data name="txtId.Location" type="System.Drawing.Point, System.Drawing">
     <value>183, 91</value>
   </data>
-  <data name="txtId.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
-    <value>*</value>
-  </data>
   <data name="txtId.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 28</value>
   </data>
@@ -442,10 +439,10 @@
     <value>Fill</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 46</value>
+    <value>0, 42</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>820, 330</value>
+    <value>820, 334</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -517,7 +514,7 @@
     <value>Top</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 36</value>
+    <value>0, 32</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>820, 10</value>
@@ -547,7 +544,7 @@
     <value>Import URL from clipboard</value>
   </data>
   <data name="MenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 30</value>
+    <value>237, 28</value>
   </data>
   <data name="MenuItem1.Text" xml:space="preserve">
     <value>Import configuration file</value>
@@ -556,7 +553,7 @@
     <value>0, 0</value>
   </data>
   <data name="menuServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>820, 36</value>
+    <value>820, 32</value>
   </data>
   <data name="menuServer.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
