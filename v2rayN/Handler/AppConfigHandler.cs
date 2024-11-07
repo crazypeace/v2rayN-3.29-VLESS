@@ -927,6 +927,17 @@ namespace v2rayN.Handler
                         countServers++;
                     }
                 }
+                else if (nodeItem.configType == (int)EConfigType.Hysteria2)
+                {
+                    if (allowInsecure)
+                    {
+                        nodeItem.allowInsecure = "true";
+                    }
+                    if (AddHysteria2Server(ref appConfig, nodeItem, -1) == 0)
+                    {
+                        countServers++;
+                    }
+                }
             }
             return countServers;
         }
