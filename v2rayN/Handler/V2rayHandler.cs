@@ -252,7 +252,7 @@ namespace v2rayN.Handler
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = fileName,
-                        Arguments = "-config stdin:",
+                        Arguments = "run -format json",
                         WorkingDirectory = Utils.StartupPath(),
                         UseShellExecute = false,
                         RedirectStandardInput = true,
