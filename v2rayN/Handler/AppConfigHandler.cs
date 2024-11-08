@@ -476,9 +476,27 @@ namespace v2rayN.Handler
                     nodeItem.port);
                     url = $"{Global.vlessProtocol}{url}{query}{remark}";
                 }
-                else
+                else if (nodeItem.configType == (int)EConfigType.Hysteria2)
                 {
+                    string remark = string.Empty;
+                    if (!Utils.IsNullOrEmpty(nodeItem.remarks))
+                    {
+                        remark = "#" + WebUtility.UrlEncode(nodeItem.remarks);
+                    }
+                    var dicQuery = new Dictionary<string, string>();
+                    if (nodeItem.allowInsecure == "true")
+                    {
+                        dicQuery.Add("insecure", "1");
+                    }
+                    string query = "?" + string.Join("&", dicQuery.Select(x => x.Key + "=" + x.Value).ToArray());
+
+                    url = string.Format("{0}@{1}:{2}",
+                    nodeItem.id,
+                    GetIpv6(nodeItem.address),
+                    nodeItem.port);
+                    url = $"{Global.hy2Protocol}{url}{query}{remark}";
                 }
+
                 return url;
             }
             catch
