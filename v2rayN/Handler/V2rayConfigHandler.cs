@@ -532,6 +532,29 @@ namespace v2rayN.Handler
                     outbound.protocol = Global.trojanProtocolLite;
                     outbound.settings.vnext = null;
                 }
+                else if (appConfig.configType() == (int)EConfigType.Hysteria2)
+                {
+                    ServersItem serversItem;
+                    if (outbound.settings.servers.Count <= 0)
+                    {
+                        serversItem = new ServersItem();
+                        outbound.settings.servers.Add(serversItem);
+                    }
+                    else
+                    {
+                        serversItem = outbound.settings.servers[0];
+                    }
+                    //远程服务器地址和端口
+                    serversItem.address = appConfig.address();
+                    serversItem.port = appConfig.port();
+
+                    //远程服务器底层传输配置
+                    StreamSettings streamSettings = outbound.streamSettings;
+                    boundStreamSettings(appConfig, "out", ref streamSettings);
+
+                    outbound.protocol = Global.hy2ProtocolLite;
+                    outbound.settings.vnext = null;
+                }
             }
             catch
             {
@@ -677,6 +700,14 @@ namespace v2rayN.Handler
                         {
                             streamSettings.tlsSettings.serverName = appConfig.address();
                         }
+                        break;
+                    // hy2
+                    case "hysteria2":
+                        Hy2Settings hy2Settings = new Hy2Settings
+                        {
+                            password = appConfig.id()
+                        };
+                        streamSettings.hy2Settings = hy2Settings;
                         break;
                     default:
                         //tcp带http伪装

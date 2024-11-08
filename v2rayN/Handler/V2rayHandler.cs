@@ -198,6 +198,7 @@ namespace v2rayN.Handler
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = fileName,
+                        Arguments = "run -c "+ Global.v2rayConfigFileName,
                         WorkingDirectory = Utils.StartupPath(),
                         UseShellExecute = false,
                         RedirectStandardOutput = true,
