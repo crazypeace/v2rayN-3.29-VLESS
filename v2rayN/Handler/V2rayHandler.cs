@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using v2rayN.Mode;
 
@@ -21,6 +22,7 @@ namespace v2rayN.Handler
     class V2rayHandler
     {
         private static string v2rayConfigRes = Global.v2rayConfigFileName;
+        private static string coreExe = "";   // 指定内核的程序名称
         private List<string> lstV2ray;
         public event ProcessDelegate ProcessEvent;
         //private int processId = 0;
@@ -51,13 +53,37 @@ namespace v2rayN.Handler
                 else
                 {
                     ShowMsg(true, msg);
+
+                    // 根据协议不同指定不同的内核
+                    SetCoreExeByConfig( appConfig.outbound[ appConfig.index] );
                     V2rayRestart();
                 }
             }
         }
 
+        // 根据协议不同指定不同的内核
+        public void SetCoreExeByConfig(NodeItem outbound)
+        {
+            // 如果是 reality 要使用 xray
+            if (outbound.streamSecurity == Global.StreamSecurityReality)
+            {
+                coreExe = "xray";
+            }
+            // 如果是 hy2 要使用 v2ray
+            else if (outbound.configType == (int)EConfigType.Hysteria2)
+            {
+                coreExe = "v2ray";
+            }
+            // 其它情况不指定
+            else
+            {
+                coreExe = "";
+            }
+        }
+
         /// <summary>
         /// 新建进程，载入V2ray配置文件字符串
+        /// 主要是在测速的时候用到
         /// 返回新进程pid。
         /// </summary>
         public int LoadV2rayConfigString(V2rayNappConfig appConfig, List<int> _selecteds)
@@ -71,6 +97,9 @@ namespace v2rayN.Handler
             else
             {
                 ShowMsg(false, msg);
+
+                // 根据协议不同指定不同的内核
+                SetCoreExeByConfig( appConfig.outbound[ _selecteds[0] ]);
                 pid = V2rayStartNew(configStr);
                 //V2rayRestart();
                 // start with -appConfig
@@ -163,7 +192,20 @@ namespace v2rayN.Handler
             //查找v2ray文件是否存在
             string fileName = string.Empty;
             //lstV2ray.Reverse();
-            foreach (string name in lstV2ray)
+
+            // 如果指定了内核, 那么只查找指定内核
+            List<string> checklist = new List<string>();
+            if ( ! Utils.IsNullOrEmpty( coreExe) )
+            {
+                checklist.Add(coreExe);
+            }
+            else
+            {   
+                // 否则查找默认内核列表
+                checklist = lstV2ray;
+            }
+
+            foreach (string name in checklist)
             {
                 string vName = string.Format("{0}.exe", name);
                 vName = Utils.GetPath(vName);
@@ -198,6 +240,7 @@ namespace v2rayN.Handler
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = fileName,
+                        Arguments = "run -c "+ Global.v2rayConfigFileName,
                         WorkingDirectory = Utils.StartupPath(),
                         UseShellExecute = false,
                         RedirectStandardOutput = true,
@@ -251,7 +294,7 @@ namespace v2rayN.Handler
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = fileName,
-                        Arguments = "-config stdin:",
+                        Arguments = "run -format json",
                         WorkingDirectory = Utils.StartupPath(),
                         UseShellExecute = false,
                         RedirectStandardInput = true,

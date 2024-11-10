@@ -164,6 +164,12 @@
   <data name="menuAddCustomServer.Text" xml:space="preserve">
     <value>Add a custom configuration server</value>
   </data>
+  <data name="addHy2ServerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>407, 34</value>
+  </data>
+  <data name="addHy2ServerToolStripMenuItem.Text" xml:space="preserve">
+    <value>Add [Hy2] server</value>
+  </data>
   <data name="subMenuAddServer.Size" type="System.Drawing.Size, System.Drawing">
     <value>428, 30</value>
   </data>
@@ -1103,6 +1109,12 @@
   <data name="&gt;&gt;menuAddCustomServer.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;addHy2ServerToolStripMenuItem.Name" xml:space="preserve">
+    <value>addHy2ServerToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;addHy2ServerToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;menuAddServers.Name" xml:space="preserve">
     <value>menuAddServers</value>
   </data>
@@ -1215,6 +1227,18 @@
     <value>menuSpeedServer</value>
   </data>
   <data name="&gt;&gt;menuSpeedServer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsbTestMe.Name" xml:space="preserve">
+    <value>tsbTestMe</value>
+  </data>
+  <data name="&gt;&gt;tsbTestMe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuClearTestResult.Name" xml:space="preserve">
+    <value>menuClearTestResult</value>
+  </data>
+  <data name="&gt;&gt;menuClearTestResult.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
@@ -1582,18 +1606,6 @@
   </data>
   <data name="&gt;&gt;tsbClose.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsbTestMe.Name" xml:space="preserve">
-    <value>tsbTestMe</value>
-  </data>
-  <data name="&gt;&gt;tsbTestMe.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuClearTestResult.Name" xml:space="preserve">
-    <value>menuClearTestResult</value>
-  </data>
-  <data name="&gt;&gt;menuClearTestResult.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

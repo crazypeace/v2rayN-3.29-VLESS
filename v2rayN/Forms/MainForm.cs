@@ -539,6 +539,9 @@ namespace v2rayN.Forms
                 case (int)EConfigType.Trojan:
                     fm = new AddTrojanServerForm();
                     break;
+                case (int)EConfigType.Hysteria2:
+                    fm = new AddHy2ServerForm();
+                    break;
                 default:
                     fm = new AddCustomServerForm();
                     break;
@@ -1636,6 +1639,12 @@ namespace v2rayN.Forms
         private void menuClearTestResult_Click(object sender, EventArgs e)
         {
             Speedtest("clear");
+        }
+
+        private void addHy2ServerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowServerForm((int)EConfigType.Hysteria2, -1);
+            ShowForm();
         }
     }
 }

@@ -473,7 +473,7 @@ namespace v2rayN.Handler
                     usersItem.flow = string.Empty;
                     usersItem.email = Global.userEMail;
                     usersItem.encryption = appConfig.security();
-                    
+
                     //Mux
                     outbound.mux.enabled = appConfig.muxEnabled;
                     outbound.mux.concurrency = appConfig.muxEnabled ? 8 : -1;
@@ -493,7 +493,7 @@ namespace v2rayN.Handler
                         {
                             usersItem.flow = appConfig.flow();
                         }
-                        
+
                         outbound.mux.enabled = false;
                         outbound.mux.concurrency = -1;
                     }
@@ -530,6 +530,29 @@ namespace v2rayN.Handler
                     boundStreamSettings(appConfig, "out", ref streamSettings);
 
                     outbound.protocol = Global.trojanProtocolLite;
+                    outbound.settings.vnext = null;
+                }
+                else if (appConfig.configType() == (int)EConfigType.Hysteria2)
+                {
+                    ServersItem serversItem;
+                    if (outbound.settings.servers.Count <= 0)
+                    {
+                        serversItem = new ServersItem();
+                        outbound.settings.servers.Add(serversItem);
+                    }
+                    else
+                    {
+                        serversItem = outbound.settings.servers[0];
+                    }
+                    //远程服务器地址和端口
+                    serversItem.address = appConfig.address();
+                    serversItem.port = appConfig.port();
+
+                    //远程服务器底层传输配置
+                    StreamSettings streamSettings = outbound.streamSettings;
+                    boundStreamSettings(appConfig, "out", ref streamSettings);
+
+                    outbound.protocol = Global.hy2ProtocolLite;
                     outbound.settings.vnext = null;
                 }
             }
@@ -677,6 +700,14 @@ namespace v2rayN.Handler
                         {
                             streamSettings.tlsSettings.serverName = appConfig.address();
                         }
+                        break;
+                    // hy2
+                    case "hysteria2":
+                        Hy2Settings hy2Settings = new Hy2Settings
+                        {
+                            password = appConfig.id()
+                        };
+                        streamSettings.hy2Settings = hy2Settings;
                         break;
                     default:
                         //tcp带http伪装
@@ -1510,6 +1541,29 @@ namespace v2rayN.Handler
 
                     ResolveStdTransport(query, ref nodeItem);
 
+                }
+                else if (result.StartsWith(Global.hy2Protocol))
+                {
+                    nodeItem.configType = (int)EConfigType.Hysteria2;
+                    nodeItem.network = "hysteria2";
+
+                    Uri url = new Uri(result);
+                    nodeItem.address = url.IdnHost;
+                    nodeItem.port = url.Port;
+                    nodeItem.remarks = url.GetComponents(UriComponents.Fragment, UriFormat.Unescaped);
+                    nodeItem.id = url.UserInfo;
+
+                    nodeItem.streamSecurity = "tls";
+
+                    var query = HttpUtility.ParseQueryString(url.Query);
+                    if (query["insecure"] == "1")
+                    {
+                        nodeItem.allowInsecure = "true";
+                    }
+                    else if (query["insecure"] == "0")
+                    {
+                        nodeItem.allowInsecure = "false";
+                    }
                 }
                 else
                 {

@@ -35,7 +35,7 @@ namespace v2rayN
         /// <summary>
         /// v2ray配置文件名
         /// </summary>
-        public const string v2rayConfigFileName = "config.json";
+        public const string v2rayConfigFileName = "runconfig.json";
 
         /// <summary>
         /// v2ray客户端配置样例文件名
@@ -162,6 +162,14 @@ namespace v2rayN
         /// trojan
         /// </summary>
         public const string trojanProtocolLite = "trojan";
+        /// <summary>
+        /// trojan
+        /// </summary>
+        public const string hy2Protocol = "hysteria2://";
+        /// <summary>
+        /// trojan
+        /// </summary>
+        public const string hy2ProtocolLite = "hysteria2";
 
         /// <summary>
         /// pac
