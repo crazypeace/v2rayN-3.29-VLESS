@@ -407,6 +407,7 @@ namespace v2rayN.Mode
                 case (int)EConfigType.Socks:
                 case (int)EConfigType.VLESS:
                 case (int)EConfigType.Trojan:
+                case (int)EConfigType.Hysteria2:
                     summary += string.Format("{0}({1}:{2})", remarks, addr, port);
                     break;
 
@@ -460,7 +461,7 @@ namespace v2rayN.Mode
         public int port { get; set; }
 
         /// <summary>
-        /// 远程服务器ID
+        /// 远程服务器 UUID 或 密码
         /// </summary>
         public string id { get; set; }
 

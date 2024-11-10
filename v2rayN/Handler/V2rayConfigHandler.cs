@@ -534,6 +534,13 @@ namespace v2rayN.Handler
                 }
                 else if (appConfig.configType() == (int)EConfigType.Hysteria2)
                 {
+                    // 从默认的配置文件 SampleClientConfig.txt 加载的 server 里面有 hy2 不需要的配置项
+                    // 为了对原项目的改动最小, 这里把sever删空. 然后再接下来的代码会新建一个server
+                    outbound.settings.servers.Clear();
+                    // 但是即使如此, 因为从 C# 类到Json序列化的关系, bool变量和int变量是有默认值的, 所以会生成到最终的json结构中
+                    // "ota": false,
+                    // "level": 0
+
                     ServersItem serversItem;
                     if (outbound.settings.servers.Count <= 0)
                     {
@@ -804,18 +811,25 @@ namespace v2rayN.Handler
 
             try
             {
-                // 对应 SampleClientConfig 里的配置, outbounds[3] 就是下一跳Socks出口
-                Outbounds nextSocks = v2rayConfig.outbounds[3];
-                ServersItem server = nextSocks.settings.servers[0];
-                server.address = appConfig.socksOutboundIP;
-                server.port = appConfig.socksOutboundPort;
+                if (appConfig.sockoptTag == "")
+                {
+                    v2rayConfig.outbounds[0].streamSettings.sockopt = null;
+                }
+                else
+                {
+                    // 对应 SampleClientConfig 里的配置, outbounds[3] 就是下一跳Socks出口
+                    Outbounds nextSocks = v2rayConfig.outbounds[3];
+                    ServersItem server = nextSocks.settings.servers[0];
+                    server.address = appConfig.socksOutboundIP;
+                    server.port = appConfig.socksOutboundPort;
 
-                // 对应 SampleClientConfig 里的配置, outbounds[4] 就是tls hello分片
-                Outbounds tlsHelloFrg = v2rayConfig.outbounds[4];
-                tlsHelloFrg.settings.fragment.length = appConfig.tlsHelloFgmLength;
-                tlsHelloFrg.settings.fragment.interval = appConfig.tlsHelloFgmInterval;
+                    // 对应 SampleClientConfig 里的配置, outbounds[4] 就是tls hello分片
+                    Outbounds tlsHelloFrg = v2rayConfig.outbounds[4];
+                    tlsHelloFrg.settings.fragment.length = appConfig.tlsHelloFgmLength;
+                    tlsHelloFrg.settings.fragment.interval = appConfig.tlsHelloFgmInterval;
 
-                v2rayConfig.outbounds[0].streamSettings.sockopt.dialerProxy = appConfig.sockoptTag;
+                    v2rayConfig.outbounds[0].streamSettings.sockopt.dialerProxy = appConfig.sockoptTag;
+                }
             }
             catch
             {
