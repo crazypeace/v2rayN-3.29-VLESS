@@ -1,7 +1,8 @@
 # v2rayN-3.29-VLESS
-A v2rayN-3.29 mod version. Support VLESS Reality. Support TLS Hello fragment.
+A v2rayN-3.29 mod version. Support VLESS Reality. Support TLS Hello fragment. Support Hysteria2.
 
 ![image](https://github.com/crazypeace/v2rayN-3.29-VLESS/assets/665889/dde23c73-6885-47bf-8006-9f6ed3ef14a9)
+<img width="715" alt="v2rayN_2024-11-09_02-44-43" src="https://github.com/user-attachments/assets/f5f8b72a-7448-4ff3-be63-f7dcb15156bb">
 
 
 # 本repo的目的
@@ -13,12 +14,15 @@ A v2rayN-3.29 mod version. Support VLESS Reality. Support TLS Hello fragment.
 - 支持 VLESS Reality
 - 支持 Socks 出口
 - 支持 TLS Hello 分片
+- 支持 Hysteria2
 
 # 打包v2rayN-VLESS-Core.zip时
 v3.29.0.3打包的是V2Ray v4.32.1版本，支持VLESS和XTLS的最后一个版本  
 v3.29.0.4打包的是Xray v1.8.4版本  
 v3.29.0.7打包的是Xray v1.8.6版本  
 v3.29.0.8打包的是Xray v1.8.10版本  
+v3.29.0.10打包的是Xray v1.8.24 和 V2Ray v5.21.0  
+
 因为go v1.21以后不支持windows7 系统，所以要么降级 [v1.8.4](https://github.com/XTLS/Xray-core/releases/tag/v1.8.4)  
 要么去下载对应特殊的core，比如写了 win7 https://github.com/XTLS/Xray-core/releases/tag/v1.8.24  
 32位用户请自行下载或编译内核
