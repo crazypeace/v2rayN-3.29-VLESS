@@ -1469,7 +1469,7 @@ namespace v2rayN.Handler
 
                     nodeItem.configType = (int)EConfigType.Shadowsocks;
                 }
-                else if (result.StartsWith(Global.socksProtocol))
+                else if (result.StartsWith(Global.socksProtocol) || result.StartsWith(Global.socks5Protocol))
                 {
                     msg = UIRes.I18N("ConfigurationFormatIncorrect");
 
@@ -1487,6 +1487,8 @@ namespace v2rayN.Handler
                         result = result.Substring(0, indexRemark);
                     }
                     //part decode
+                    // 用是否包含 @ 字符来判断 是否 base64 encode 后的字符串
+                    // 那么如果这个socks链接 不包含认证信息, 就会不含 @ 字符, 会被误判为 base64 encode 后的字符串
                     int indexS = result.IndexOf("@");
                     if (indexS > 0)
                     {
@@ -1920,10 +1922,9 @@ namespace v2rayN.Handler
 
                 dns(appConfigCopy, ref v2rayConfig);
 
-                // Sockopt
-                sockopt(appConfigCopy, ref v2rayConfig);
-
+                // 从SampleClient读进来的配置文件, 默认的 inbound 和 outbound 在测速时都要删除
                 v2rayConfig.inbounds.RemoveAt(0); // Remove "proxy" service for speedtest, avoiding port conflicts.
+                v2rayConfig.outbounds.RemoveAt(0); 
 
                 int httpPort = appConfigCopy.GetLocalPort("speedtest");
                 foreach (int index in selecteds)
@@ -1964,6 +1965,13 @@ namespace v2rayN.Handler
                 }
 
                 msg = string.Format(UIRes.I18N("SuccessfulConfiguration"), appConfigCopy.getSummary());
+
+                // 返回之前 将测试用的配置保存为文件
+                using (StreamWriter file = File.CreateText(Global.v2rayTestConfigFileName))
+                {
+                    file.Write( Utils.ToJson( v2rayConfig) );
+                }
+
                 return Utils.ToJson(v2rayConfig);
             }
             catch

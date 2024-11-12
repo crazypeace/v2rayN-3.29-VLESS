@@ -100,6 +100,7 @@ namespace v2rayN.Handler
 
                 // 根据协议不同指定不同的内核
                 SetCoreExeByConfig( appConfig.outbound[ _selecteds[0] ]);
+                // 启动测试用的内核
                 pid = V2rayStartNew(configStr);
                 //V2rayRestart();
                 // start with -appConfig

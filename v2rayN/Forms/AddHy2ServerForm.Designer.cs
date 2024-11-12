@@ -46,12 +46,12 @@
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbNetwork = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbStreamSecurity = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.cmbAllowInsecure = new System.Windows.Forms.ComboBox();
-            this.cmbNetwork = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.menuServer.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -172,6 +172,21 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
+            // cmbNetwork
+            // 
+            this.cmbNetwork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNetwork.FormattingEnabled = true;
+            this.cmbNetwork.Items.AddRange(new object[] {
+            resources.GetString("cmbNetwork.Items"),
+            resources.GetString("cmbNetwork.Items1")});
+            resources.ApplyResources(this.cmbNetwork, "cmbNetwork");
+            this.cmbNetwork.Name = "cmbNetwork";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
             // label15
             // 
             resources.ApplyResources(this.label15, "label15");
@@ -202,21 +217,6 @@
             resources.GetString("cmbAllowInsecure.Items1"),
             resources.GetString("cmbAllowInsecure.Items2")});
             this.cmbAllowInsecure.Name = "cmbAllowInsecure";
-            // 
-            // cmbNetwork
-            // 
-            this.cmbNetwork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbNetwork.FormattingEnabled = true;
-            this.cmbNetwork.Items.AddRange(new object[] {
-            resources.GetString("cmbNetwork.Items"),
-            resources.GetString("cmbNetwork.Items1")});
-            resources.ApplyResources(this.cmbNetwork, "cmbNetwork");
-            this.cmbNetwork.Name = "cmbNetwork";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
             // 
             // AddHy2ServerForm
             // 

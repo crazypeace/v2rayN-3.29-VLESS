@@ -37,6 +37,9 @@ namespace v2rayN
         /// </summary>
         public const string v2rayConfigFileName = "runconfig.json";
 
+        // 测速时使用的配置文件名
+        public const string v2rayTestConfigFileName = "testconfig.json";
+
         /// <summary>
         /// v2ray客户端配置样例文件名
         /// </summary>
@@ -134,6 +137,10 @@ namespace v2rayN
         /// socks
         /// </summary>
         public const string socksProtocol = "socks://";
+        /// <summary>
+        /// socks5
+        /// </summary>
+        public const string socks5Protocol = "socks5://";
         /// <summary>
         /// socks
         /// </summary>
