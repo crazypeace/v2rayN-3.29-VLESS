@@ -1177,11 +1177,13 @@ namespace v2rayN.Forms
                 UI.Show(UIRes.I18N("PleaseSelectServer"));
                 return;
             }
-            if (AppConfigHandler.MoveServer(ref appConfig, index, eMove) == 0)
+            if ( ( index = AppConfigHandler.MoveServer(ref appConfig, index, eMove) ) >= 0)
             {
                 //TODO: reload is not good.
                 RefreshServers();
                 //LoadV2ray();
+
+                lvServers.Items[index].Selected = true;
             }
         }
         private void menuSelectAll_Click(object sender, EventArgs e)

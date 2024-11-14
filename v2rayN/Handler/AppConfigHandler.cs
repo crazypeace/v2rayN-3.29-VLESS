@@ -511,7 +511,7 @@ namespace v2rayN.Handler
         /// <param name="appConfig"></param>
         /// <param name="index"></param>
         /// <param name="eMove"></param>
-        /// <returns></returns>
+        /// <returns>移动后的位置</returns>
         public static int MoveServer(ref V2rayNappConfig appConfig, int index, EMove eMove)
         {
             int count = appConfig.outbound.Count;
@@ -542,6 +542,7 @@ namespace v2rayN.Handler
                         {
                             appConfig.index++;
                         }
+                        index = 0;
                         break;
                     }
                 case EMove.Up:
@@ -561,6 +562,7 @@ namespace v2rayN.Handler
                         {
                             appConfig.index--;
                         }
+                        index = index - 1;
                         break;
                     }
 
@@ -568,7 +570,7 @@ namespace v2rayN.Handler
                     {
                         if (index == count - 1)
                         {
-                            return 0;
+                            return count - 1;
                         }
                         NodeItem noteItem = Utils.DeepCopy(appConfig.outbound[index]);
                         appConfig.outbound.RemoveAt(index);
@@ -581,13 +583,14 @@ namespace v2rayN.Handler
                         {
                             appConfig.index++;
                         }
+                        index = index + 1;
                         break;
                     }
                 case EMove.Bottom:
                     {
                         if (index == count - 1)
                         {
-                            return 0;
+                            return count - 1;
                         }
                         NodeItem nodeItem = Utils.DeepCopy(appConfig.outbound[index]);
                         appConfig.outbound.RemoveAt(index);
@@ -604,6 +607,7 @@ namespace v2rayN.Handler
                         {
                             //
                         }
+                        index = count - 1;
                         break;
                     }
 
@@ -612,7 +616,7 @@ namespace v2rayN.Handler
 
             ToJsonFile(appConfig);
 
-            return 0;
+            return index;
         }
 
         /// <summary>
