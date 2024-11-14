@@ -523,6 +523,7 @@ namespace v2rayN.Handler
             {
                 case EMove.Top:
                     {
+                        // 如果当前项已经是顶端, 则不需处理, 直接返回
                         if (index == 0)
                         {
                             return 0;
@@ -542,11 +543,15 @@ namespace v2rayN.Handler
                         {
                             appConfig.index++;
                         }
-                        index = 0;
+
+                        // 移动TOP正常处理完, 当前列表项位置应该为TOP, 即 0
+                        index = 0;  
+
                         break;
                     }
                 case EMove.Up:
                     {
+                        // 如果当前项已经是顶端, 则不需处理, 直接返回
                         if (index == 0)
                         {
                             return 0;
@@ -562,12 +567,15 @@ namespace v2rayN.Handler
                         {
                             appConfig.index--;
                         }
+
+                        // 移动UP正常处理完, 当前列表项位置上移一位
                         index = index - 1;
+
                         break;
                     }
-
                 case EMove.Down:
                     {
+                        // 如果当前项已经是底端, 则不需处理, 直接返回
                         if (index == count - 1)
                         {
                             return count - 1;
@@ -583,11 +591,15 @@ namespace v2rayN.Handler
                         {
                             appConfig.index++;
                         }
+
+                        // 移动DOWN正常处理完, 当前列表项位置下移一位
                         index = index + 1;
+
                         break;
                     }
                 case EMove.Bottom:
                     {
+                        // 如果当前项已经是底端, 则不需处理, 直接返回
                         if (index == count - 1)
                         {
                             return count - 1;
@@ -607,7 +619,10 @@ namespace v2rayN.Handler
                         {
                             //
                         }
+
+                        // 移动BOTTOM正常处理完, 当前列表项位置应该为BOTTOM, 即 数量的数字-1
                         index = count - 1;
+
                         break;
                     }
 
@@ -616,6 +631,7 @@ namespace v2rayN.Handler
 
             ToJsonFile(appConfig);
 
+            // 返回  移动操作处理完后, 列表项当前所在位置
             return index;
         }
 

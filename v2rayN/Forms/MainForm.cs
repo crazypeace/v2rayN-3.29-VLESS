@@ -1177,12 +1177,15 @@ namespace v2rayN.Forms
                 UI.Show(UIRes.I18N("PleaseSelectServer"));
                 return;
             }
+
+            // AppConfigHandler.MoveServer 函数返回移动后的列表项的位置
             if ( ( index = AppConfigHandler.MoveServer(ref appConfig, index, eMove) ) >= 0)
             {
                 //TODO: reload is not good.
                 RefreshServers();
                 //LoadV2ray();
 
+                // 让移动后的列表项被选中
                 lvServers.Items[index].Selected = true;
             }
         }
