@@ -31,6 +31,7 @@ namespace v2rayN.Forms
                 txtUrl.Text = subItem.url.ToString();
                 chkEnabled.Checked = subItem.enabled;
                 chkAllowInsecureTrue.Checked = subItem.allowInsecure;
+                chkBase64Decode.Checked = subItem.bBase64Decode;
             }
         }
         private void EndBindingSub()
@@ -41,6 +42,7 @@ namespace v2rayN.Forms
                 subItem.url = txtUrl.Text.TrimEx();
                 subItem.enabled = chkEnabled.Checked;
                 subItem.allowInsecure = chkAllowInsecureTrue.Checked;
+                subItem.bBase64Decode = chkBase64Decode.Checked;
             }
         }
         private void txtRemarks_Leave(object sender, EventArgs e)

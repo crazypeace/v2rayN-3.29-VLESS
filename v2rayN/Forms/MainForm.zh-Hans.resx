@@ -322,6 +322,12 @@
   <data name="menuExport2ShareUrl.Text" xml:space="preserve">
     <value>批量导出分享URL至剪贴板(多选) (Ctrl+C)</value>
   </data>
+  <data name="tsbServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 60</value>
+  </data>
+  <data name="tsbServer.Text" xml:space="preserve">
+    <value>  服务器  </value>
+  </data>
   <data name="cmsLv.Size" type="System.Drawing.Size, System.Drawing">
     <value>416, 418</value>
   </data>
@@ -341,12 +347,6 @@
         ////GFN5c3RlbS5EcmF3aW5nLkZvbnRTdHlsZQEAAAAHdmFsdWVfXwAIAwAAAAAAAAAF9v///xtTeXN0
         ZW0uRHJhd2luZy5HcmFwaGljc1VuaXQBAAAAB3ZhbHVlX18ACAMAAAADAAAACw==
 </value>
-  </data>
-  <data name="tsbServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 60</value>
-  </data>
-  <data name="tsbServer.Text" xml:space="preserve">
-    <value>  服务器  </value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>服务器列表</value>
@@ -447,8 +447,14 @@
   <data name="cmsMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>259, 220</value>
   </data>
+  <data name="tsbSubSetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
   <data name="tsbSubSetting.Text" xml:space="preserve">
     <value>订阅设置</value>
+  </data>
+  <data name="tsbSubUpdate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
   </data>
   <data name="tsbSubUpdate.Text" xml:space="preserve">
     <value>更新订阅</value>

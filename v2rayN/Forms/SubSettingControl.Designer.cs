@@ -43,7 +43,6 @@
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.chkAllowInsecureTrue);
             this.groupBox2.Controls.Add(this.chkBase64Decode);
             this.groupBox2.Controls.Add(this.chkEnabled);
@@ -52,6 +51,7 @@
             this.groupBox2.Controls.Add(this.txtRemarks);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label3);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -60,12 +60,14 @@
             resources.ApplyResources(this.chkAllowInsecureTrue, "chkAllowInsecureTrue");
             this.chkAllowInsecureTrue.Name = "chkAllowInsecureTrue";
             this.chkAllowInsecureTrue.UseVisualStyleBackColor = true;
+            this.chkAllowInsecureTrue.Leave += new System.EventHandler(this.txtRemarks_Leave);
             // 
             // chkBase64Decode
             // 
             resources.ApplyResources(this.chkBase64Decode, "chkBase64Decode");
             this.chkBase64Decode.Name = "chkBase64Decode";
             this.chkBase64Decode.UseVisualStyleBackColor = true;
+            this.chkBase64Decode.Leave += new System.EventHandler(this.txtRemarks_Leave);
             // 
             // chkEnabled
             // 

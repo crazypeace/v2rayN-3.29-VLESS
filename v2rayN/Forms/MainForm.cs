@@ -1556,6 +1556,7 @@ namespace v2rayN.Forms
                 string id = appConfig.subItem[k - 1].id.TrimEx();
                 string url = appConfig.subItem[k - 1].url.TrimEx();
                 bool allowInsecure = appConfig.subItem[k - 1].allowInsecure;
+                bool bBase64Decode = appConfig.subItem[k - 1].bBase64Decode;
                 string hashCode = $"{k}->";
 
                 if (Utils.IsNullOrEmpty(id) || Utils.IsNullOrEmpty(url))
@@ -1570,11 +1571,22 @@ namespace v2rayN.Forms
                     if (args.Success)
                     {
                         AppendText(false, $"{hashCode}{UIRes.I18N("MsgGetSubscriptionSuccessfully")}");
-                        string result = Utils.Base64Decode(args.Msg);
-                        if (Utils.IsNullOrEmpty(result))
+                        string result = "";
+                        // 是否base64解码
+                        if (bBase64Decode)
                         {
-                            AppendText(false, $"{hashCode}{UIRes.I18N("MsgSubscriptionDecodingFailed")}");
-                            return;
+                            // 将返回的订阅数据Base64解码
+                            result = Utils.Base64Decode(args.Msg);
+                            if (Utils.IsNullOrEmpty(result))
+                            {
+                                AppendText(false, $"{hashCode}{UIRes.I18N("MsgSubscriptionDecodingFailed")}");
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            // 直接获取返回的订阅数据
+                            result = args.Msg;
                         }
 
                         AppConfigHandler.RemoveServerViaSubid(ref appConfig, id);

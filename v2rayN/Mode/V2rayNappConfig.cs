@@ -636,6 +636,11 @@ namespace v2rayN.Mode
         public bool allowInsecure { get; set; } = false;
 
         /// <summary>
+        /// 是否base64解码
+        /// </summary>
+        public bool bBase64Decode { get; set; } = false;
+
+        /// <summary>
         /// enable
         /// </summary>
         public bool enabled { get; set; } = true;
