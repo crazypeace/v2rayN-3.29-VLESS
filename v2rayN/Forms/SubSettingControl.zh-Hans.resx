@@ -117,29 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="chkAllowInsecureTrue.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="chkAllowInsecureTrue.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkAllowInsecureTrue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 108</value>
+  <data name="chkBase64Decode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
   </data>
-  <data name="chkAllowInsecureTrue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 16</value>
-  </data>
-  <data name="chkAllowInsecureTrue.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="chkAllowInsecureTrue.Text" xml:space="preserve">
-    <value>Set TLS allowInsecure option to True</value>
+  <data name="chkBase64Decode.Text" xml:space="preserve">
+    <value>Base64解码</value>
   </data>
   <data name="chkEnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 16</value>
+    <value>70, 22</value>
   </data>
   <data name="chkEnabled.Text" xml:space="preserve">
     <value>启用</value>
@@ -148,24 +134,27 @@
     <value>移除</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>44, 18</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>备注</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 12</value>
+    <value>98, 18</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>地址 (url)</value>
   </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 13</value>
+  </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 130</value>
+    <value>876, 195</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>订阅详情</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 139</value>
+    <value>876, 208</value>
   </data>
 </root>

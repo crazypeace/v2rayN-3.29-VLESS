@@ -1480,7 +1480,7 @@ namespace v2rayN.Forms
 
         private void tsbV2rayWebsite_Click(object sender, EventArgs e)
         {
-            Process.Start(Global.v2rayWebsiteUrl);
+            Process.Start(Global.V2RayWebsiteUrl);
         }
 
         private void tsbPromotion_Click(object sender, EventArgs e)
@@ -1636,7 +1636,7 @@ namespace v2rayN.Forms
 
         private void v2rayCoreV4321ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start(Global.v2rayCore4_32_1Url);
+            Process.Start(Global.V2RayCore4_32_1Url);
 
             return;
         }
@@ -1650,6 +1650,16 @@ namespace v2rayN.Forms
         {
             ShowServerForm((int)EConfigType.Hysteria2, -1);
             ShowForm();
+        }
+
+        private void tsbXrayWebsite_Click(object sender, EventArgs e)
+        {
+            Process.Start(Global.XrayWebsiteUrl);
+        }
+
+        private void tsbCheckUpdateV2rayCore_Click(object sender, EventArgs e)
+        {
+            Process.Start(Global.V2RayCore_Url);
         }
     }
 }

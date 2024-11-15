@@ -30,13 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubSettingControl));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkAllowInsecureTrue = new System.Windows.Forms.CheckBox();
+            this.chkBase64Decode = new System.Windows.Forms.CheckBox();
             this.chkEnabled = new System.Windows.Forms.CheckBox();
             this.btnRemove = new System.Windows.Forms.Button();
             this.txtUrl = new System.Windows.Forms.TextBox();
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.chkAllowInsecureTrue = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,6 +45,7 @@
             // 
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.chkAllowInsecureTrue);
+            this.groupBox2.Controls.Add(this.chkBase64Decode);
             this.groupBox2.Controls.Add(this.chkEnabled);
             this.groupBox2.Controls.Add(this.btnRemove);
             this.groupBox2.Controls.Add(this.txtUrl);
@@ -52,6 +54,18 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // chkAllowInsecureTrue
+            // 
+            resources.ApplyResources(this.chkAllowInsecureTrue, "chkAllowInsecureTrue");
+            this.chkAllowInsecureTrue.Name = "chkAllowInsecureTrue";
+            this.chkAllowInsecureTrue.UseVisualStyleBackColor = true;
+            // 
+            // chkBase64Decode
+            // 
+            resources.ApplyResources(this.chkBase64Decode, "chkBase64Decode");
+            this.chkBase64Decode.Name = "chkBase64Decode";
+            this.chkBase64Decode.UseVisualStyleBackColor = true;
             // 
             // chkEnabled
             // 
@@ -89,13 +103,6 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // chkAllowInsecureTrue
-            // 
-            resources.ApplyResources(this.chkAllowInsecureTrue, "chkAllowInsecureTrue");
-            this.chkAllowInsecureTrue.Name = "chkAllowInsecureTrue";
-            this.chkAllowInsecureTrue.UseVisualStyleBackColor = true;
-            this.chkAllowInsecureTrue.Leave += new System.EventHandler(this.txtRemarks_Leave);
-            // 
             // SubSettingControl
             // 
             resources.ApplyResources(this, "$this");
@@ -118,6 +125,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.CheckBox chkEnabled;
+        private System.Windows.Forms.CheckBox chkBase64Decode;
         private System.Windows.Forms.CheckBox chkAllowInsecureTrue;
     }
 }

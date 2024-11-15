@@ -8,9 +8,11 @@ namespace v2rayN
         public const string UpdateUrl = @"https://github.com/crazypeace/v2rayN-3.29-VLESS/releases";
         public const string IssueUrl = @"https://github.com/crazypeace/v2rayN-3.29-VLESS/issues";
         public const string BloggerUrl = @"https://zelikk.blogspot.com/search/label/v2rayN-3.29-VLESS";
-        public const string v2rayWebsiteUrl = @"https://www.v2fly.org/";
-        public const string v2rayCore4_45_2Url = @"https://github.com/v2fly/v2ray-core/releases/tag/v4.45.2";
-        public const string v2rayCore4_32_1Url = @"https://github.com/v2fly/v2ray-core/releases/tag/v4.32.1";
+        public const string V2RayWebsiteUrl = @"https://www.v2fly.org/";
+        public const string V2RayCore_Url = @"https://github.com/v2fly/v2ray-core/releases/latest";
+        public const string V2RayCore4_45_2Url = @"https://github.com/v2fly/v2ray-core/releases/tag/v4.45.2";
+        public const string V2RayCore4_32_1Url = @"https://github.com/v2fly/v2ray-core/releases/tag/v4.32.1";
+        public const string XrayWebsiteUrl = @"https://xtls.github.io/";
         public const string XrayCore_Url = @"https://github.com/XTLS/Xray-core/releases/latest";
 
         /// <summary>
