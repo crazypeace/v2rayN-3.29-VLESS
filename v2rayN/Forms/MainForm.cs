@@ -1571,22 +1571,19 @@ namespace v2rayN.Forms
                     if (args.Success)
                     {
                         AppendText(false, $"{hashCode}{UIRes.I18N("MsgGetSubscriptionSuccessfully")}");
-                        string result = "";
-                        // 是否base64解码
+                        // 获取返回的订阅数据
+                        string result = args.Msg;
+                        // 如果需要base64解码
                         if (bBase64Decode)
                         {
-                            // 将返回的订阅数据Base64解码
-                            result = Utils.Base64Decode(args.Msg);
+                            // Base64解码
+                            result = Utils.Base64Decode(result);
                             if (Utils.IsNullOrEmpty(result))
                             {
+                                // 解码失败 报错 中止处理
                                 AppendText(false, $"{hashCode}{UIRes.I18N("MsgSubscriptionDecodingFailed")}");
                                 return;
                             }
-                        }
-                        else
-                        {
-                            // 直接获取返回的订阅数据
-                            result = args.Msg;
                         }
 
                         AppConfigHandler.RemoveServerViaSubid(ref appConfig, id);
