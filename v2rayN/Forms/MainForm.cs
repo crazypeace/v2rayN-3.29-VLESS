@@ -688,9 +688,6 @@ namespace v2rayN.Forms
                 return;
             }
             SetDefaultServer(index);
-            lvServers.Items[index].Selected = true;
-            lvServers.Items[index].Focused = true;
-            lvServers.Items[index].EnsureVisible();
         }
 
 
@@ -843,6 +840,11 @@ namespace v2rayN.Forms
             {
                 //刷新
                 RefreshServers();
+
+                lvServers.Items[index].Selected = true;
+                lvServers.Items[index].Focused = true;
+                lvServers.Items[index].EnsureVisible();
+
                 LoadV2ray();
             }
             return 0;

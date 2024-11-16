@@ -209,25 +209,25 @@
     <value>412, 6</value>
   </data>
   <data name="menuMoveTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>210, 34</value>
   </data>
   <data name="menuMoveTop.Text" xml:space="preserve">
     <value>上移至顶 (T)</value>
   </data>
   <data name="menuMoveUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>210, 34</value>
   </data>
   <data name="menuMoveUp.Text" xml:space="preserve">
     <value>上移 (U)</value>
   </data>
   <data name="menuMoveDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>210, 34</value>
   </data>
   <data name="menuMoveDown.Text" xml:space="preserve">
     <value>下移 (D)</value>
   </data>
   <data name="menuMoveBottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
+    <value>210, 34</value>
   </data>
   <data name="menuMoveBottom.Text" xml:space="preserve">
     <value>下移至底 (B)</value>
@@ -328,14 +328,8 @@
   <data name="menuExport2ShareUrl.Text" xml:space="preserve">
     <value>批量导出分享URL至剪贴板(多选) (Ctrl+C)</value>
   </data>
-  <data name="tsbServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 60</value>
-  </data>
-  <data name="tsbServer.Text" xml:space="preserve">
-    <value>  服务器  </value>
-  </data>
   <data name="cmsLv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 481</value>
+    <value>416, 448</value>
   </data>
   <data name="lvServers.Items" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -353,6 +347,12 @@
         ////GFN5c3RlbS5EcmF3aW5nLkZvbnRTdHlsZQEAAAAHdmFsdWVfXwAIAwAAAAAAAAAF9v///xtTeXN0
         ZW0uRHJhd2luZy5HcmFwaGljc1VuaXQBAAAAB3ZhbHVlX18ACAMAAAADAAAACw==
 </value>
+  </data>
+  <data name="tsbServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 60</value>
+  </data>
+  <data name="tsbServer.Text" xml:space="preserve">
+    <value>  服务器  </value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>服务器列表</value>
