@@ -1435,10 +1435,10 @@
     <value>Fill</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 46</value>
+    <value>0, 42</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>928, 702</value>
+    <value>928, 706</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1510,7 +1510,7 @@
     <value>Top</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 36</value>
+    <value>0, 32</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>928, 10</value>
@@ -1555,7 +1555,7 @@
     <value>Import URL from clipboard</value>
   </data>
   <data name="MenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 32</value>
+    <value>237, 28</value>
   </data>
   <data name="MenuItem1.Text" xml:space="preserve">
     <value>Import configuration file</value>
@@ -1564,7 +1564,7 @@
     <value>0, 0</value>
   </data>
   <data name="menuServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>928, 36</value>
+    <value>928, 32</value>
   </data>
   <data name="menuServer.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
