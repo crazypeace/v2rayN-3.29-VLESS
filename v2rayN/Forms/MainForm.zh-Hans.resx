@@ -118,6 +118,48 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="menuAddVmessServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 34</value>
+  </data>
+  <data name="menuAddVmessServer.Text" xml:space="preserve">
+    <value>添加[VMess]服务器</value>
+  </data>
+  <data name="menuAddVlessServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 34</value>
+  </data>
+  <data name="menuAddVlessServer.Text" xml:space="preserve">
+    <value>添加[VLESS]服务器</value>
+  </data>
+  <data name="menuAddShadowsocksServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 34</value>
+  </data>
+  <data name="menuAddShadowsocksServer.Text" xml:space="preserve">
+    <value>添加[Shadowsocks]服务器</value>
+  </data>
+  <data name="menuAddSocksServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 34</value>
+  </data>
+  <data name="menuAddSocksServer.Text" xml:space="preserve">
+    <value>添加[Socks]服务器</value>
+  </data>
+  <data name="menuAddTrojanServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 34</value>
+  </data>
+  <data name="menuAddTrojanServer.Text" xml:space="preserve">
+    <value>添加[Trojan]服务器</value>
+  </data>
+  <data name="menuAddCustomServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 34</value>
+  </data>
+  <data name="menuAddCustomServer.Text" xml:space="preserve">
+    <value>添加自定义配置服务器</value>
+  </data>
+  <data name="addHy2ServerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 34</value>
+  </data>
+  <data name="addHy2ServerToolStripMenuItem.Text" xml:space="preserve">
+    <value>添加[Hy2]服务器</value>
+  </data>
   <data name="subMenuAddServer.Size" type="System.Drawing.Size, System.Drawing">
     <value>415, 30</value>
   </data>
@@ -166,6 +208,30 @@
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>412, 6</value>
   </data>
+  <data name="menuMoveTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="menuMoveTop.Text" xml:space="preserve">
+    <value>上移至顶 (T)</value>
+  </data>
+  <data name="menuMoveUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="menuMoveUp.Text" xml:space="preserve">
+    <value>上移 (U)</value>
+  </data>
+  <data name="menuMoveDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="menuMoveDown.Text" xml:space="preserve">
+    <value>下移 (D)</value>
+  </data>
+  <data name="menuMoveBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 34</value>
+  </data>
+  <data name="menuMoveBottom.Text" xml:space="preserve">
+    <value>下移至底 (B)</value>
+  </data>
   <data name="subMenuMoveServerSequence.Size" type="System.Drawing.Size, System.Drawing">
     <value>415, 30</value>
   </data>
@@ -186,119 +252,6 @@
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
     <value>412, 6</value>
-  </data>
-  <data name="subMenuTestServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 30</value>
-  </data>
-  <data name="subMenuTestServer.Text" xml:space="preserve">
-    <value>测试服务器</value>
-  </data>
-  <data name="menuClearTestResult.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 30</value>
-  </data>
-  <data name="menuClearTestResult.Text" xml:space="preserve">
-    <value>清空测试结果</value>
-  </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>412, 6</value>
-  </data>
-  <data name="subMenuExportServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 30</value>
-  </data>
-  <data name="subMenuExportServer.Text" xml:space="preserve">
-    <value>导出服务器配置</value>
-  </data>
-  <data name="menuExport2ShareUrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 30</value>
-  </data>
-  <data name="menuExport2ShareUrl.Text" xml:space="preserve">
-    <value>批量导出分享URL至剪贴板(多选) (Ctrl+C)</value>
-  </data>
-  <data name="cmsLv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 448</value>
-  </data>
-  <data name="lvServers.Items" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkMAwAAAFFTeXN0
-        ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2Vu
-        PWIwM2Y1ZjdmMTFkNTBhM2EFAQAAACFTeXN0ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0l0ZW0HAAAA
-        BFRleHQKSW1hZ2VJbmRleAlCYWNrQ29sb3IHQ2hlY2tlZARGb250CUZvcmVDb2xvchdVc2VJdGVtU3R5
-        bGVGb3JTdWJJdGVtcwEABAAEBAAIFFN5c3RlbS5EcmF3aW5nLkNvbG9yAwAAAAETU3lzdGVtLkRyYXdp
-        bmcuRm9udAMAAAAUU3lzdGVtLkRyYXdpbmcuQ29sb3IDAAAAAQIAAAAGBAAAAAD/////Bfv///8UU3lz
-        dGVtLkRyYXdpbmcuQ29sb3IEAAAABG5hbWUFdmFsdWUKa25vd25Db2xvcgVzdGF0ZQEAAAAJBwcDAAAA
-        CgAAAAAAAAAAGAABAAAJBgAAAAH5////+////woAAAAAAAAAABoAAQABBQYAAAATU3lzdGVtLkRyYXdp
-        bmcuRm9udAQAAAAETmFtZQRTaXplBVN0eWxlBFVuaXQBAAQECxhTeXN0ZW0uRHJhd2luZy5Gb250U3R5
-        bGUDAAAAG1N5c3RlbS5EcmF3aW5nLkdyYXBoaWNzVW5pdAMAAAADAAAABggAAAAG5a6L5L2TAAAQQQX3
-        ////GFN5c3RlbS5EcmF3aW5nLkZvbnRTdHlsZQEAAAAHdmFsdWVfXwAIAwAAAAAAAAAF9v///xtTeXN0
-        ZW0uRHJhd2luZy5HcmFwaGljc1VuaXQBAAAAB3ZhbHVlX18ACAMAAAADAAAACw==
-</value>
-  </data>
-  <data name="menuAddVmessServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 34</value>
-  </data>
-  <data name="menuAddVmessServer.Text" xml:space="preserve">
-    <value>添加[VMess]服务器</value>
-  </data>
-  <data name="menuAddVlessServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 34</value>
-  </data>
-  <data name="menuAddVlessServer.Text" xml:space="preserve">
-    <value>添加[VLESS]服务器</value>
-  </data>
-  <data name="menuAddShadowsocksServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 34</value>
-  </data>
-  <data name="menuAddShadowsocksServer.Text" xml:space="preserve">
-    <value>添加[Shadowsocks]服务器</value>
-  </data>
-  <data name="menuAddSocksServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 34</value>
-  </data>
-  <data name="menuAddSocksServer.Text" xml:space="preserve">
-    <value>添加[Socks]服务器</value>
-  </data>
-  <data name="menuAddTrojanServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 34</value>
-  </data>
-  <data name="menuAddTrojanServer.Text" xml:space="preserve">
-    <value>添加[Trojan]服务器</value>
-  </data>
-  <data name="menuAddCustomServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 34</value>
-  </data>
-  <data name="menuAddCustomServer.Text" xml:space="preserve">
-    <value>添加自定义配置服务器</value>
-  </data>
-  <data name="addHy2ServerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 34</value>
-  </data>
-  <data name="addHy2ServerToolStripMenuItem.Text" xml:space="preserve">
-    <value>添加[Hy2]服务器</value>
-  </data>
-  <data name="menuMoveTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 34</value>
-  </data>
-  <data name="menuMoveTop.Text" xml:space="preserve">
-    <value>上移至顶 (T)</value>
-  </data>
-  <data name="menuMoveUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 34</value>
-  </data>
-  <data name="menuMoveUp.Text" xml:space="preserve">
-    <value>上移 (U)</value>
-  </data>
-  <data name="menuMoveDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 34</value>
-  </data>
-  <data name="menuMoveDown.Text" xml:space="preserve">
-    <value>下移 (D)</value>
-  </data>
-  <data name="menuMoveBottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 34</value>
-  </data>
-  <data name="menuMoveBottom.Text" xml:space="preserve">
-    <value>下移至底 (B)</value>
   </data>
   <data name="menuPingServer.Size" type="System.Drawing.Size, System.Drawing">
     <value>419, 34</value>
@@ -330,23 +283,50 @@
   <data name="tsbTestMe.Text" xml:space="preserve">
     <value>测试当前服务状态</value>
   </data>
+  <data name="subMenuTestServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 30</value>
+  </data>
+  <data name="subMenuTestServer.Text" xml:space="preserve">
+    <value>测试服务器</value>
+  </data>
+  <data name="menuClearTestResult.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 30</value>
+  </data>
+  <data name="menuClearTestResult.Text" xml:space="preserve">
+    <value>清空测试结果</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>412, 6</value>
+  </data>
   <data name="menuExport2ClientConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>374, 34</value>
+    <value>440, 34</value>
   </data>
   <data name="menuExport2ClientConfig.Text" xml:space="preserve">
     <value>导出所选服务器为客户端配置</value>
   </data>
   <data name="menuExport2ServerConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>374, 34</value>
+    <value>440, 34</value>
   </data>
   <data name="menuExport2ServerConfig.Text" xml:space="preserve">
     <value>导出所选服务器为服务端配置</value>
   </data>
   <data name="menuExport2SubContent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>374, 34</value>
+    <value>440, 34</value>
   </data>
   <data name="menuExport2SubContent.Text" xml:space="preserve">
-    <value>批量导出订阅内容至剪贴板(多选)</value>
+    <value>批量导出Base64订阅内容至剪贴板 (多选)</value>
+  </data>
+  <data name="subMenuExportServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 30</value>
+  </data>
+  <data name="subMenuExportServer.Text" xml:space="preserve">
+    <value>导出服务器配置</value>
+  </data>
+  <data name="menuExport2ShareUrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 30</value>
+  </data>
+  <data name="menuExport2ShareUrl.Text" xml:space="preserve">
+    <value>批量导出分享URL至剪贴板(多选) (Ctrl+C)</value>
   </data>
   <data name="tsbServer.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 60</value>
@@ -354,23 +334,34 @@
   <data name="tsbServer.Text" xml:space="preserve">
     <value>  服务器  </value>
   </data>
+  <data name="cmsLv.Size" type="System.Drawing.Size, System.Drawing">
+    <value>416, 481</value>
+  </data>
+  <data name="lvServers.Items" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkMAwAAAFFTeXN0
+        ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2Vu
+        PWIwM2Y1ZjdmMTFkNTBhM2EFAQAAACFTeXN0ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0l0ZW0HAAAA
+        BFRleHQKSW1hZ2VJbmRleAlCYWNrQ29sb3IHQ2hlY2tlZARGb250CUZvcmVDb2xvchdVc2VJdGVtU3R5
+        bGVGb3JTdWJJdGVtcwEABAAEBAAIFFN5c3RlbS5EcmF3aW5nLkNvbG9yAwAAAAETU3lzdGVtLkRyYXdp
+        bmcuRm9udAMAAAAUU3lzdGVtLkRyYXdpbmcuQ29sb3IDAAAAAQIAAAAGBAAAAAD/////Bfv///8UU3lz
+        dGVtLkRyYXdpbmcuQ29sb3IEAAAABG5hbWUFdmFsdWUKa25vd25Db2xvcgVzdGF0ZQEAAAAJBwcDAAAA
+        CgAAAAAAAAAAGAABAAAJBgAAAAH5////+////woAAAAAAAAAABoAAQABBQYAAAATU3lzdGVtLkRyYXdp
+        bmcuRm9udAQAAAAETmFtZQRTaXplBVN0eWxlBFVuaXQBAAQECxhTeXN0ZW0uRHJhd2luZy5Gb250U3R5
+        bGUDAAAAG1N5c3RlbS5EcmF3aW5nLkdyYXBoaWNzVW5pdAMAAAADAAAABggAAAAG5a6L5L2TAAAQQQX3
+        ////GFN5c3RlbS5EcmF3aW5nLkZvbnRTdHlsZQEAAAAHdmFsdWVfXwAIAwAAAAAAAAAF9v///xtTeXN0
+        ZW0uRHJhd2luZy5HcmFwaGljc1VuaXQBAAAAB3ZhbHVlX18ACAMAAAADAAAACw==
+</value>
+  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>服务器列表</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>信息</value>
   </data>
   <data name="toolSslServerSpeed.Text" xml:space="preserve">
     <value>网速显示未启用</value>
   </data>
-  <data name="cmsMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 220</value>
-  </data>
-  <data name="menuSysAgentMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 30</value>
-  </data>
-  <data name="menuSysAgentMode.Text" xml:space="preserve">
-    <value>Http代理</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>信息</value>
   </data>
   <data name="menuNotEnabledHttp.Size" type="System.Drawing.Size, System.Drawing">
     <value>472, 34</value>
@@ -414,6 +405,12 @@
   <data name="menuKeepPACNothing.Text" xml:space="preserve">
     <value>仅开启PAC,不改变系统代理</value>
   </data>
+  <data name="menuSysAgentMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 30</value>
+  </data>
+  <data name="menuSysAgentMode.Text" xml:space="preserve">
+    <value>Http代理</value>
+  </data>
   <data name="menuServers.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 30</value>
   </data>
@@ -453,17 +450,26 @@
   <data name="menuExit.Text" xml:space="preserve">
     <value>退出</value>
   </data>
+  <data name="cmsMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>259, 220</value>
+  </data>
+  <data name="tsbSubSetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 34</value>
+  </data>
+  <data name="tsbSubSetting.Text" xml:space="preserve">
+    <value>订阅设置</value>
+  </data>
+  <data name="tsbSubUpdate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 34</value>
+  </data>
+  <data name="tsbSubUpdate.Text" xml:space="preserve">
+    <value>更新订阅</value>
+  </data>
   <data name="tsbSub.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 60</value>
   </data>
   <data name="tsbSub.Text" xml:space="preserve">
     <value>  订阅  </value>
-  </data>
-  <data name="tsbSubSetting.Text" xml:space="preserve">
-    <value>订阅设置</value>
-  </data>
-  <data name="tsbSubUpdate.Text" xml:space="preserve">
-    <value>更新订阅</value>
   </data>
   <data name="tsbQRCodeSwitch.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 60</value>
@@ -493,12 +499,6 @@
   </data>
   <data name="tsbReload.Text" xml:space="preserve">
     <value>  重启服务  </value>
-  </data>
-  <data name="tsbCheckUpdate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 60</value>
-  </data>
-  <data name="tsbCheckUpdate.Text" xml:space="preserve">
-    <value>  检查更新  </value>
   </data>
   <data name="tsbCheckUpdateN.Size" type="System.Drawing.Size, System.Drawing">
     <value>329, 34</value>
@@ -533,11 +533,11 @@
   <data name="tsbCheckClearPACList.Text" xml:space="preserve">
     <value>简化PAC (请设置Core路由)</value>
   </data>
-  <data name="tsbHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 60</value>
+  <data name="tsbCheckUpdate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 60</value>
   </data>
-  <data name="tsbHelp.Text" xml:space="preserve">
-    <value>   帮助   </value>
+  <data name="tsbCheckUpdate.Text" xml:space="preserve">
+    <value>  检查更新  </value>
   </data>
   <data name="tsbAbout.Size" type="System.Drawing.Size, System.Drawing">
     <value>313, 34</value>
@@ -565,6 +565,12 @@
   </data>
   <data name="tsbLanguageZhHans.Size" type="System.Drawing.Size, System.Drawing">
     <value>313, 34</value>
+  </data>
+  <data name="tsbHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 60</value>
+  </data>
+  <data name="tsbHelp.Text" xml:space="preserve">
+    <value>   帮助   </value>
   </data>
   <data name="tsbPromotion.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 60</value>

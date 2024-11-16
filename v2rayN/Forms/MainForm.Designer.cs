@@ -71,7 +71,6 @@
             this.menuExport2SubContent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExport2ShareUrl = new System.Windows.Forms.ToolStripMenuItem();
             this.qrCodeControl = new v2rayN.Forms.QRCodeControl();
-            this.tsbServer = new System.Windows.Forms.ToolStripDropDownButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -88,6 +87,7 @@
             this.toolSslBlank3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolSslServerSpeed = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolSslBlank4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsbServer = new System.Windows.Forms.ToolStripDropDownButton();
             this.notifyMain = new System.Windows.Forms.NotifyIcon(this.components);
             this.cmsMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuSysAgentMode = new System.Windows.Forms.ToolStripMenuItem();
@@ -212,6 +212,7 @@
             this.subMenuExportServer,
             this.menuExport2ShareUrl});
             this.cmsLv.Name = "cmsLv";
+            this.cmsLv.OwnerItem = this.tsbServer;
             // 
             // subMenuAddServer
             // 
@@ -455,13 +456,6 @@
             resources.ApplyResources(this.qrCodeControl, "qrCodeControl");
             this.qrCodeControl.Name = "qrCodeControl";
             // 
-            // tsbServer
-            // 
-            resources.ApplyResources(this.tsbServer, "tsbServer");
-            this.tsbServer.DropDown = this.cmsLv;
-            this.tsbServer.Image = global::v2rayN.Properties.Resources.server;
-            this.tsbServer.Name = "tsbServer";
-            // 
             // splitContainer1
             // 
             resources.ApplyResources(this.splitContainer1, "splitContainer1");
@@ -578,6 +572,13 @@
             // 
             resources.ApplyResources(this.toolSslBlank4, "toolSslBlank4");
             this.toolSslBlank4.Name = "toolSslBlank4";
+            // 
+            // tsbServer
+            // 
+            resources.ApplyResources(this.tsbServer, "tsbServer");
+            this.tsbServer.DropDown = this.cmsLv;
+            this.tsbServer.Image = global::v2rayN.Properties.Resources.server;
+            this.tsbServer.Name = "tsbServer";
             // 
             // notifyMain
             // 

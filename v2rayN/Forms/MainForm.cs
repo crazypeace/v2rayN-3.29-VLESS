@@ -935,6 +935,9 @@ namespace v2rayN.Forms
             {
                 UI.Show(string.Format(UIRes.I18N("SuccessfullyImportedServerViaClipboard"), result));
             }
+            int endOfList = lvServers.Items.Count - 1;
+            lvServers.Items[endOfList].Selected = true;
+            lvServers.EnsureVisible(endOfList);
         }
 
         private void menuScanScreen_Click(object sender, EventArgs e)
@@ -951,6 +954,7 @@ namespace v2rayN.Forms
                 return AppConfigHandler.AddBatchServers(ref appConfig, clipboardData, subid, allowInsecure);
             }
             counter = _Add();
+            // 如果添加节点失败, 那么就base64解码了再尝试添加节点
             if (counter < 1)
             {
                 clipboardData = Utils.Base64Decode(clipboardData);
@@ -1601,6 +1605,8 @@ namespace v2rayN.Forms
                         RefreshServers();
                         if (AddBatchServers(result, id, allowInsecure) > 0)
                         {
+                            // 显示出添加到末尾的订阅节点
+                            lvServers.EnsureVisible(lvServers.Items.Count - 1);
                         }
                         else
                         {
