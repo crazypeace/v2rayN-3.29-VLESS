@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Text;
 
 namespace v2rayN.Base
 {
@@ -10,6 +11,7 @@ namespace v2rayN.Base
         public WebClientEx(int timeout = 3000)
         {
             Timeout = timeout;
+            this.Encoding = Encoding.UTF8;
         }
 
         protected override WebRequest GetWebRequest(Uri address)
