@@ -248,7 +248,9 @@ namespace v2rayN.Forms
         /// </summary>
         private void RefreshServersView()
         {
+            // 准备更新 LilstView
             lvServers.BeginUpdate();
+
             lvServers.Items.Clear();
 
             for (int k = 0; k < appConfig.outbound.Count; k++)
@@ -311,6 +313,8 @@ namespace v2rayN.Forms
 
                 if (lvItem != null) lvServers.Items.Add(lvItem);
             }
+
+            lvServers.Select();
             lvServers.EndUpdate();
 
             //if (lvServers.Items.Count > 0)
@@ -381,7 +385,7 @@ namespace v2rayN.Forms
             {
                 return;
             }
-            //qrCodeControl.showQRCode(index, appConfig);
+            qrCodeControl.showQRCode(index, appConfig);
         }
 
         private void DisplayToolStatus()
@@ -684,6 +688,9 @@ namespace v2rayN.Forms
                 return;
             }
             SetDefaultServer(index);
+            lvServers.Items[index].Selected = true;
+            lvServers.Items[index].Focused = true;
+            lvServers.Items[index].EnsureVisible();
         }
 
 
@@ -1188,6 +1195,8 @@ namespace v2rayN.Forms
 
                 // 让移动后的列表项被选中
                 lvServers.Items[index].Selected = true;
+                lvServers.Items[index].Focused = true;
+                lvServers.EnsureVisible(index);
             }
         }
         private void menuSelectAll_Click(object sender, EventArgs e)
@@ -1677,11 +1686,8 @@ namespace v2rayN.Forms
             //更新 list view
             lvServers.BeginUpdate();
 
-            foreach (ColumnHeader column in lvServers.Columns)
-            {
-                column.Width = -2;
-            }
-            
+            lvServers.AutoResizeColumns();
+
             lvServers.EndUpdate();
         }
     }

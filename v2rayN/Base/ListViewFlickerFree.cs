@@ -34,12 +34,14 @@ namespace v2rayN.Base
                     foreach (ListViewItem item in this.Items)
                     {
                         // 整行视作相同字形，不单独计算每个单元格
-                        font = item.SubItems[i].Font;
+                        //font = item.SubItems[i].Font;
                         string str = item.SubItems[i].Text;
                         if (str.Length > MaxStr.Length) // 未考虑非等宽问题
                             MaxStr = str;
                     }
-                    int strWidth = (int)graphics.MeasureString(MaxStr, font).Width;
+
+                    // 避免选中项字体变粗, 宽度不够.  追加 字符数*2 的宽度
+                    int strWidth = (int)graphics.MeasureString(MaxStr, font).Width + MaxStr.Length * 2;
                     c.Width = System.Math.Max(cWidth, strWidth);
                 }
                 this.ResumeLayout();

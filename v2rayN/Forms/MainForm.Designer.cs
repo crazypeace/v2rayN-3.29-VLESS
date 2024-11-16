@@ -212,7 +212,6 @@
             this.subMenuExportServer,
             this.menuExport2ShareUrl});
             this.cmsLv.Name = "cmsLv";
-            this.cmsLv.OwnerItem = this.tsbServer;
             // 
             // subMenuAddServer
             // 
