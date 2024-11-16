@@ -11,6 +11,7 @@ using v2rayN.Tool;
 using System.Diagnostics;
 using System.Drawing;
 using System.Net;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace v2rayN.Forms
 {
@@ -1669,6 +1670,19 @@ namespace v2rayN.Forms
         private void tsbCheckUpdateV2rayCore_Click(object sender, EventArgs e)
         {
             Process.Start(Global.V2RayCore_Url);
+        }
+
+        private void menuAdjustListColumn_Click(object sender, EventArgs e)
+        {
+            //更新 list view
+            lvServers.BeginUpdate();
+
+            foreach (ColumnHeader column in lvServers.Columns)
+            {
+                column.Width = -2;
+            }
+            
+            lvServers.EndUpdate();
         }
     }
 }

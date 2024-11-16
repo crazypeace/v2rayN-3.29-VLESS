@@ -244,6 +244,12 @@
   <data name="menuSelectAll.Text" xml:space="preserve">
     <value>全选 (Ctrl+A)</value>
   </data>
+  <data name="menuAdjustListColumn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 30</value>
+  </data>
+  <data name="menuAdjustListColumn.Text" xml:space="preserve">
+    <value>自适应调整列宽</value>
+  </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
     <value>412, 6</value>
   </data>
@@ -329,7 +335,7 @@
     <value>  服务器  </value>
   </data>
   <data name="cmsLv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 418</value>
+    <value>416, 481</value>
   </data>
   <data name="lvServers.Items" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -447,14 +453,8 @@
   <data name="cmsMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>259, 220</value>
   </data>
-  <data name="tsbSubSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
-  </data>
   <data name="tsbSubSetting.Text" xml:space="preserve">
     <value>订阅设置</value>
-  </data>
-  <data name="tsbSubUpdate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 34</value>
   </data>
   <data name="tsbSubUpdate.Text" xml:space="preserve">
     <value>更新订阅</value>
