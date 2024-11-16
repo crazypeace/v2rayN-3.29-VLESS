@@ -60,21 +60,21 @@
             resources.ApplyResources(this.chkAllowInsecureTrue, "chkAllowInsecureTrue");
             this.chkAllowInsecureTrue.Name = "chkAllowInsecureTrue";
             this.chkAllowInsecureTrue.UseVisualStyleBackColor = true;
-            this.chkAllowInsecureTrue.Leave += new System.EventHandler(this.txtRemarks_Leave);
+            this.chkAllowInsecureTrue.Leave += new System.EventHandler(this.chkAllowInsecureTrue_Leave);
             // 
             // chkBase64Decode
             // 
             resources.ApplyResources(this.chkBase64Decode, "chkBase64Decode");
             this.chkBase64Decode.Name = "chkBase64Decode";
             this.chkBase64Decode.UseVisualStyleBackColor = true;
-            this.chkBase64Decode.Leave += new System.EventHandler(this.txtRemarks_Leave);
+            this.chkBase64Decode.Leave += new System.EventHandler(this.chkBase64Decode_Leave);
             // 
             // chkEnabled
             // 
             resources.ApplyResources(this.chkEnabled, "chkEnabled");
             this.chkEnabled.Name = "chkEnabled";
             this.chkEnabled.UseVisualStyleBackColor = true;
-            this.chkEnabled.Leave += new System.EventHandler(this.txtRemarks_Leave);
+            this.chkEnabled.Leave += new System.EventHandler(this.chkEnabled_Leave);
             // 
             // btnRemove
             // 
@@ -87,7 +87,7 @@
             // 
             resources.ApplyResources(this.txtUrl, "txtUrl");
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Leave += new System.EventHandler(this.txtRemarks_Leave);
+            this.txtUrl.Leave += new System.EventHandler(this.txtUrl_Leave);
             // 
             // txtRemarks
             // 

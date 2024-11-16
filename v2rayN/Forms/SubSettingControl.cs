@@ -60,5 +60,25 @@ namespace v2rayN.Forms
 
             OnButtonClicked?.Invoke(sender, e);
         }
+
+        private void chkEnabled_Leave(object sender, EventArgs e)
+        {
+            EndBindingSub();
+        }
+
+        private void txtUrl_Leave(object sender, EventArgs e)
+        {
+            EndBindingSub();
+        }
+
+        private void chkAllowInsecureTrue_Leave(object sender, EventArgs e)
+        {
+            EndBindingSub();
+        }
+
+        private void chkBase64Decode_Leave(object sender, EventArgs e)
+        {
+            EndBindingSub();
+        }
     }
 }
