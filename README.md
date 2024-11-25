@@ -16,6 +16,19 @@ A v2rayN-3.29 mod version. Support VLESS Reality. Support TLS Hello fragment. Su
 - 支持 TLS Hello 分片
 - 支持 Hysteria2
 
+# 小功能优化
+自适应调整列宽  
+键盘 U, T, D, B键 移动节点排序  
+订阅项 是否base64解码  
+上下键选择节点时, 二维码同步刷新  
+激活节点时, 滚动到显示节点  
+订阅更新后, 滚动到显示节点  
+批量测试时, 保存测试用的json配置文件  
+
+# 演示视频
+https://www.youtube.com/watch?v=MmGTy5-mlXg
+
+
 # 打包v2rayN-VLESS-Core.zip时
 v3.29.0.3打包的是V2Ray v4.32.1版本，支持VLESS和XTLS的最后一个版本  
 v3.29.0.4打包的是Xray v1.8.4版本  
