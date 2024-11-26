@@ -293,7 +293,7 @@
     <value>415, 30</value>
   </data>
   <data name="menuClearTestResult.Text" xml:space="preserve">
-    <value>清空测试结果</value>
+    <value>清空所选测试结果</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>412, 6</value>
@@ -329,7 +329,7 @@
     <value>批量导出分享URL至剪贴板(多选) (Ctrl+C)</value>
   </data>
   <data name="cmsLv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 448</value>
+    <value>416, 481</value>
   </data>
   <data name="lvServers.Items" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -357,11 +357,11 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>服务器列表</value>
   </data>
-  <data name="toolSslServerSpeed.Text" xml:space="preserve">
-    <value>网速显示未启用</value>
-  </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>信息</value>
+  </data>
+  <data name="toolSslServerSpeed.Text" xml:space="preserve">
+    <value>网速显示未启用</value>
   </data>
   <data name="menuNotEnabledHttp.Size" type="System.Drawing.Size, System.Drawing">
     <value>472, 34</value>
@@ -453,14 +453,8 @@
   <data name="cmsMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>259, 220</value>
   </data>
-  <data name="tsbSubSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 34</value>
-  </data>
   <data name="tsbSubSetting.Text" xml:space="preserve">
     <value>订阅设置</value>
-  </data>
-  <data name="tsbSubUpdate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 34</value>
   </data>
   <data name="tsbSubUpdate.Text" xml:space="preserve">
     <value>更新订阅</value>

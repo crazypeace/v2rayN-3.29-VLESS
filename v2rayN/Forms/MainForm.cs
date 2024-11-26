@@ -666,6 +666,7 @@ namespace v2rayN.Forms
             UI.Show(string.Format(UIRes.I18N("RemoveDuplicateServerResult"), oldCount, newCount));
         }
 
+        // 克隆服务器
         private void menuCopyServer_Click(object sender, EventArgs e)
         {
             int index = GetLvSelectedIndex();
@@ -673,10 +674,15 @@ namespace v2rayN.Forms
             {
                 return;
             }
-            if (AppConfigHandler.CopyServer(ref appConfig, index) == 0)
+            if ( ( index = AppConfigHandler.CopyServer(ref appConfig, index)) >= 0)
             {
                 //刷新
                 RefreshServers();
+
+                // 让移动后的列表项被选中
+                lvServers.Items[index].Selected = true;
+                lvServers.Items[index].Focused = true;
+                lvServers.EnsureVisible(index);
             }
         }
 

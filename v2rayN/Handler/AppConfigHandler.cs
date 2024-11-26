@@ -316,7 +316,7 @@ namespace v2rayN.Handler
 
             ToJsonFile(appConfig);
 
-            return 0;
+            return index + 1;
         }
 
         /// <summary>
