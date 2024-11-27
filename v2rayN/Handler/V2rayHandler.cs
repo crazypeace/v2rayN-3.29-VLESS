@@ -74,6 +74,11 @@ namespace v2rayN.Handler
             {
                 coreExe = "v2ray";
             }
+            // 如果是V vmess 要使用 v2ray
+            else if (outbound.configType == (int)EConfigType.Vmess)
+            {
+                coreExe = "v2ray";
+            }
             // 其它情况不指定
             else
             {
