@@ -558,6 +558,15 @@ namespace v2rayN.Forms
                 RefreshServers();
                 LoadV2ray();
             }
+
+            // 如果新建节点, 选择节点列表的末尾
+            if (index < 0)
+            {
+                index = lvServers.Items.Count - 1;
+            }
+            // 修改节点后, 让节点选中, 并显示在可见区域中
+            lvServers.Items[index].Selected = true;
+            lvServers.EnsureVisible(index);            
         }
 
 
