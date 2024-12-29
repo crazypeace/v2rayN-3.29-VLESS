@@ -18,6 +18,8 @@ A v2rayN-3.29 mod version. Support VLESS Reality. Support TLS Hello fragment. Su
 
 # 限制 
 - 不能同时选取 reality 和 hy2 节点批量测速.
+- 如果你是使用 v2rayn.zip 并自己添加内核的话, 请不要放入 v2ray内核.zip 中的 config.json 文件
+![image](https://github.com/user-attachments/assets/568bc88c-4fc8-4d23-92d0-2a72ddc6ea5d)
 
 # 小功能优化
 自适应调整列宽  
