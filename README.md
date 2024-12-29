@@ -16,6 +16,9 @@ A v2rayN-3.29 mod version. Support VLESS Reality. Support TLS Hello fragment. Su
 - 支持 TLS Hello 分片
 - 支持 Hysteria2
 
+# 限制 
+- 不能同时选取 reality 和 hy2 节点批量测速.
+
 # 小功能优化
 自适应调整列宽  
 键盘 U, T, D, B键 移动节点排序  
@@ -24,6 +27,10 @@ A v2rayN-3.29 mod version. Support VLESS Reality. Support TLS Hello fragment. Su
 激活节点时, 滚动到显示节点  
 订阅更新后, 滚动到显示节点  
 批量测试时, 保存测试用的json配置文件  
+克隆服务器后选中
+清除所选测试结果
+如果 vmess 协议, 使用 v2ray (因为xray只支持 AEAD 之后的vmess, 不支持 "古典" vmess)
+新建节点, 编辑节点后, 列表显示操作过的节点
 
 # 演示视频
 https://www.youtube.com/watch?v=MmGTy5-mlXg
