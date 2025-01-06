@@ -103,11 +103,6 @@
     "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
-        "inboundTag": ["socks"],
-        "outboundTag": "proxy",
-        "type": "field"
-      },
-      {
         "inboundTag": ["api"],
         "outboundTag": "api",
         "type": "field"
