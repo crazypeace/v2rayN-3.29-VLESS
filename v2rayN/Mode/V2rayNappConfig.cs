@@ -247,6 +247,14 @@ namespace v2rayN.Mode
             }
             return Convert.ToBoolean(outbound[index].allowInsecure);
         }
+        public string pinSHA256()
+        {
+            if (index < 0 || Utils.IsNullOrEmpty(outbound[index].pinSHA256))
+            {
+                return string.Empty;
+            }
+            return outbound[index].pinSHA256.TrimEx();
+        }
 
         public int GetLocalPort(string protocol)
         {
@@ -377,6 +385,7 @@ namespace v2rayN.Mode
             path = string.Empty;
             streamSecurity = string.Empty;
             allowInsecure = string.Empty;
+            pinSHA256 = string.Empty;
             configType = (int)EConfigType.Vmess;
             testResult = string.Empty;
             subid = string.Empty;
@@ -509,6 +518,11 @@ namespace v2rayN.Mode
         /// 是否允许不安全连接（用于客户端）
         /// </summary>
         public string allowInsecure { get; set; }
+
+        /// <summary>
+        /// 指定证书指纹
+        /// </summary>
+        public string pinSHA256 { get; set; }
 
         /// <summary>
         /// appConfig type(1=normal,2=custom)

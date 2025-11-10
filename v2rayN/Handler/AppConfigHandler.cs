@@ -488,6 +488,10 @@ namespace v2rayN.Handler
                     {
                         dicQuery.Add("insecure", "1");
                     }
+                    if (!string.IsNullOrWhiteSpace(nodeItem.pinSHA256))
+                    {
+                        dicQuery.Add("pinSHA256", nodeItem.pinSHA256);
+                    }
                     string query = "?" + string.Join("&", dicQuery.Select(x => x.Key + "=" + x.Value).ToArray());
 
                     url = string.Format("{0}@{1}:{2}",
@@ -1202,6 +1206,7 @@ namespace v2rayN.Handler
             hy2Item.network = hy2Item.network.TrimEx();
             hy2Item.streamSecurity = hy2Item.streamSecurity.TrimEx();
             hy2Item.allowInsecure = hy2Item.allowInsecure.TrimEx();
+            hy2Item.pinSHA256 = hy2Item.pinSHA256.TrimEx();
 
             if (index >= 0)
             {

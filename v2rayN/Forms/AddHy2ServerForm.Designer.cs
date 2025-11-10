@@ -46,12 +46,14 @@
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.cmbNetwork = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbStreamSecurity = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.cmbAllowInsecure = new System.Windows.Forms.ComboBox();
+            this.txtPinSHA256 = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.menuServer.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -153,6 +155,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtPinSHA256);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cmbNetwork);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label15);
@@ -171,6 +175,11 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
             // 
             // cmbNetwork
             // 
@@ -217,6 +226,11 @@
             resources.GetString("cmbAllowInsecure.Items1"),
             resources.GetString("cmbAllowInsecure.Items2")});
             this.cmbAllowInsecure.Name = "cmbAllowInsecure";
+            // 
+            // txtPinSHA256
+            // 
+            resources.ApplyResources(this.txtPinSHA256, "txtPinSHA256");
+            this.txtPinSHA256.Name = "txtPinSHA256";
             // 
             // AddHy2ServerForm
             // 
@@ -266,5 +280,7 @@
         private System.Windows.Forms.ComboBox cmbAllowInsecure;
         private System.Windows.Forms.ComboBox cmbNetwork;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtPinSHA256;
     }
 }

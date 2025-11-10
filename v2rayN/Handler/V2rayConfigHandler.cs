@@ -715,6 +715,38 @@ namespace v2rayN.Handler
                             password = appConfig.id()
                         };
                         streamSettings.hy2Settings = hy2Settings;
+
+                        // 指定证书指纹
+                        string pinSHA256 = appConfig.pinSHA256();
+                        if (!string.IsNullOrWhiteSpace(pinSHA256))
+                        {
+                            string pinSHA256Base64 = "";
+                            try
+                            {
+                                // 从hex恢复成字节码再base64编码
+                                // 移除常见分隔符
+                                pinSHA256 = pinSHA256.Replace("-", "").Replace(" ", "").Replace(":", "");
+                                // 1. 将十六进制字符串转换为字节数组
+                                byte[] pinSHA256Bytes = new byte[pinSHA256.Length / 2];
+                                for (int i = 0; i < pinSHA256Bytes.Length; i++)
+                                {
+                                    pinSHA256Bytes[i] = Convert.ToByte(pinSHA256.Substring(i * 2, 2), 16);
+                                }
+                                // 2. 将字节数组进行 Base64 编码
+                                pinSHA256Base64 = Convert.ToBase64String(pinSHA256Bytes);
+                            }
+                            catch
+                            {
+                                pinSHA256Base64 = "";
+                            }
+
+                            if (streamSettings.tlsSettings.pinnedPeerCertificateChainSha256 == null)
+                            {
+                                streamSettings.tlsSettings.pinnedPeerCertificateChainSha256 = new List<string>();
+                            }
+                            streamSettings.tlsSettings.pinnedPeerCertificateChainSha256.Add(pinSHA256);
+                            streamSettings.tlsSettings.pinnedPeerCertificateChainSha256.Add(pinSHA256Base64);
+                        }
                         break;
                     default:
                         //tcp带http伪装
@@ -1579,6 +1611,11 @@ namespace v2rayN.Handler
                     else if (query["insecure"] == "0")
                     {
                         nodeItem.allowInsecure = "false";
+                    }
+
+                    if (query.AllKeys.Contains("pinSHA256"))
+                    {
+                        nodeItem.pinSHA256 = query["pinSHA256"];
                     }
                 }
                 else

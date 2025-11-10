@@ -473,6 +473,9 @@ namespace v2rayN.Mode
         public string publicKey { get; set; }
         public string shortId { get; set; }
         public string spiderX { get; set; }
+
+        // 指定证书指纹
+        public List<string> pinnedPeerCertificateChainSha256 { get; set; }
     }
 
     public class TcpSettings

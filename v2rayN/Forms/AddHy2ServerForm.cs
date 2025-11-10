@@ -52,6 +52,7 @@ namespace v2rayN.Forms
             cmbNetwork.Text = nodeItem.network;
             cmbStreamSecurity.Text = nodeItem.streamSecurity;
             cmbAllowInsecure.Text = nodeItem.allowInsecure;
+            txtPinSHA256.Text = nodeItem.pinSHA256;
             txtRemarks.Text = nodeItem.remarks;
         }
 
@@ -67,6 +68,7 @@ namespace v2rayN.Forms
             cmbNetwork.Text = "";
             cmbStreamSecurity.Text = "";
             cmbAllowInsecure.Text = "";
+            txtPinSHA256.Text = "";
             txtRemarks.Text = "";
         }
 
@@ -78,6 +80,7 @@ namespace v2rayN.Forms
             string network = cmbNetwork.Text;
             string streamSecurity = cmbStreamSecurity.Text;
             string allowInsecure = cmbAllowInsecure.Text;
+            string pinSHA256 = txtPinSHA256.Text;
             string remarks = txtRemarks.Text;
 
             if (Utils.IsNullOrEmpty(address))
@@ -102,6 +105,7 @@ namespace v2rayN.Forms
             nodeItem.network = network;
             nodeItem.streamSecurity = streamSecurity;
             nodeItem.allowInsecure = allowInsecure;
+            nodeItem.pinSHA256 = pinSHA256;
             nodeItem.remarks = remarks;
 
             if (AppConfigHandler.AddHysteria2Server(ref appConfig, nodeItem, EditIndex) == 0)
@@ -147,11 +151,12 @@ namespace v2rayN.Forms
             cmbNetwork.Text = hy2Item.network;
             cmbStreamSecurity.Text = hy2Item.streamSecurity;
             cmbAllowInsecure.Text = hy2Item.allowInsecure;
+            txtPinSHA256.Text = hy2Item.pinSHA256;
             txtId.Text = hy2Item.id;
             txtRemarks.Text = hy2Item.remarks;
         }
-         
-        #endregion        
+
+        #endregion
 
     }
 }
