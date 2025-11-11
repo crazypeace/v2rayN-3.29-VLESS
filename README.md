@@ -54,8 +54,9 @@ https://learn.microsoft.com/zh-CN/lifecycle/faq/dotnet-framework
 ![image](https://github.com/crazypeace/v2rayN-3.29-VLESS/assets/665889/8efc502f-c216-4091-b111-7f127cfff79f)
 
 # 32位用户可以自己编译v2rayN
-就是下载源码, 下载安装VS, 再点一下编译按钮  
+就是下载源码, 安装VS, 再点一下编译按钮  
 https://zelikk.blogspot.com/2022/07/v2rayn-vless-v329.html
 
 # 32位用户可以自己编译内核
+就是下载源码, 安装Go, 设置命令行http代理, 再执行编译命令  
 https://zelikk.blogspot.com/2024/07/win7-win10-32-64-xray-184.html  
