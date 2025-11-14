@@ -4,6 +4,8 @@ v2rayN-3.29 修改版, ✅VLESS Reality, ✅TLS fragment 分片, ✅Socks 下一
 
 ![image](https://github.com/crazypeace/v2rayN-3.29-VLESS/assets/665889/dde23c73-6885-47bf-8006-9f6ed3ef14a9)
 <img alt="v2rayN_2024-11-09_02-44-43" src="https://github.com/user-attachments/assets/f5f8b72a-7448-4ff3-be63-f7dcb15156bb">
+<img alt="image" src="https://github.com/user-attachments/assets/0ba7a0ab-f636-4669-9361-3fb5440b4110" />
+
 
 
 # 本repo的目的
