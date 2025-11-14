@@ -1,6 +1,6 @@
 # v2rayN-3.29-VLESS
-A v2rayN-3.29 mod version. Support VLESS Reality. Support TLS Hello fragment. Support Hysteria2.  
-v2rayN-3.29 修改版, ✅VLESS Reality, ✅TLS fragment 分片, ✅Socks 下一跳出口, ✅Hysteria2
+A v2rayN-3.29 mod version. Support VLESS Reality. Support TLS Hello fragment. Support Hysteria2, Support Hysteria2 pinSHA256 Certificate Pinning
+v2rayN-3.29 修改版, ✅VLESS Reality, ✅TLS fragment 分片, ✅Socks 下一跳出口, ✅Hysteria2, ✅Hy2证书锁定pinSHA256
 
 ![image](https://github.com/crazypeace/v2rayN-3.29-VLESS/assets/665889/dde23c73-6885-47bf-8006-9f6ed3ef14a9)
 <img alt="v2rayN_2024-11-09_02-44-43" src="https://github.com/user-attachments/assets/f5f8b72a-7448-4ff3-be63-f7dcb15156bb">
