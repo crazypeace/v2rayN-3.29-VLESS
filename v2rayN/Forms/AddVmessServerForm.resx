@@ -295,7 +295,7 @@
     <value>false</value>
   </data>
   <data name="cmbAllowInsecure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>319, 9</value>
+    <value>319, 5</value>
   </data>
   <data name="cmbAllowInsecure.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 26</value>
@@ -391,7 +391,7 @@
     <value>4</value>
   </data>
   <data name="txtPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 169</value>
+    <value>275, 169</value>
   </data>
   <data name="txtPath.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -430,7 +430,7 @@
     <value>quic</value>
   </data>
   <data name="cmbNetwork.Location" type="System.Drawing.Point, System.Drawing">
-    <value>268, 28</value>
+    <value>275, 28</value>
   </data>
   <data name="cmbNetwork.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 26</value>
@@ -646,7 +646,7 @@
     <value>tls</value>
   </data>
   <data name="cmbStreamSecurity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 240</value>
+    <value>275, 240</value>
   </data>
   <data name="cmbStreamSecurity.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 26</value>
@@ -694,7 +694,7 @@
     <value>15</value>
   </data>
   <data name="txtRequestHost.Location" type="System.Drawing.Point, System.Drawing">
-    <value>268, 100</value>
+    <value>275, 100</value>
   </data>
   <data name="txtRequestHost.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -793,7 +793,7 @@
     <value>wireguard</value>
   </data>
   <data name="cmbHeaderType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>268, 64</value>
+    <value>275, 64</value>
   </data>
   <data name="cmbHeaderType.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 26</value>
