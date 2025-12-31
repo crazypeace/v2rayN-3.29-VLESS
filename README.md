@@ -1,5 +1,5 @@
 # v2rayN-3.29-VLESS
-A v2rayN-3.29 mod version. Support VLESS Reality. Support TLS Hello fragment. Support Hysteria2, Support Hysteria2 pinSHA256 Certificate Pinning
+A v2rayN-3.29 mod version. Support VLESS Reality. Support TLS Hello fragment. Support Hysteria2, Support Hysteria2 pinSHA256 Certificate Pinning  
 v2rayN-3.29 修改版, ✅VLESS Reality, ✅TLS fragment 分片, ✅Socks 下一跳出口, ✅Hysteria2, ✅Hy2指定证书指纹pinSHA256 证书锁定
 
 ![image](https://github.com/crazypeace/v2rayN-3.29-VLESS/assets/665889/dde23c73-6885-47bf-8006-9f6ed3ef14a9)
@@ -18,6 +18,8 @@ v2rayN-3.29 修改版, ✅VLESS Reality, ✅TLS fragment 分片, ✅Socks 下一
 - 支持 Socks 出口
 - 支持 TLS Hello 分片
 - 支持 Hysteria2
+- 订阅 兼容支持纯文本和Base64编码
+- Hysteria2 支持指定证书指纹pinSHA256 兼容支持Base64编码和Hex编码
 
 # 限制 
 - 不能同时选取 Reality 和 Hy2 节点批量测速.
@@ -25,7 +27,7 @@ v2rayN-3.29 修改版, ✅VLESS Reality, ✅TLS fragment 分片, ✅Socks 下一
 ![image](https://github.com/user-attachments/assets/568bc88c-4fc8-4d23-92d0-2a72ddc6ea5d)
 
 # 小功能优化
-自适应调整列宽  
+右键菜单 自适应调整列宽  
 键盘 U, T, D, B键 移动节点排序  
 订阅项 是否base64解码  
 上下键选择节点时, 二维码同步刷新  
@@ -33,7 +35,7 @@ v2rayN-3.29 修改版, ✅VLESS Reality, ✅TLS fragment 分片, ✅Socks 下一
 订阅更新后, 滚动到显示节点  
 批量测试时, 保存测试用的json配置文件  
 克隆服务器后选中  
-清除所选测试结果  
+右键菜单 清除所选测试结果  
 如果是 Vmess 协议, 使用 V2Ray (因为Xray只支持 AEAD 之后的Vmess, 不支持 "古典" Vmess)  
 新建节点, 编辑节点后, 列表显示操作过的节点  
 
@@ -42,14 +44,11 @@ https://www.youtube.com/watch?v=MmGTy5-mlXg
 
 
 # 打包v2rayN-VLESS-Core.zip时
-v3.29.0.3打包的是V2Ray v4.32.1版本，支持VLESS和XTLS的最后一个版本  
-v3.29.0.4打包的是Xray v1.8.4版本  
-v3.29.0.7打包的是Xray v1.8.6版本  
-v3.29.0.8打包的是Xray v1.8.10版本  
+v3.29.0.3打包的是V2Ray v4.32.1 ，支持VLESS和XTLS的最后一个版本  
+v3.29.0.4打包的是Xray v1.8.4   
+v3.29.0.7打包的是Xray v1.8.6  
+v3.29.0.8打包的是Xray v1.8.10  
 v3.29.0.11打包的是Xray v1.8.24 和 V2Ray v5.21.0  
-
-因为go v1.21以后不支持Windows7 系统，所以要么降级 [Xray v1.8.4](https://github.com/XTLS/Xray-core/releases/tag/v1.8.4)  
-要么去下载对应的特殊版本的core，比如写了 Win7 的 https://github.com/XTLS/Xray-core/releases/tag/v1.8.24  
 
 # 本项目会永远保持 .NET Framework 4.8
 https://learn.microsoft.com/zh-CN/lifecycle/faq/dotnet-framework
@@ -62,3 +61,9 @@ https://zelikk.blogspot.com/2022/07/v2rayn-vless-v329.html
 # 32位用户可以自己编译内核
 就是下载源码, 安装Go, 设置命令行http代理, 再执行编译命令  
 https://zelikk.blogspot.com/2024/07/win7-win10-32-64-xray-184.html  
+
+# Win7用户
+因为go v1.21以后不支持Windows7 系统，所以需要使用特殊的 go 编译环境来编译内核.  
+Xray内核发布了支持 Win7 的版本  
+V2Ray内核没有, 所以需要自己编译  
+可以参考这个频道的信息 https://t.me/for_win7  
