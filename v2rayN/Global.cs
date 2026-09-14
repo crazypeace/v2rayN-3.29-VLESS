@@ -181,6 +181,11 @@ namespace v2rayN
         public const string hy2ProtocolLite = "hysteria2";
 
         /// <summary>
+        /// Xray 内核里 hysteria2 的协议名和传输名是 hysteria
+        /// </summary>
+        public const string hy2ProtocolLiteXray = "hysteria";
+
+        /// <summary>
         /// pac
         /// </summary>
         public const string pacFILE = "pac.txt";

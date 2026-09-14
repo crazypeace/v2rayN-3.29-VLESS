@@ -22,7 +22,6 @@ v2rayN-3.29 修改版, ✅VLESS Reality, ✅TLS fragment 分片, ✅Socks 下一
 - Hysteria2 支持指定证书指纹pinSHA256 兼容支持Base64编码和Hex编码
 
 # 限制 
-- 不能同时选取 Reality 和 Hy2 节点批量测速.
 - 如果你是使用 v2rayN.zip 并自己添加内核的话, 请不要放入 V2Ray内核.zip 中的 config.json 文件
 ![image](https://github.com/user-attachments/assets/568bc88c-4fc8-4d23-92d0-2a72ddc6ea5d)
 
@@ -36,7 +35,7 @@ v2rayN-3.29 修改版, ✅VLESS Reality, ✅TLS fragment 分片, ✅Socks 下一
 批量测试时, 保存测试用的json配置文件  
 克隆服务器后选中  
 右键菜单 清除所选测试结果  
-如果是 Vmess 协议, 使用 V2Ray (因为Xray只支持 AEAD 之后的Vmess, 不支持 "古典" Vmess)  
+Vmess / Hysteria2 / VLESS Reality / Shadowsocks2022 统一使用 Xray 内核  
 新建节点, 编辑节点后, 列表显示操作过的节点  
 
 # 演示视频

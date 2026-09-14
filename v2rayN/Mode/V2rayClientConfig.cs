@@ -232,6 +232,19 @@ namespace v2rayN.Mode
 
         /// tlshello 分片
         public Fragment fragment { get; set; }
+
+        /// <summary>
+        /// hy2 (Xray 内核): 版本, 必须为 2
+        /// </summary>
+        public int? version { get; set; }
+        /// <summary>
+        /// hy2 (Xray 内核): 服务器地址
+        /// </summary>
+        public string address { get; set; }
+        /// <summary>
+        /// hy2 (Xray 内核): 服务器端口
+        /// </summary>
+        public int? port { get; set; }
     }
 
     public class VnextItem
@@ -448,14 +461,21 @@ namespace v2rayN.Mode
         /// Hy2传输额外设置
         /// </summary>
         public Hy2Settings hy2Settings { get; set; }
+
+        /// <summary>
+        /// Hy2 transport 额外设置 (Xray 内核字段名)
+        /// </summary>
+        public HysteriaSettings hysteriaSettings { get; set; }
     }
 
     public class TlsSettings
     {
         /// <summary>
         /// 是否允许不安全连接（用于客户端）
+        /// 用 bool? 是为了能不写这个字段: 有 pinSHA256 时必须省略
+        /// (官方 Xray 内核里 allowInsecure 一出现, 整份配置就加载失败)
         /// </summary>
-        public bool allowInsecure { get; set; }
+        public bool? allowInsecure { get; set; }
 
         /// <summary>
         /// 
@@ -476,6 +496,12 @@ namespace v2rayN.Mode
 
         // 指定证书指纹
         public List<string> pinnedPeerCertificateChainSha256 { get; set; }
+
+        /// <summary>
+        /// 指定证书指纹 (Xray 内核字段名)
+        /// 只认 hex, 多个用 , 分隔; 写错了整份配置加载失败
+        /// </summary>
+        public string pinnedPeerCertSha256 { get; set; }
     }
 
     public class TcpSettings
@@ -611,6 +637,21 @@ namespace v2rayN.Mode
     public class Hy2Settings
     {
         public string password { get; set; }
+    }
+
+    /// <summary>
+    /// Hy2 transport 设置 (Xray 内核)
+    /// </summary>
+    public class HysteriaSettings
+    {
+        /// <summary>
+        /// 版本, 必须为 2
+        /// </summary>
+        public int version { get; set; }
+        /// <summary>
+        /// 密码 (Xray 的 hy2 密码只能放这里)
+        /// </summary>
+        public string auth { get; set; }
     }
 
     public class SockoptObject

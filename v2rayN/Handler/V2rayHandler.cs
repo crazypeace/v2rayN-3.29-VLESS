@@ -64,25 +64,17 @@ namespace v2rayN.Handler
         // 根据协议不同指定不同的内核
         public void SetCoreExeByConfig(NodeItem outbound)
         {
-            // 如果是 reality 要使用 xray
-            if (outbound.streamSecurity == Global.StreamSecurityReality)
-            {
-                coreExe = "xray";
-            }
-            // 如果是 hy2 要使用 v2ray
-            else if (outbound.configType == (int)EConfigType.Hysteria2)
-            {
-                coreExe = "v2ray";
-            }
-            // 如果是V vmess 要使用 v2ray
-            else if (outbound.configType == (int)EConfigType.Vmess)
-            {
-                coreExe = "v2ray";
-            }
-            // 如果是 SS2022 加密方式 (2022-blake3-*) 要使用 xray (v2ray 不支持)
-            else if (outbound.configType == (int)EConfigType.Shadowsocks
-                && !Utils.IsNullOrEmpty(outbound.security)
-                && outbound.security.StartsWith("2022-blake3"))
+            // 下面这些必须用 xray 内核:
+            //   reality                  v2ray 不支持
+            //   hy2 (hysteria2 出站)      Xray v26.1.13 起支持, 配置形状与 v2ray 不同
+            //   vmess                    古典(非 AEAD) vmess 不再支持, 统一走 Xray
+            //   SS2022 (2022-blake3-*)   v2ray 不支持
+            if (outbound.streamSecurity == Global.StreamSecurityReality
+                || outbound.configType == (int)EConfigType.Hysteria2
+                || outbound.configType == (int)EConfigType.Vmess
+                || (outbound.configType == (int)EConfigType.Shadowsocks
+                    && !Utils.IsNullOrEmpty(outbound.security)
+                    && outbound.security.StartsWith("2022-blake3")))
             {
                 coreExe = "xray";
             }

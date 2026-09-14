@@ -2,10 +2,13 @@
 #
 # 产物:
 #   <name_prefix>-v<版本>.zip        只有程序
-#   <name_prefix>-Core-v<版本>.zip   程序 + Xray/V2Ray 内核 + geo 数据
+#   <name_prefix>-Core-v<版本>.zip   程序 + Xray 内核 + geo 数据
 #
 # 手动跑: Actions → Build and Package → Run workflow
 # 也可以指定 release_tag 直接把两个 zip 传上去
+#
+# 内核: 只打包 Xray (v26.3.27 起支持 hysteria2 出站, 配置形状与 v2ray 不同)
+#       默认用 crazypeace/Xray-core-allowInsecure 的补丁版, 以保住订阅里的 allowInsecure
 name: Build and Package
 
 on:
@@ -20,17 +23,17 @@ on:
         required: false
         default: 'v2rayN-Reality-Hy2'
       xray_version:
-        description: 'Xray 版本 tag(如 v25.10.15 / v26.3.27)'
+        description: 'Xray 版本 tag(如 v26.3.27)。必须 >= v26.1.13 才有 hysteria2 出站'
         required: false
-        default: 'v25.10.15'
+        default: 'v26.3.27'
       xray_allowinsecure:
-        description: '用 crazypeace/Xray-core-allowInsecure 内核(永久开启 allowInsecure)代替官方 Xray'
+        description: 'true = 用 crazypeace/Xray-core-allowInsecure 的补丁内核(永久允许 allowInsecure); false = 官方 Xray'
         type: boolean
-        default: false
-      v2ray_version:
-        description: 'V2Ray 版本 tag(如 v5.41.0)'
+        default: true
+      geoip_version:
+        description: 'geoip-only-cn-private.dat 的来源版本(v2fly/geoip), 或 latest'
         required: false
-        default: 'v5.41.0'
+        default: 'latest'
       release_tag:
         description: '上传到这个 Release tag。留空 = 只作为 Actions artifact'
         required: false
@@ -42,12 +45,13 @@ permissions:
   contents: write
 
 env:
-  XRAY_VERSION: ${{ inputs.xray_version || 'v25.10.15' }}
-  V2RAY_VERSION: ${{ inputs.v2ray_version || 'v5.41.0' }}
-  XRAY_ALLOWINSECURE: ${{ inputs.xray_allowinsecure || 'false' }}
+  XRAY_VERSION: ${{ inputs.xray_version || 'v26.3.27' }}
+  GEOIP_VERSION: ${{ inputs.geoip_version || 'latest' }}
   NAME_PREFIX: ${{ inputs.name_prefix || 'v2rayN-Reality-Hy2' }}
   VERSION_INPUT: ${{ inputs.version || '' }}
   RELEASE_TAG: ${{ inputs.release_tag || '' }}
+  # 布尔型不能写成 inputs.x || 'true': 手动选 false 也会被 || 吃成 true
+  XRAY_ALLOWINSECURE_INPUT: ${{ inputs.xray_allowinsecure }}
 
 jobs:
   build:
@@ -74,6 +78,11 @@ jobs:
           Write-Host "APP_VERSION=$v"
           "version=$v" >> $env:GITHUB_OUTPUT
           "app_version=$v" >> $env:GITHUB_ENV
+          # 没给输入(push 触发)时用默认值 true
+          $ai = $env:XRAY_ALLOWINSECURE_INPUT
+          if ($ai -ne 'true' -and $ai -ne 'false') { $ai = 'true' }
+          "xray_allowinsecure=$ai" >> $env:GITHUB_ENV
+          Write-Host "XRAY_ALLOWINSECURE=$ai"
 
       - name: 编译 (Release, Any CPU)
         run: msbuild v2rayN.sln -restore -p:Configuration=Release -p:Platform="Any CPU" -m -v:m
@@ -90,14 +99,14 @@ jobs:
           Get-ChildItem v2rayN/bin/Release -Recurse -File | Select-Object -ExpandProperty Name >> $env:GITHUB_STEP_SUMMARY
           '```' >> $env:GITHUB_STEP_SUMMARY
 
-      - name: 下载内核 (Xray / V2Ray)
+      - name: 下载 Xray 内核
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          New-Item -ItemType Directory -Force -Path cores/xray, cores/v2ray | Out-Null
+          New-Item -ItemType Directory -Force -Path cores/xray | Out-Null
 
-          if ($env:XRAY_ALLOWINSECURE -eq 'true') {
+          if ($env:xray_allowinsecure -eq 'true') {
             $repo = 'crazypeace/Xray-core-allowInsecure'
             $tag  = "$($env:XRAY_VERSION)-allowInsecure"
             $pat  = 'win64'
@@ -112,11 +121,21 @@ jobs:
           Invoke-WebRequest -Uri "https://github.com/$repo/releases/download/$tag/$name" -OutFile cores/xray.zip
           Expand-Archive cores/xray.zip -DestinationPath cores/xray -Force
 
-          Write-Host "V2Ray: v2fly/v2ray-core @ $($env:V2RAY_VERSION)"
-          Invoke-WebRequest -Uri "https://github.com/v2fly/v2ray-core/releases/download/$($env:V2RAY_VERSION)/v2ray-windows-64.zip" -OutFile cores/v2ray.zip
-          Expand-Archive cores/v2ray.zip -DestinationPath cores/v2ray -Force
+          Get-ChildItem cores/xray | Select-Object Name, Length | Format-Table
 
-          Get-ChildItem cores/xray, cores/v2ray | Select-Object Name, Length | Format-Table
+      - name: 下载 geo 数据
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # geoip.dat / geosite.dat 用 Xray 包里的
+          Copy-Item cores/xray/geoip.dat   cores/geoip.dat
+          Copy-Item cores/xray/geosite.dat cores/geosite.dat
+          # geoip-only-cn-private.dat 从 v2fly/geoip 取 (不再打包 v2ray 内核, 拿不到 v2ray 包里的这份)
+          $tag = $env:GEOIP_VERSION
+          Write-Host "geoip-only-cn-private.dat: v2fly/geoip @ $tag"
+          gh release download $tag --repo v2fly/geoip --pattern 'geoip-only-cn-private.dat' --dir cores --clobber
+          Get-ChildItem cores/*.dat | Select-Object Name, Length | Format-Table
 
       - name: 组装 + 打包
         shell: pwsh
@@ -132,15 +151,13 @@ jobs:
           Copy-Item 'package-app/*' package -Recurse -Force
 
           # 2) 内核 + geo 数据
-          #    geoip.dat / geosite.dat 来自 Xray 包; geoip-only-cn-private.dat 来自 V2Ray 包
-          #    注意: 不要放 V2Ray 包里的 config.json (会盖掉程序自己的默认配置)
-          Copy-Item cores/xray/xray.exe                    package/
-          Copy-Item cores/xray/geoip.dat                   package/
-          Copy-Item cores/xray/geosite.dat                 package/
-          Copy-Item cores/v2ray/v2ray.exe                  package/
-          Copy-Item cores/v2ray/geoip-only-cn-private.dat  package/
+          #    注意: 不要放内核包里的 config.json (会盖掉程序自己的默认配置)
+          Copy-Item cores/xray/xray.exe   package/
+          Copy-Item cores/geoip.dat       package/
+          Copy-Item cores/geosite.dat     package/
+          Copy-Item cores/geoip-only-cn-private.dat package/
 
-          foreach ($f in @('xray.exe','v2ray.exe','geoip.dat','geosite.dat','geoip-only-cn-private.dat','v2rayN.exe')) {
+          foreach ($f in @('xray.exe','geoip.dat','geosite.dat','geoip-only-cn-private.dat','v2rayN.exe')) {
             if (-not (Test-Path "package/$f")) { Write-Error "package 里缺少 $f"; exit 1 }
           }
 
@@ -157,8 +174,8 @@ jobs:
 
           '### 打包结果' >> $env:GITHUB_STEP_SUMMARY
           "- 程序版本: $v" >> $env:GITHUB_STEP_SUMMARY
-          "- Xray: $($env:XRAY_VERSION)  (allowInsecure 补丁版 = $($env:XRAY_ALLOWINSECURE))" >> $env:GITHUB_STEP_SUMMARY
-          "- V2Ray: $($env:V2RAY_VERSION)" >> $env:GITHUB_STEP_SUMMARY
+          "- Xray: $($env:XRAY_VERSION)  (allowInsecure 补丁版 = $($env:xray_allowinsecure))" >> $env:GITHUB_STEP_SUMMARY
+          "- geoip-only-cn-private.dat: v2fly/geoip $($env:GEOIP_VERSION)" >> $env:GITHUB_STEP_SUMMARY
           Get-ChildItem dist | ForEach-Object { "- $($_.Name)  -  $([math]::Round($_.Length/1MB,2)) MB" } >> $env:GITHUB_STEP_SUMMARY
 
       - name: 上传 artifacts

@@ -192,6 +192,78 @@ namespace v2rayN
         }
 
         /// <summary>
+        /// 归一化证书指纹 pinSHA256 -> 小写 hex (Xray 内核只认 hex, 多个用 , 分隔)
+        /// 分享链接里的值可能是 hex 也可能是 base64, 无法区分, 这里都收
+        /// 非法输入直接丢掉 (写进配置会让整份配置加载失败)
+        /// </summary>
+        public static string NormalizePinSHA256(string raw)
+        {
+            try
+            {
+                if (IsNullOrEmpty(raw))
+                {
+                    return string.Empty;
+                }
+                List<string> result = new List<string>();
+                foreach (string item in raw.Split(','))
+                {
+                    string part = item.Trim();
+                    if (part.Length == 0)
+                    {
+                        continue;
+                    }
+                    byte[] bytes = null;
+                    // 先按 hex 试 (容忍 - : 空格 分隔符)
+                    string hexPart = part.Replace("-", "").Replace(":", "").Replace(" ", "");
+                    if (hexPart.Length == 64 && Regex.IsMatch(hexPart, "^[0-9a-fA-F]{64}$"))
+                    {
+                        bytes = new byte[32];
+                        for (int i = 0; i < 32; i++)
+                        {
+                            bytes[i] = Convert.ToByte(hexPart.Substring(i * 2, 2), 16);
+                        }
+                    }
+                    else
+                    {
+                        // 再按 base64 试 (标准或 url safe, padding 可以缺)
+                        // 注意 URL 上的 + 会被 ParseQueryString 变成空格
+                        string b = part.Replace(" ", "+").Replace('-', '+').Replace('_', '/');
+                        int mod = b.Length % 4;
+                        if (mod == 2)
+                        {
+                            b += "==";
+                        }
+                        else if (mod == 3)
+                        {
+                            b += "=";
+                        }
+                        try
+                        {
+                            byte[] tmp = Convert.FromBase64String(b);
+                            if (tmp.Length == 32)
+                            {
+                                bytes = tmp;
+                            }
+                        }
+                        catch
+                        {
+                        }
+                    }
+                    if (bytes == null)
+                    {
+                        continue;
+                    }
+                    result.Add(BitConverter.ToString(bytes).Replace("-", "").ToLowerInvariant());
+                }
+                return string.Join(",", result);
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
         /// Base64编码
         /// </summary>
         /// <param name="plainText"></param>

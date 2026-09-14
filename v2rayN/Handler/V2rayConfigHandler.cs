@@ -534,33 +534,19 @@ namespace v2rayN.Handler
                 }
                 else if (appConfig.configType() == (int)EConfigType.Hysteria2)
                 {
-                    // 从默认的配置文件 SampleClientConfig.txt 加载的 server 里面有 hy2 不需要的配置项
-                    // 为了对原项目的改动最小, 这里把sever删空. 然后再接下来的代码会新建一个server
-                    outbound.settings.servers.Clear();
-                    // 但是即使如此, 因为从 C# 类到Json序列化的关系, bool变量和int变量是有默认值的, 所以会生成到最终的json结构中
-                    // "ota": false,
-                    // "level": 0
-
-                    ServersItem serversItem;
-                    if (outbound.settings.servers.Count <= 0)
-                    {
-                        serversItem = new ServersItem();
-                        outbound.settings.servers.Add(serversItem);
-                    }
-                    else
-                    {
-                        serversItem = outbound.settings.servers[0];
-                    }
-                    //远程服务器地址和端口
-                    serversItem.address = appConfig.address();
-                    serversItem.port = appConfig.port();
+                    // Xray 内核的 hy2 出站: settings 是扁平的 {version, address, port}
+                    // (v2ray 魔改内核用的 servers[] + streamSettings.hy2Settings 形状 Xray 不认)
+                    outbound.settings.servers = null;
+                    outbound.settings.vnext = null;
+                    outbound.settings.version = 2;
+                    outbound.settings.address = appConfig.address();
+                    outbound.settings.port = appConfig.port();
 
                     //远程服务器底层传输配置
                     StreamSettings streamSettings = outbound.streamSettings;
                     boundStreamSettings(appConfig, "out", ref streamSettings);
 
-                    outbound.protocol = Global.hy2ProtocolLite;
-                    outbound.settings.vnext = null;
+                    outbound.protocol = Global.hy2ProtocolLiteXray;
                 }
             }
             catch
@@ -708,44 +694,29 @@ namespace v2rayN.Handler
                             streamSettings.tlsSettings.serverName = appConfig.address();
                         }
                         break;
-                    // hy2
+                    // hy2 (Xray 内核)
                     case "hysteria2":
-                        Hy2Settings hy2Settings = new Hy2Settings
+                        // Xray 里传输名是 hysteria, 密码只能放在 hysteriaSettings.auth
+                        streamSettings.network = Global.hy2ProtocolLiteXray;
+                        streamSettings.hysteriaSettings = new HysteriaSettings
                         {
-                            password = appConfig.id()
+                            version = 2,
+                            auth = appConfig.id()
                         };
-                        streamSettings.hy2Settings = hy2Settings;
 
-                        // 指定证书指纹
-                        string pinSHA256 = appConfig.pinSHA256();
+                        // 指定证书指纹 (Xray 只认 hex, 多个用 , 分隔)
+                        // 分享链接里的值可能是 hex 也可能是 base64, 这里统一归一化成 hex
+                        string pinSHA256 = Utils.NormalizePinSHA256(appConfig.pinSHA256());
                         if (!string.IsNullOrWhiteSpace(pinSHA256))
                         {
-                            string pinSHA256Base64 = "";
-                            try
+                            if (streamSettings.tlsSettings == null)
                             {
-                                // 从hex恢复成字节码再base64编码
-                                // 移除常见分隔符
-                                pinSHA256 = pinSHA256.Replace("-", "").Replace(" ", "").Replace(":", "");
-                                // 1. 将十六进制字符串转换为字节数组
-                                byte[] pinSHA256Bytes = new byte[pinSHA256.Length / 2];
-                                for (int i = 0; i < pinSHA256Bytes.Length; i++)
-                                {
-                                    pinSHA256Bytes[i] = Convert.ToByte(pinSHA256.Substring(i * 2, 2), 16);
-                                }
-                                // 2. 将字节数组进行 Base64 编码
-                                pinSHA256Base64 = Convert.ToBase64String(pinSHA256Bytes);
+                                streamSettings.tlsSettings = new TlsSettings();
+                                streamSettings.security = Global.StreamSecurity;
                             }
-                            catch
-                            {
-                                pinSHA256Base64 = "";
-                            }
-
-                            if (streamSettings.tlsSettings.pinnedPeerCertificateChainSha256 == null)
-                            {
-                                streamSettings.tlsSettings.pinnedPeerCertificateChainSha256 = new List<string>();
-                            }
-                            streamSettings.tlsSettings.pinnedPeerCertificateChainSha256.Add(pinSHA256);
-                            streamSettings.tlsSettings.pinnedPeerCertificateChainSha256.Add(pinSHA256Base64);
+                            streamSettings.tlsSettings.pinnedPeerCertSha256 = pinSHA256;
+                            // 有 pin 时不能写 allowInsecure: 官方内核里只要出现 allowInsecure, 整份配置就加载失败
+                            streamSettings.tlsSettings.allowInsecure = null;
                         }
                         break;
                     default:
