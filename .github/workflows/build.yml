@@ -99,7 +99,7 @@ jobs:
           Get-ChildItem v2rayN/bin/Release -Recurse -File | Select-Object -ExpandProperty Name >> $env:GITHUB_STEP_SUMMARY
           '```' >> $env:GITHUB_STEP_SUMMARY
 
-      - name: 下载 Xray 内核
+      - name: 下载 Xray 内核 + geo 数据
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
@@ -115,27 +115,32 @@ jobs:
             $tag  = $env:XRAY_VERSION
             $pat  = 'windows-64\.zip$'
           }
-          Write-Host "Xray: $repo @ $tag"
+          Write-Host "Xray 内核: $repo @ $tag"
           $name = (gh release view $tag --repo $repo --json assets --jq '.assets[].name' | Where-Object { $_ -match $pat } | Select-Object -First 1)
           if (-not $name) { Write-Error "在 $repo@$tag 里找不到匹配 '$pat' 的 asset"; exit 1 }
           Invoke-WebRequest -Uri "https://github.com/$repo/releases/download/$tag/$name" -OutFile cores/xray.zip
           Expand-Archive cores/xray.zip -DestinationPath cores/xray -Force
 
-          Get-ChildItem cores/xray | Select-Object Name, Length | Format-Table
+          # geo 数据从官方 Xray 包取 (补丁内核的包里只有 xray.exe, 没有 geo 数据)
+          if (-not (Test-Path cores/xray/geoip.dat)) {
+            Write-Host "从官方 Xray 包取 geo 数据: XTLS/Xray-core @ $($env:XRAY_VERSION)"
+            $geoName = (gh release view $env:XRAY_VERSION --repo XTLS/Xray-core --json assets --jq '.assets[].name' | Where-Object { $_ -match 'windows-64\.zip$' } | Select-Object -First 1)
+            if (-not $geoName) { Write-Error "官方 Xray @ $($env:XRAY_VERSION) 里找不到 Xray-windows-64.zip"; exit 1 }
+            Invoke-WebRequest -Uri "https://github.com/XTLS/Xray-core/releases/download/$($env:XRAY_VERSION)/$geoName" -OutFile cores/xray-geo.zip
+            Expand-Archive cores/xray-geo.zip -DestinationPath cores/xray-geo -Force
+            Copy-Item cores/xray-geo/geoip.dat   cores/xray/geoip.dat   -Force
+            Copy-Item cores/xray-geo/geosite.dat cores/xray/geosite.dat -Force
+          }
 
-      - name: 下载 geo 数据
-        shell: pwsh
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          # geoip.dat / geosite.dat 用 Xray 包里的
-          Copy-Item cores/xray/geoip.dat   cores/geoip.dat
-          Copy-Item cores/xray/geosite.dat cores/geosite.dat
           # geoip-only-cn-private.dat 从 v2fly/geoip 取 (不再打包 v2ray 内核, 拿不到 v2ray 包里的这份)
-          $tag = $env:GEOIP_VERSION
-          Write-Host "geoip-only-cn-private.dat: v2fly/geoip @ $tag"
-          gh release download $tag --repo v2fly/geoip --pattern 'geoip-only-cn-private.dat' --dir cores --clobber
-          Get-ChildItem cores/*.dat | Select-Object Name, Length | Format-Table
+          Write-Host "geoip-only-cn-private.dat: v2fly/geoip @ $($env:GEOIP_VERSION)"
+          if ($env:GEOIP_VERSION -eq 'latest') {
+            gh release download --repo v2fly/geoip --pattern 'geoip-only-cn-private.dat' --dir cores --clobber
+          } else {
+            gh release download $env:GEOIP_VERSION --repo v2fly/geoip --pattern 'geoip-only-cn-private.dat' --dir cores --clobber
+          }
+
+          Get-ChildItem cores -Recurse -File | Select-Object FullName, Length | Format-Table -AutoSize
 
       - name: 组装 + 打包
         shell: pwsh
@@ -153,8 +158,8 @@ jobs:
           # 2) 内核 + geo 数据
           #    注意: 不要放内核包里的 config.json (会盖掉程序自己的默认配置)
           Copy-Item cores/xray/xray.exe   package/
-          Copy-Item cores/geoip.dat       package/
-          Copy-Item cores/geosite.dat     package/
+          Copy-Item cores/xray/geoip.dat  package/
+          Copy-Item cores/xray/geosite.dat package/
           Copy-Item cores/geoip-only-cn-private.dat package/
 
           foreach ($f in @('xray.exe','geoip.dat','geosite.dat','geoip-only-cn-private.dat','v2rayN.exe')) {

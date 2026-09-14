@@ -222,7 +222,7 @@ namespace v2rayN.Handler
             }
             if (Utils.IsNullOrEmpty(fileName))
             {
-                string msg = string.Format(UIRes.I18N("NotFoundCore"), @"https://github.com/v2fly/v2ray-core/releases");
+                string msg = string.Format(UIRes.I18N("NotFoundCore"), @"https://github.com/crazypeace/Xray-core-allowInsecure/releases");
                 ShowMsg(false, msg);
             }
             return fileName;
