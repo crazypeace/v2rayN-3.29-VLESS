@@ -82,12 +82,13 @@ jobs:
         shell: pwsh
         run: |
           # v2rayUpgrade.exe 由 v2rayN.csproj 的 PostBuildEvent 拷到同一目录
-          $need = @('v2rayN/bin/Release/v2rayN.exe', 'v2rayN/bin/Release/v2rayUpgrade.exe')
-          foreach ($f in $need) { if (-not (Test-Path $f)) { Write-Error "缺少编译产物: $f"; exit 1 } }
-          "### 编译产物 (v2rayN/bin/Release)" >> $env:GITHUB_STEP_SUMMARY
-          "```" >> $env:GITHUB_STEP_SUMMARY
-          (Get-ChildItem v2rayN/bin/Release -Recurse | ForEach-Object { "{0,12}  {1}" -f $_.Length, $_.FullName.Replace("$PWD/",'').Replace('\','/') }) >> $env:GITHUB_STEP_SUMMARY
-          "```" >> $env:GITHUB_STEP_SUMMARY
+          foreach ($f in @('v2rayN/bin/Release/v2rayN.exe', 'v2rayN/bin/Release/v2rayUpgrade.exe')) {
+            if (-not (Test-Path $f)) { Write-Error "缺少编译产物: $f"; exit 1 }
+          }
+          '### 编译产物 (v2rayN/bin/Release)' >> $env:GITHUB_STEP_SUMMARY
+          '```' >> $env:GITHUB_STEP_SUMMARY
+          Get-ChildItem v2rayN/bin/Release -Recurse -File | Select-Object -ExpandProperty Name >> $env:GITHUB_STEP_SUMMARY
+          '```' >> $env:GITHUB_STEP_SUMMARY
 
       - name: 下载内核 (Xray / V2Ray)
         shell: pwsh
@@ -153,13 +154,11 @@ jobs:
             Compress-Archive -Path 'package/*'     -DestinationPath $zipCore -Force
           }
 
-          "### 打包结果" >> $env:GITHUB_STEP_SUMMARY
-          "" >> $env:GITHUB_STEP_SUMMARY
+          '### 打包结果' >> $env:GITHUB_STEP_SUMMARY
           "- 程序版本: $v" >> $env:GITHUB_STEP_SUMMARY
-          "- Xray: $($env:XRAY_VERSION) $(if ($env:XRAY_ALLOWINSECURE -eq 'true') { '(allowInsecure 补丁版)' } else { '(官方)' })" >> $env:GITHUB_STEP_SUMMARY
+          "- Xray: $($env:XRAY_VERSION)  (allowInsecure 补丁版 = $($env:XRAY_ALLOWINSECURE))" >> $env:GITHUB_STEP_SUMMARY
           "- V2Ray: $($env:V2RAY_VERSION)" >> $env:GITHUB_STEP_SUMMARY
-          "" >> $env:GITHUB_STEP_SUMMARY
-          Get-ChildItem dist | ForEach-Object { "- ``$($_.Name)`` — $([math]::Round($_.Length/1MB,2)) MB" } >> $env:GITHUB_STEP_SUMMARY
+          Get-ChildItem dist | ForEach-Object { "- $($_.Name)  -  $([math]::Round($_.Length/1MB,2)) MB" } >> $env:GITHUB_STEP_SUMMARY
 
       - name: 上传 artifacts
         uses: actions/upload-artifact@v4
