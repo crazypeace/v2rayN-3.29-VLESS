@@ -126,8 +126,9 @@ jobs:
           Remove-Item -Recurse -Force package-app, package, dist -ErrorAction SilentlyContinue
           New-Item -ItemType Directory -Force -Path package-app, package, dist | Out-Null
 
-          # 1) 只有程序
+          # 1) 只有程序 (app.publish/ 是构建产生的 ClickOnce 中间目录, 不打包)
           Copy-Item 'v2rayN/bin/Release/*' package-app -Recurse -Force
+          Remove-Item -Recurse -Force 'package-app/app.publish' -ErrorAction SilentlyContinue
           Copy-Item 'package-app/*' package -Recurse -Force
 
           # 2) 内核 + geo 数据
@@ -147,8 +148,8 @@ jobs:
           $zipCore = "dist/$prefix-Core-v$v.zip"
           $sevenZip = (Get-Command 7z -ErrorAction SilentlyContinue).Source
           if ($sevenZip) {
-            & $sevenZip a -mx=1 -tzip $zipApp  '.\package-app\*' | Out-Null
-            & $sevenZip a -mx=1 -tzip $zipCore '.\package\*'     | Out-Null
+            & $sevenZip a -mx=5 -tzip $zipApp  '.\package-app\*' | Out-Null
+            & $sevenZip a -mx=5 -tzip $zipCore '.\package\*'     | Out-Null
           } else {
             Compress-Archive -Path 'package-app/*' -DestinationPath $zipApp  -Force
             Compress-Archive -Path 'package/*'     -DestinationPath $zipCore -Force
