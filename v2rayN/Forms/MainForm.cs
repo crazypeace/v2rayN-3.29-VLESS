@@ -1509,11 +1509,6 @@ namespace v2rayN.Forms
             Process.Start(Global.IssueUrl); // 访问Issue
         }
 
-        private void tsbV2rayWebsite_Click(object sender, EventArgs e)
-        {
-            Process.Start(Global.V2RayWebsiteUrl);
-        }
-
         private void tsbPromotion_Click(object sender, EventArgs e)
         {
             Process.Start(Global.BloggerUrl);

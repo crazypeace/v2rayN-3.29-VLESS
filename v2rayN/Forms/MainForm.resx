@@ -195,9 +195,6 @@
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1428, 797</value>
   </data>
-  <data name="tsbV2rayWebsite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 34</value>
-  </data>
   <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
     <value>toolStripSeparator6</value>
   </data>
@@ -680,9 +677,6 @@
   <data name="&gt;&gt;toolStripSeparator9.Name" xml:space="preserve">
     <value>toolStripSeparator9</value>
   </data>
-  <data name="&gt;&gt;tsbV2rayWebsite.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="addHy2ServerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>407, 34</value>
   </data>
@@ -741,9 +735,6 @@
   </data>
   <data name="toolSslPacPortLab.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 8pt</value>
-  </data>
-  <data name="&gt;&gt;tsbV2rayWebsite.Name" xml:space="preserve">
-    <value>tsbV2rayWebsite</value>
   </data>
   <data name="toolSslServerSpeed.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
@@ -1390,9 +1381,6 @@
   </data>
   <data name="menuExit.Size" type="System.Drawing.Size, System.Drawing">
     <value>355, 30</value>
-  </data>
-  <data name="tsbV2rayWebsite.Text" xml:space="preserve">
-    <value>V2Ray Website</value>
   </data>
   <data name="menuUpdateSubscriptions.Text" xml:space="preserve">
     <value>Update subscriptions</value>

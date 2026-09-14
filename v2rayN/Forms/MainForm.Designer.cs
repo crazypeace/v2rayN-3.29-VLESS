@@ -127,7 +127,6 @@
             this.tsbHelp = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsbAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbXrayWebsite = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbV2rayWebsite = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbLanguageDef = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbLanguageZhHans = new System.Windows.Forms.ToolStripMenuItem();
@@ -840,7 +839,6 @@
             this.tsbHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAbout,
             this.tsbXrayWebsite,
-            this.tsbV2rayWebsite,
             this.toolStripSeparator12,
             this.tsbLanguageDef,
             this.tsbLanguageZhHans});
@@ -858,12 +856,6 @@
             resources.ApplyResources(this.tsbXrayWebsite, "tsbXrayWebsite");
             this.tsbXrayWebsite.Name = "tsbXrayWebsite";
             this.tsbXrayWebsite.Click += new System.EventHandler(this.tsbXrayWebsite_Click);
-            // 
-            // tsbV2rayWebsite
-            // 
-            resources.ApplyResources(this.tsbV2rayWebsite, "tsbV2rayWebsite");
-            this.tsbV2rayWebsite.Name = "tsbV2rayWebsite";
-            this.tsbV2rayWebsite.Click += new System.EventHandler(this.tsbV2rayWebsite_Click);
             // 
             // toolStripSeparator12
             // 
@@ -1041,7 +1033,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuMoveUp;
         private System.Windows.Forms.ToolStripMenuItem menuMoveDown;
         private System.Windows.Forms.ToolStripMenuItem menuMoveBottom;
-        private System.Windows.Forms.ToolStripMenuItem tsbV2rayWebsite;
         private System.ComponentModel.BackgroundWorker bgwScan;
         private System.Windows.Forms.ToolStripMenuItem menuAdjustListColumn;
     }

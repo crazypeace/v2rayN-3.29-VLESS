@@ -8,7 +8,6 @@ namespace v2rayN
         public const string UpdateUrl = @"https://github.com/crazypeace/v2rayN-3.29-VLESS/releases";
         public const string IssueUrl = @"https://github.com/crazypeace/v2rayN-3.29-VLESS/issues";
         public const string BloggerUrl = @"https://zelikk.blogspot.com/search/label/v2rayN-3.29-VLESS";
-        public const string V2RayWebsiteUrl = @"https://www.v2fly.org/";
         public const string XrayWebsiteUrl = @"https://xtls.github.io/";
         public const string XrayCore_Url = @"https://github.com/crazypeace/Xray-core-allowInsecure/releases/latest";
 

@@ -539,12 +539,6 @@
   <data name="tsbXrayWebsite.Text" xml:space="preserve">
     <value>Xray 官网</value>
   </data>
-  <data name="tsbV2rayWebsite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>313, 34</value>
-  </data>
-  <data name="tsbV2rayWebsite.Text" xml:space="preserve">
-    <value>V2Ray 官网</value>
-  </data>
   <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
     <value>310, 6</value>
   </data>
