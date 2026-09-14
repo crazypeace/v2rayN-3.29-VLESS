@@ -1,0 +1,183 @@
+# 编译 + 打包 v2rayN-3.29-VLESS (Windows x64 / .NET Framework 4.8)
+#
+# 产物:
+#   <name_prefix>-v<版本>.zip        只有程序
+#   <name_prefix>-Core-v<版本>.zip   程序 + Xray/V2Ray 内核 + geo 数据
+#
+# 手动跑: Actions → Build and Package → Run workflow
+# 也可以指定 release_tag 直接把两个 zip 传上去
+name: Build and Package
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '版本号(如 3.29.0.16)。留空 = 读 v2rayN/Properties/AssemblyInfo.cs'
+        required: false
+        default: ''
+      name_prefix:
+        description: '产物文件名前缀'
+        required: false
+        default: 'v2rayN-Reality-Hy2'
+      xray_version:
+        description: 'Xray 版本 tag(如 v25.10.15 / v26.3.27)'
+        required: false
+        default: 'v25.10.15'
+      xray_allowinsecure:
+        description: '用 crazypeace/Xray-core-allowInsecure 内核(永久开启 allowInsecure)代替官方 Xray'
+        type: boolean
+        default: false
+      v2ray_version:
+        description: 'V2Ray 版本 tag(如 v5.41.0)'
+        required: false
+        default: 'v5.41.0'
+      release_tag:
+        description: '上传到这个 Release tag。留空 = 只作为 Actions artifact'
+        required: false
+        default: ''
+  push:
+    branches: [ master ]
+
+permissions:
+  contents: write
+
+env:
+  XRAY_VERSION: ${{ inputs.xray_version || 'v25.10.15' }}
+  V2RAY_VERSION: ${{ inputs.v2ray_version || 'v5.41.0' }}
+  XRAY_ALLOWINSECURE: ${{ inputs.xray_allowinsecure || 'false' }}
+  NAME_PREFIX: ${{ inputs.name_prefix || 'v2rayN-Reality-Hy2' }}
+  VERSION_INPUT: ${{ inputs.version || '' }}
+  RELEASE_TAG: ${{ inputs.release_tag || '' }}
+
+jobs:
+  build:
+    name: Build & Package (windows x64)
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: 读版本号
+        id: ver
+        shell: pwsh
+        run: |
+          $v = $env:VERSION_INPUT.Trim()
+          if ([string]::IsNullOrWhiteSpace($v)) {
+            $m = Select-String -Path 'v2rayN/Properties/AssemblyInfo.cs' -Pattern 'AssemblyFileVersion\("([0-9\.]+)"\)'
+            if (-not $m) { Write-Error 'AssemblyInfo.cs 里找不到 AssemblyFileVersion'; exit 1 }
+            $v = $m.Matches[0].Groups[1].Value
+          }
+          Write-Host "APP_VERSION=$v"
+          "version=$v" >> $env:GITHUB_OUTPUT
+          "app_version=$v" >> $env:GITHUB_ENV
+
+      - name: 编译 (Release, Any CPU)
+        run: msbuild v2rayN.sln -restore -p:Configuration=Release -p:Platform="Any CPU" -m -v:m
+
+      - name: 检查编译产物
+        shell: pwsh
+        run: |
+          # v2rayUpgrade.exe 由 v2rayN.csproj 的 PostBuildEvent 拷到同一目录
+          $need = @('v2rayN/bin/Release/v2rayN.exe', 'v2rayN/bin/Release/v2rayUpgrade.exe')
+          foreach ($f in $need) { if (-not (Test-Path $f)) { Write-Error "缺少编译产物: $f"; exit 1 } }
+          "### 编译产物 (v2rayN/bin/Release)" >> $env:GITHUB_STEP_SUMMARY
+          "```" >> $env:GITHUB_STEP_SUMMARY
+          (Get-ChildItem v2rayN/bin/Release -Recurse | ForEach-Object { "{0,12}  {1}" -f $_.Length, $_.FullName.Replace("$PWD/",'').Replace('\','/') }) >> $env:GITHUB_STEP_SUMMARY
+          "```" >> $env:GITHUB_STEP_SUMMARY
+
+      - name: 下载内核 (Xray / V2Ray)
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          New-Item -ItemType Directory -Force -Path cores/xray, cores/v2ray | Out-Null
+
+          if ($env:XRAY_ALLOWINSECURE -eq 'true') {
+            $repo = 'crazypeace/Xray-core-allowInsecure'
+            $tag  = "$($env:XRAY_VERSION)-allowInsecure"
+            $pat  = 'win64'
+          } else {
+            $repo = 'XTLS/Xray-core'
+            $tag  = $env:XRAY_VERSION
+            $pat  = 'windows-64\.zip$'
+          }
+          Write-Host "Xray: $repo @ $tag"
+          $name = (gh release view $tag --repo $repo --json assets --jq '.assets[].name' | Where-Object { $_ -match $pat } | Select-Object -First 1)
+          if (-not $name) { Write-Error "在 $repo@$tag 里找不到匹配 '$pat' 的 asset"; exit 1 }
+          Invoke-WebRequest -Uri "https://github.com/$repo/releases/download/$tag/$name" -OutFile cores/xray.zip
+          Expand-Archive cores/xray.zip -DestinationPath cores/xray -Force
+
+          Write-Host "V2Ray: v2fly/v2ray-core @ $($env:V2RAY_VERSION)"
+          Invoke-WebRequest -Uri "https://github.com/v2fly/v2ray-core/releases/download/$($env:V2RAY_VERSION)/v2ray-windows-64.zip" -OutFile cores/v2ray.zip
+          Expand-Archive cores/v2ray.zip -DestinationPath cores/v2ray -Force
+
+          Get-ChildItem cores/xray, cores/v2ray | Select-Object Name, Length | Format-Table
+
+      - name: 组装 + 打包
+        shell: pwsh
+        run: |
+          $v = $env:app_version
+          $prefix = $env:NAME_PREFIX
+          Remove-Item -Recurse -Force package-app, package, dist -ErrorAction SilentlyContinue
+          New-Item -ItemType Directory -Force -Path package-app, package, dist | Out-Null
+
+          # 1) 只有程序
+          Copy-Item 'v2rayN/bin/Release/*' package-app -Recurse -Force
+          Copy-Item 'package-app/*' package -Recurse -Force
+
+          # 2) 内核 + geo 数据
+          #    geoip.dat / geosite.dat 来自 Xray 包; geoip-only-cn-private.dat 来自 V2Ray 包
+          #    注意: 不要放 V2Ray 包里的 config.json (会盖掉程序自己的默认配置)
+          Copy-Item cores/xray/xray.exe                    package/
+          Copy-Item cores/xray/geoip.dat                   package/
+          Copy-Item cores/xray/geosite.dat                 package/
+          Copy-Item cores/v2ray/v2ray.exe                  package/
+          Copy-Item cores/v2ray/geoip-only-cn-private.dat  package/
+
+          foreach ($f in @('xray.exe','v2ray.exe','geoip.dat','geosite.dat','geoip-only-cn-private.dat','v2rayN.exe')) {
+            if (-not (Test-Path "package/$f")) { Write-Error "package 里缺少 $f"; exit 1 }
+          }
+
+          $zipApp  = "dist/$prefix-v$v.zip"
+          $zipCore = "dist/$prefix-Core-v$v.zip"
+          $sevenZip = (Get-Command 7z -ErrorAction SilentlyContinue).Source
+          if ($sevenZip) {
+            & $sevenZip a -mx=1 -tzip $zipApp  '.\package-app\*' | Out-Null
+            & $sevenZip a -mx=1 -tzip $zipCore '.\package\*'     | Out-Null
+          } else {
+            Compress-Archive -Path 'package-app/*' -DestinationPath $zipApp  -Force
+            Compress-Archive -Path 'package/*'     -DestinationPath $zipCore -Force
+          }
+
+          "### 打包结果" >> $env:GITHUB_STEP_SUMMARY
+          "" >> $env:GITHUB_STEP_SUMMARY
+          "- 程序版本: $v" >> $env:GITHUB_STEP_SUMMARY
+          "- Xray: $($env:XRAY_VERSION) $(if ($env:XRAY_ALLOWINSECURE -eq 'true') { '(allowInsecure 补丁版)' } else { '(官方)' })" >> $env:GITHUB_STEP_SUMMARY
+          "- V2Ray: $($env:V2RAY_VERSION)" >> $env:GITHUB_STEP_SUMMARY
+          "" >> $env:GITHUB_STEP_SUMMARY
+          Get-ChildItem dist | ForEach-Object { "- ``$($_.Name)`` — $([math]::Round($_.Length/1MB,2)) MB" } >> $env:GITHUB_STEP_SUMMARY
+
+      - name: 上传 artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.NAME_PREFIX }}-v${{ steps.ver.outputs.version }}
+          path: dist/*.zip
+          if-no-files-found: error
+
+      - name: 上传到 Release
+        if: env.RELEASE_TAG != '' && github.event_name == 'workflow_dispatch'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = $env:RELEASE_TAG
+          gh release view $tag --repo ${{ github.repository }} 2>$null
+          if ($LASTEXITCODE -ne 0) {
+            gh release create $tag --repo ${{ github.repository }} --title $tag --notes "CI 打包: $($env:app_version)"
+          }
+          gh release upload $tag dist/*.zip --repo ${{ github.repository }} --clobber
+          gh release view $tag --repo ${{ github.repository }} --json assets --jq '.assets[] | "\(.name)  \(.size)"'
