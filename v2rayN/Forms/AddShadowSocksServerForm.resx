@@ -194,6 +194,15 @@
   <data name="cmbSecurity.Items7" xml:space="preserve">
     <value>chacha20-ietf-poly1305</value>
   </data>
+  <data name="cmbSecurity.Items8" xml:space="preserve">
+    <value>2022-blake3-aes-128-gcm</value>
+  </data>
+  <data name="cmbSecurity.Items9" xml:space="preserve">
+    <value>2022-blake3-aes-256-gcm</value>
+  </data>
+  <data name="cmbSecurity.Items10" xml:space="preserve">
+    <value>2022-blake3-chacha20-poly1305</value>
+  </data>
   <data name="cmbSecurity.Location" type="System.Drawing.Point, System.Drawing">
     <value>183, 123</value>
   </data>

@@ -95,7 +95,10 @@
             resources.GetString("cmbSecurity.Items4"),
             resources.GetString("cmbSecurity.Items5"),
             resources.GetString("cmbSecurity.Items6"),
-            resources.GetString("cmbSecurity.Items7")});
+            resources.GetString("cmbSecurity.Items7"),
+            resources.GetString("cmbSecurity.Items8"),
+            resources.GetString("cmbSecurity.Items9"),
+            resources.GetString("cmbSecurity.Items10")});
             resources.ApplyResources(this.cmbSecurity, "cmbSecurity");
             this.cmbSecurity.Name = "cmbSecurity";
             // 

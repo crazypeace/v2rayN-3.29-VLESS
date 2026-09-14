@@ -79,6 +79,13 @@ namespace v2rayN.Handler
             {
                 coreExe = "v2ray";
             }
+            // 如果是 SS2022 加密方式 (2022-blake3-*) 要使用 xray (v2ray 不支持)
+            else if (outbound.configType == (int)EConfigType.Shadowsocks
+                && !Utils.IsNullOrEmpty(outbound.security)
+                && outbound.security.StartsWith("2022-blake3"))
+            {
+                coreExe = "xray";
+            }
             // 其它情况不指定
             else
             {
