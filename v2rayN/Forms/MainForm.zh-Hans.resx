@@ -506,12 +506,6 @@
   <data name="tsbCheckUpdateXrayCore.Text" xml:space="preserve">
     <value>Xray 内核</value>
   </data>
-  <data name="tsbCheckUpdateV2rayCore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>329, 34</value>
-  </data>
-  <data name="tsbCheckUpdateV2rayCore.Text" xml:space="preserve">
-    <value>V2Ray 内核</value>
-  </data>
   <data name="tsbCheckUpdatePACList.Size" type="System.Drawing.Size, System.Drawing">
     <value>329, 34</value>
   </data>

@@ -120,7 +120,6 @@
             this.tsbCheckUpdate = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsbCheckUpdateN = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbCheckUpdateXrayCore = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbCheckUpdateV2rayCore = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbCheckUpdatePACList = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCheckClearPACList = new System.Windows.Forms.ToolStripMenuItem();
@@ -795,7 +794,6 @@
             this.tsbCheckUpdate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbCheckUpdateN,
             this.tsbCheckUpdateXrayCore,
-            this.tsbCheckUpdateV2rayCore,
             this.tsbCheckUpdatePACList,
             this.toolStripSeparator13,
             this.tsbCheckClearPACList});
@@ -813,12 +811,6 @@
             resources.ApplyResources(this.tsbCheckUpdateXrayCore, "tsbCheckUpdateXrayCore");
             this.tsbCheckUpdateXrayCore.Name = "tsbCheckUpdateXrayCore";
             this.tsbCheckUpdateXrayCore.Click += new System.EventHandler(this.tsbCheckUpdateCore_Click);
-            // 
-            // tsbCheckUpdateV2rayCore
-            // 
-            resources.ApplyResources(this.tsbCheckUpdateV2rayCore, "tsbCheckUpdateV2rayCore");
-            this.tsbCheckUpdateV2rayCore.Name = "tsbCheckUpdateV2rayCore";
-            this.tsbCheckUpdateV2rayCore.Click += new System.EventHandler(this.tsbCheckUpdateV2rayCore_Click);
             // 
             // tsbCheckUpdatePACList
             // 
@@ -1050,7 +1042,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuMoveDown;
         private System.Windows.Forms.ToolStripMenuItem menuMoveBottom;
         private System.Windows.Forms.ToolStripMenuItem tsbV2rayWebsite;
-        private System.Windows.Forms.ToolStripMenuItem tsbCheckUpdateV2rayCore;
         private System.ComponentModel.BackgroundWorker bgwScan;
         private System.Windows.Forms.ToolStripMenuItem menuAdjustListColumn;
     }

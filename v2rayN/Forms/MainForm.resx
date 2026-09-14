@@ -614,9 +614,6 @@
   <data name="scMain.Panel2MinSize" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
-  <data name="&gt;&gt;tsbCheckUpdateV2rayCore.Name" xml:space="preserve">
-    <value>tsbCheckUpdateV2rayCore</value>
-  </data>
   <data name="&gt;&gt;menuMoveDown.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -1271,9 +1268,6 @@
   <data name="tsbReload.Text" xml:space="preserve">
     <value>Restart service</value>
   </data>
-  <data name="tsbCheckUpdateV2rayCore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>575, 34</value>
-  </data>
   <data name="txtMsgBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -1381,9 +1375,6 @@
   </data>
   <data name="toolSslSocksPortLab.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 8pt</value>
-  </data>
-  <data name="&gt;&gt;tsbCheckUpdateV2rayCore.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;subMenuTestServer.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1495,9 +1486,6 @@
   </data>
   <data name="menuAddCustomServer.Text" xml:space="preserve">
     <value>Add a custom configuration server</value>
-  </data>
-  <data name="tsbCheckUpdateV2rayCore.Text" xml:space="preserve">
-    <value>V2RayCore - lastest</value>
   </data>
   <data name="&gt;&gt;toolSslPacPort.Name" xml:space="preserve">
     <value>toolSslPacPort</value>

@@ -1676,13 +1676,6 @@ namespace v2rayN.Forms
 
         #endregion
 
-        private void v2rayCoreV4321ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start(Global.V2RayCore4_32_1Url);
-
-            return;
-        }
-
         private void menuClearTestResult_Click(object sender, EventArgs e)
         {
             Speedtest("clear");
@@ -1697,11 +1690,6 @@ namespace v2rayN.Forms
         private void tsbXrayWebsite_Click(object sender, EventArgs e)
         {
             Process.Start(Global.XrayWebsiteUrl);
-        }
-
-        private void tsbCheckUpdateV2rayCore_Click(object sender, EventArgs e)
-        {
-            Process.Start(Global.V2RayCore_Url);
         }
 
         private void menuAdjustListColumn_Click(object sender, EventArgs e)

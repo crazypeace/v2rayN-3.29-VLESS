@@ -48,6 +48,7 @@ v3.29.0.4打包的是Xray v1.8.4
 v3.29.0.7打包的是Xray v1.8.6  
 v3.29.0.8打包的是Xray v1.8.10  
 v3.29.0.11打包的是Xray v1.8.24 和 V2Ray v5.21.0  
+v3.29.0.16打包的是Xray v26.3.27 (allowInsecure 补丁版, 不再打包 V2Ray 内核)
 
 # 本项目会永远保持 .NET Framework 4.8
 https://learn.microsoft.com/zh-CN/lifecycle/faq/dotnet-framework
