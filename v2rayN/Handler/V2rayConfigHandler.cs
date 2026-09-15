@@ -497,6 +497,14 @@ namespace v2rayN.Handler
                         outbound.mux.enabled = false;
                         outbound.mux.concurrency = -1;
                     }
+                    //非 reality 的节点(vision over TLS)带 flow 也要写进去, 否则服务端要求 vision 时连不上
+                    else if (!Utils.IsNullOrEmpty(appConfig.flow()))
+                    {
+                        usersItem.flow = appConfig.flow();
+
+                        outbound.mux.enabled = false;
+                        outbound.mux.concurrency = -1;
+                    }
 
                     outbound.protocol = Global.vlessProtocolLite;
                     outbound.settings.servers = null;
