@@ -116,6 +116,7 @@
             this.tsbOptionSetting = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbReload = new System.Windows.Forms.ToolStripButton();
+            this.tsbUpdatePreferredIp = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCheckUpdate = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsbCheckUpdateN = new System.Windows.Forms.ToolStripMenuItem();
@@ -717,6 +718,7 @@
             this.toolStripSeparator7,
             this.tsbCheckUpdate,
             this.toolStripSeparator10,
+            this.tsbUpdatePreferredIp,
             this.tsbHelp,
             this.tsbPromotion,
             this.toolStripSeparator11,
@@ -781,6 +783,12 @@
             resources.ApplyResources(this.tsbReload, "tsbReload");
             this.tsbReload.Name = "tsbReload";
             this.tsbReload.Click += new System.EventHandler(this.tsbReload_Click);
+            // 
+            // tsbUpdatePreferredIp
+            // 
+            resources.ApplyResources(this.tsbUpdatePreferredIp, "tsbUpdatePreferredIp");
+            this.tsbUpdatePreferredIp.Name = "tsbUpdatePreferredIp";
+            this.tsbUpdatePreferredIp.Click += new System.EventHandler(this.tsbUpdatePreferredIp_Click);
             // 
             // toolStripSeparator7
             // 
@@ -1007,6 +1015,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuKeepNothing;
         private System.Windows.Forms.ToolStripMenuItem menuKeepPACNothing;
         private System.Windows.Forms.ToolStripButton tsbReload;
+        private System.Windows.Forms.ToolStripButton tsbUpdatePreferredIp;
         private System.Windows.Forms.ToolStripButton tsbQRCodeSwitch;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripMenuItem subMenuAddServer;

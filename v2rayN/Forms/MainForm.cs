@@ -833,6 +833,68 @@ namespace v2rayN.Forms
             LoadV2ray();
         }
 
+        /// <summary>
+        /// 更新优选IP: 遍历全体节点, 别名含"优选IP"的把地址设为优选IP来源列表的第1个元素
+        /// </summary>
+        private async void tsbUpdatePreferredIp_Click(object sender, EventArgs e)
+        {
+            string url = appConfig.preferredIpUrl;
+            if (Utils.IsNullOrEmpty(url))
+            {
+                AppendText(false, "更新优选IP: 未配置优选IP来源(参数设置-v2rayN设置)");
+                return;
+            }
+
+            tsbUpdatePreferredIp.Enabled = false;
+            try
+            {
+                AppendText(false, "更新优选IP: 正在拉取 " + url);
+                string ip = await PreferredIpHandler.GetFirstAsync(url);
+                if (Utils.IsNullOrEmpty(ip))
+                {
+                    AppendText(false, "更新优选IP: 拉取失败或列表为空/不合法, 未修改任何节点");
+                    return;
+                }
+
+                int changed = 0;
+                bool activeChanged = false;
+                for (int i = 0; i < appConfig.outbound.Count; i++)
+                {
+                    NodeItem node = appConfig.outbound[i];
+                    if (node.remarks != null && node.remarks.Contains("优选IP") && node.address != ip)
+                    {
+                        node.address = ip;
+                        changed++;
+                        if (i == appConfig.index)
+                        {
+                            activeChanged = true;
+                        }
+                    }
+                }
+
+                if (changed > 0)
+                {
+                    AppConfigHandler.SaveConfig(ref appConfig, false);
+                    RefreshServers();
+                    if (activeChanged)
+                    {
+                        LoadV2ray();
+                    }
+                }
+                AppendText(false, $"更新优选IP: {changed} 个节点地址 -> {ip}"
+                    + (changed == 0 ? " (没有别名含优选IP且地址不同的节点)" : ""));
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog(ex.Message, ex);
+                AppendText(false, "更新优选IP: 出错 " + ex.Message);
+            }
+            finally
+            {
+                tsbUpdatePreferredIp.Enabled = true;
+            }
+        }
+
         private void tsbClose_Click(object sender, EventArgs e)
         {
             HideForm();
