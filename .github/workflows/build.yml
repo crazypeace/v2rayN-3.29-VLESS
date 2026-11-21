@@ -7,8 +7,9 @@
 # 手动跑: Actions → Build and Package → Run workflow
 # 也可以指定 release_tag 直接把两个 zip 传上去
 #
-# 内核: 只打包 Xray (v26.3.27 起支持 hysteria2 出站, 配置形状与 v2ray 不同)
-#       默认用 crazypeace/Xray-core-allowInsecure 的补丁版, 以保住订阅里的 allowInsecure
+# 内核: 只打包 Xray (v26.1.13 起支持 hysteria2 出站, 配置形状与 v2ray 不同)
+#       默认用 crazypeace/Xray-core-fork 的补丁版 (tag 形如 v26.9.9-fork.1), 以保住订阅里的 allowInsecure
+#       补丁仓库资产是裸 exe (xray-windows-amd64.exe), 不是 zip; geo 数据从官方 Xray 基线版本包取
 name: Build and Package
 
 on:
@@ -23,11 +24,11 @@ on:
         required: false
         default: 'v2rayN-Reality-Hy2'
       xray_version:
-        description: 'Xray 版本 tag(如 v26.3.27)。必须 >= v26.1.13 才有 hysteria2 出站'
+        description: 'Xray 版本 tag(补丁内核形如 v26.9.9-fork.1; 官方基线 = 去掉 -fork.* )。必须 >= v26.1.13 才有 hysteria2 出站'
         required: false
-        default: 'v26.3.27'
+        default: 'v26.9.9-fork.1'
       xray_allowinsecure:
-        description: 'true = 用 crazypeace/Xray-core-allowInsecure 的补丁内核(永久允许 allowInsecure); false = 官方 Xray'
+        description: 'true = 用 crazypeace/Xray-core-fork 的补丁内核(永久允许 allowInsecure); false = 官方 Xray(基线版本)'
         type: boolean
         default: true
       geoip_version:
@@ -45,7 +46,7 @@ permissions:
   contents: write
 
 env:
-  XRAY_VERSION: ${{ inputs.xray_version || 'v26.3.27' }}
+  XRAY_VERSION: ${{ inputs.xray_version || 'v26.9.9-fork.1' }}
   GEOIP_VERSION: ${{ inputs.geoip_version || 'latest' }}
   NAME_PREFIX: ${{ inputs.name_prefix || 'v2rayN-Reality-Hy2' }}
   VERSION_INPUT: ${{ inputs.version || '' }}
@@ -106,27 +107,34 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force -Path cores/xray | Out-Null
 
+          # 官方基线版本: fork tag 形如 v26.9.9-fork.1, 去掉 -fork.* 得 v26.9.9 (geo / 官方内核都用它)
+          $base = $env:XRAY_VERSION -replace '-fork\..*$',''
           if ($env:xray_allowinsecure -eq 'true') {
-            $repo = 'crazypeace/Xray-core-allowInsecure'
-            $tag  = "$($env:XRAY_VERSION)-allowInsecure"
-            $pat  = 'win64'
+            $repo = 'crazypeace/Xray-core-fork'
+            $tag  = $env:XRAY_VERSION
+            $pat  = '^xray-windows-amd64\.exe$'
           } else {
             $repo = 'XTLS/Xray-core'
-            $tag  = $env:XRAY_VERSION
+            $tag  = $base
             $pat  = 'windows-64\.zip$'
           }
-          Write-Host "Xray 内核: $repo @ $tag"
+          Write-Host "Xray 内核: $repo @ $tag (基线 $base)"
           $name = (gh release view $tag --repo $repo --json assets --jq '.assets[].name' | Where-Object { $_ -match $pat } | Select-Object -First 1)
           if (-not $name) { Write-Error "在 $repo@$tag 里找不到匹配 '$pat' 的 asset"; exit 1 }
-          Invoke-WebRequest -Uri "https://github.com/$repo/releases/download/$tag/$name" -OutFile cores/xray.zip
-          Expand-Archive cores/xray.zip -DestinationPath cores/xray -Force
+          Invoke-WebRequest -Uri "https://github.com/$repo/releases/download/$tag/$name" -OutFile cores/xray-download
+          if ($name -like '*.zip') {
+            Expand-Archive cores/xray-download -DestinationPath cores/xray -Force
+          } else {
+            # 补丁仓库给的是裸 exe, 直接落为 xray.exe
+            Copy-Item cores/xray-download cores/xray/xray.exe -Force
+          }
 
           # geo 数据从官方 Xray 包取 (补丁内核的包里只有 xray.exe, 没有 geo 数据)
           if (-not (Test-Path cores/xray/geoip.dat)) {
-            Write-Host "从官方 Xray 包取 geo 数据: XTLS/Xray-core @ $($env:XRAY_VERSION)"
-            $geoName = (gh release view $env:XRAY_VERSION --repo XTLS/Xray-core --json assets --jq '.assets[].name' | Where-Object { $_ -match 'windows-64\.zip$' } | Select-Object -First 1)
-            if (-not $geoName) { Write-Error "官方 Xray @ $($env:XRAY_VERSION) 里找不到 Xray-windows-64.zip"; exit 1 }
-            Invoke-WebRequest -Uri "https://github.com/XTLS/Xray-core/releases/download/$($env:XRAY_VERSION)/$geoName" -OutFile cores/xray-geo.zip
+            Write-Host "从官方 Xray 包取 geo 数据: XTLS/Xray-core @ $base"
+            $geoName = (gh release view $base --repo XTLS/Xray-core --json assets --jq '.assets[].name' | Where-Object { $_ -match 'windows-64\.zip$' } | Select-Object -First 1)
+            if (-not $geoName) { Write-Error "官方 Xray @ $base 里找不到 Xray-windows-64.zip"; exit 1 }
+            Invoke-WebRequest -Uri "https://github.com/XTLS/Xray-core/releases/download/$base/$geoName" -OutFile cores/xray-geo.zip
             Expand-Archive cores/xray-geo.zip -DestinationPath cores/xray-geo -Force
             Copy-Item cores/xray-geo/geoip.dat   cores/xray/geoip.dat   -Force
             Copy-Item cores/xray-geo/geosite.dat cores/xray/geosite.dat -Force
