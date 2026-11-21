@@ -90,6 +90,10 @@ namespace v2rayN.Mode
         /// 自定义GFWList url
         /// </summary>
         public string urlGFWList { get; set; }
+        /// <summary>
+        /// 优选IP来源 url
+        /// </summary>
+        public string preferredIpUrl { get; set; }
 
         /// <summary>
         /// 允许来自局域网的连接

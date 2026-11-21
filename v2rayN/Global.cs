@@ -19,6 +19,11 @@ namespace v2rayN
         public const string AvailabilityTestUrl = @"https://www.google.com/generate_204";
 
         /// <summary>
+        /// PreferredIpUrl
+        /// </summary>
+        public const string PreferredIpUrl = @"https://ip.164746.xyz/ipTop.html";
+
+        /// <summary>
         /// CustomRoutingListUrl
         /// </summary>
         public const string CustomRoutingListUrl = @"https://raw.githubusercontent.com/2dust/v2rayCustomRoutingList/master/";

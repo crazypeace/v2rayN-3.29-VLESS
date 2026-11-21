@@ -2541,4 +2541,36 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>v2rayN.Forms.BaseForm, v2rayN, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+
+  <data name="labPreferredIpUrl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+
+  <data name="labPreferredIpUrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 434</value>
+  </data>
+
+  <data name="labPreferredIpUrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 18</value>
+  </data>
+
+  <data name="labPreferredIpUrl.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+
+  <data name="labPreferredIpUrl.Text" xml:space="preserve">
+    <value>Preferred IP source</value>
+  </data>
+
+  <data name="txtPreferredIpUrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 458</value>
+  </data>
+
+  <data name="txtPreferredIpUrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>541, 28</value>
+  </data>
+
+  <data name="txtPreferredIpUrl.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
 </root>

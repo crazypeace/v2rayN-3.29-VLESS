@@ -149,6 +149,10 @@ namespace v2rayN.Handler
             {
                 appConfig.urlGFWList = Global.GFWLIST_URL;
             }
+            if (Utils.IsNullOrEmpty(appConfig.preferredIpUrl))
+            {
+                appConfig.preferredIpUrl = Global.PreferredIpUrl;
+            }
             //if (Utils.IsNullOrEmpty(appConfig.remoteDNS))
             //{
             //    appConfig.remoteDNS = "1.1.1.1";

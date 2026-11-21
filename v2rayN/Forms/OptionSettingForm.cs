@@ -136,6 +136,8 @@ namespace v2rayN.Forms
             txtSpeedTestUrl.Text = appConfig.speedTestUrl;
             // 自定义测延迟链接
             txtDelayTestUrl.Text = appConfig.delayTestUrl;
+            // 优选IP来源
+            txtPreferredIpUrl.Text = appConfig.preferredIpUrl;
 
             ComboItem[] cbSource = new ComboItem[]
             {
@@ -397,6 +399,7 @@ namespace v2rayN.Forms
 
             appConfig.speedTestUrl = txtSpeedTestUrl.Text.TrimEx();
             appConfig.delayTestUrl = txtDelayTestUrl.Text.TrimEx();
+            appConfig.preferredIpUrl = txtPreferredIpUrl.Text.TrimEx();
 
             //bool lastEnableStatistics = appConfig.enableStatistics;
             //if(lastEnableStatistics != appConfig.enableStatistics)

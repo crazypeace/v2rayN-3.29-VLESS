@@ -89,6 +89,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txtDelayTestUrl = new System.Windows.Forms.TextBox();
             this.txtSpeedTestUrl = new System.Windows.Forms.TextBox();
+            this.labPreferredIpUrl = new System.Windows.Forms.Label();
+            this.txtPreferredIpUrl = new System.Windows.Forms.TextBox();
             this.chkKeepOlderDedupl = new System.Windows.Forms.CheckBox();
             this.cbFreshrate = new System.Windows.Forms.ComboBox();
             this.lbFreshrate = new System.Windows.Forms.Label();
@@ -548,6 +550,8 @@
             this.tabPage7.Controls.Add(this.label18);
             this.tabPage7.Controls.Add(this.txtDelayTestUrl);
             this.tabPage7.Controls.Add(this.txtSpeedTestUrl);
+            this.tabPage7.Controls.Add(this.labPreferredIpUrl);
+            this.tabPage7.Controls.Add(this.txtPreferredIpUrl);
             this.tabPage7.Controls.Add(this.chkKeepOlderDedupl);
             this.tabPage7.Controls.Add(this.cbFreshrate);
             this.tabPage7.Controls.Add(this.lbFreshrate);
@@ -579,6 +583,16 @@
             // 
             resources.ApplyResources(this.txtSpeedTestUrl, "txtSpeedTestUrl");
             this.txtSpeedTestUrl.Name = "txtSpeedTestUrl";
+            // 
+            // labPreferredIpUrl
+            // 
+            resources.ApplyResources(this.labPreferredIpUrl, "labPreferredIpUrl");
+            this.labPreferredIpUrl.Name = "labPreferredIpUrl";
+            // 
+            // txtPreferredIpUrl
+            // 
+            resources.ApplyResources(this.txtPreferredIpUrl, "txtPreferredIpUrl");
+            this.txtPreferredIpUrl.Name = "txtPreferredIpUrl";
             // 
             // chkKeepOlderDedupl
             // 
@@ -894,6 +908,8 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtDelayTestUrl;
         private System.Windows.Forms.TextBox txtSpeedTestUrl;
+        private System.Windows.Forms.Label labPreferredIpUrl;
+        private System.Windows.Forms.TextBox txtPreferredIpUrl;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton tlsHelloFragmentBtn;
         private System.Windows.Forms.RadioButton socks5TunnelBtn;

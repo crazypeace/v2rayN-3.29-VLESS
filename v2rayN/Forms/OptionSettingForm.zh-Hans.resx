@@ -364,4 +364,10 @@
   <data name="$this.Text" xml:space="preserve">
     <value>参数设置</value>
   </data>
+  <data name="labPreferredIpUrl.Text" xml:space="preserve">
+    <value>优选IP来源</value>
+  </data>
+  <data name="labPreferredIpUrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 12</value>
+  </data>
 </root>
