@@ -20,6 +20,7 @@ v2rayN-3.29 修改版, ✅VLESS Reality, ✅TLS fragment 分片, ✅Socks 下一
 - 支持 Hysteria2
 - 订阅 兼容支持纯文本和Base64编码
 - Hysteria2 支持指定证书指纹pinSHA256 兼容支持Base64编码和Hex编码
+- 方便更新节点的优选IP
 
 # 限制 
 - 如果你是使用 v2rayN.zip 并自己添加内核的话, 请不要放入 V2Ray内核.zip 中的 config.json 文件
