@@ -8,7 +8,7 @@
 # 也可以指定 release_tag 直接把两个 zip 传上去
 #
 # 内核: 只打包 Xray (v26.1.13 起支持 hysteria2 出站, 配置形状与 v2ray 不同)
-#       默认用 crazypeace/Xray-core-fork 的补丁版 (tag 形如 v26.9.9-fork.1), 以保住订阅里的 allowInsecure
+#       默认用 crazypeace/Xray-core-fork-v26.11.9 的补丁版 (tag v26.11.9-fork.1), 以保住订阅里的 allowInsecure
 #       补丁仓库资产是裸 exe (xray-windows-amd64.exe), 不是 zip; geo 数据从官方 Xray 基线版本包取
 name: Build and Package
 
@@ -24,11 +24,11 @@ on:
         required: false
         default: 'v2rayN-Reality-Hy2'
       xray_version:
-        description: 'Xray 版本 tag(补丁内核形如 v26.9.9-fork.1; 官方基线 = 去掉 -fork.* )。必须 >= v26.1.13 才有 hysteria2 出站'
+        description: 'Xray 版本 tag(补丁内核形如 v26.11.9-fork.1; 官方基线 = 去掉 -fork.* )。必须 >= v26.1.13 才有 hysteria2 出站'
         required: false
-        default: 'v26.9.9-fork.1'
+        default: 'v26.11.9-fork.1'
       xray_allowinsecure:
-        description: 'true = 用 crazypeace/Xray-core-fork 的补丁内核(永久允许 allowInsecure); false = 官方 Xray(基线版本)'
+        description: 'true = 用 crazypeace/Xray-core-fork-v26.11.9 的补丁内核(永久允许 allowInsecure); false = 官方 Xray(基线版本)'
         type: boolean
         default: true
       geoip_version:
@@ -46,7 +46,7 @@ permissions:
   contents: write
 
 env:
-  XRAY_VERSION: ${{ inputs.xray_version || 'v26.9.9-fork.1' }}
+  XRAY_VERSION: ${{ inputs.xray_version || 'v26.11.9-fork.1' }}
   GEOIP_VERSION: ${{ inputs.geoip_version || 'latest' }}
   NAME_PREFIX: ${{ inputs.name_prefix || 'v2rayN-Reality-Hy2' }}
   VERSION_INPUT: ${{ inputs.version || '' }}
@@ -107,10 +107,10 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force -Path cores/xray | Out-Null
 
-          # 官方基线版本: fork tag 形如 v26.9.9-fork.1, 去掉 -fork.* 得 v26.9.9 (geo / 官方内核都用它)
+          # 官方基线版本: fork tag 形如 v26.11.9-fork.1, 去掉 -fork.* 得 v26.11.9 (geo / 官方内核都用它)
           $base = $env:XRAY_VERSION -replace '-fork\..*$',''
           if ($env:xray_allowinsecure -eq 'true') {
-            $repo = 'crazypeace/Xray-core-fork'
+            $repo = 'crazypeace/Xray-core-fork-v26.11.9'
             $tag  = $env:XRAY_VERSION
             $pat  = '^xray-windows-amd64\.exe$'
           } else {
