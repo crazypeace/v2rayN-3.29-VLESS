@@ -635,7 +635,11 @@ namespace v2rayN.Handler
                     }
 
             }
-            Global.reloadV2ray = true;
+            // 移动排序只改变列表顺序以及 appConfig.index(仍指向同一个活动节点),
+            // 重新生成的客户端配置不变, 不需要重启内核。
+            // 调用方 MainForm.MoveServer 已注释掉 LoadV2ray()("TODO: reload is not good.");
+            // 若在这里置位, 标志会残留到下一次无关的 LoadV2ray() 造成多余重启(并清空日志)。
+            // Global.reloadV2ray = true;
 
             ToJsonFile(appConfig);
 
