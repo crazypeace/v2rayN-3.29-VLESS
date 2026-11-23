@@ -272,8 +272,11 @@ namespace v2rayN.Handler
             }
             else if (index < appConfig.index)//移除活动之前的
             {
+                // 删除的是活动节点之前的节点: index-- 后仍指向同一个活动节点,
+                // 重新生成的客户端配置不变, 不需要重启内核。
+                // 若置位, 紧接着的 LoadV2ray() 会不必要地重启内核并清空日志。
+                // Global.reloadV2ray = true;
                 appConfig.index--;
-                Global.reloadV2ray = true;
             }
 
             ToJsonFile(appConfig);
