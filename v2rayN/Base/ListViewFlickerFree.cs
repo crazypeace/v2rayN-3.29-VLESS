@@ -40,32 +40,8 @@ namespace v2rayN.Base
                             MaxStr = str;
                     }
 
-                    // 避免选中项字体变粗, 宽度不够.  追加 字符数*2 的宽度
-                    int strWidth = (int)graphics.MeasureString(MaxStr, font).Width + MaxStr.Length * 2;
+                    int strWidth = (int)graphics.MeasureString(MaxStr, font).Width;
                     c.Width = System.Math.Max(cWidth, strWidth);
-                }
-
-                // 只收缩最后一列, 补偿前面各列累加后超出窗口宽度的部分, 避免水平滚动条。
-                // 其它列的宽度计算保持不变; 溢出太大时最后一列压到下限为止。
-                if (this.Columns.Count > 1)
-                {
-                    int available = this.ClientSize.Width - SystemInformation.VerticalScrollBarWidth - 2;
-                    int total = 0;
-                    for (int i = 0; i < this.Columns.Count; i++)
-                    {
-                        total += this.Columns[i].Width;
-                    }
-                    int overflow = total - available;
-                    if (overflow > 0)
-                    {
-                        ColumnHeader lastColumn = this.Columns[this.Columns.Count - 1];
-                        int minWidth = System.Math.Max(
-                            (int)graphics.MeasureString(lastColumn.Text, this.Font).Width + 8, 60);
-                        if (lastColumn.Width > minWidth)
-                        {
-                            lastColumn.Width = System.Math.Max(minWidth, lastColumn.Width - overflow);
-                        }
-                    }
                 }
                 this.ResumeLayout();
             }
