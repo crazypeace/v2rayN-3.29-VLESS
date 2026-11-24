@@ -939,6 +939,126 @@ namespace v2rayN.Forms
                 + (changed == 0 ? " (没有别名含优选域名且地址不同的节点)" : ""));
         }
 
+        /// <summary>
+        /// 补充优选节点: 别名含 CFCDN 且不含"优选"的原节点, 各克隆出 "-优选域名" / "-优选IP" 两个节点。
+        /// 按完整别名去重, 重复点击不会产生重复节点。
+        /// </summary>
+        private async void tsbAddPreferredNodes_Click(object sender, EventArgs e)
+        {
+            tsbAddPreferredNodes.Enabled = false;
+            try
+            {
+                // 当前全体节点的别名集合(完整串, 区分大小写), 占位式去重
+                var existing = new HashSet<string>(StringComparer.Ordinal);
+                foreach (NodeItem n in appConfig.outbound)
+                {
+                    if (n.remarks != null)
+                    {
+                        existing.Add(n.remarks);
+                    }
+                }
+
+                // 优选IP: 一次拉取全体共用; 失败则只补域名节点
+                string ip = null;
+                if (!Utils.IsNullOrEmpty(appConfig.preferredIpUrl))
+                {
+                    ip = await PreferredIpHandler.GetFirstAsync(appConfig.preferredIpUrl);
+                }
+                if (Utils.IsNullOrEmpty(ip))
+                {
+                    ip = null;
+                }
+
+                // 随机域名: 一次生成全体共用
+                string domain = PreferredIpHandler.RandomPreferredDomain(appConfig.preferredDomainSuffix);
+                if (Utils.IsNullOrEmpty(domain))
+                {
+                    AppendText(false, "补充优选节点: 未配置优选域名后缀(参数设置-v2rayN设置)");
+                    return;
+                }
+
+                // 快照源节点, 避免遍历到本次新增的克隆
+                var sources = new List<NodeItem>();
+                foreach (NodeItem n in appConfig.outbound)
+                {
+                    if (n.remarks != null && n.remarks.Contains("CFCDN") && !n.remarks.Contains("优选"))
+                    {
+                        sources.Add(n);
+                    }
+                }
+
+                int addedDomain = 0;
+                int addedIp = 0;
+                int dupDomain = 0;
+                int dupIp = 0;
+                int noIp = 0;
+                int sameAddr = 0;
+                foreach (NodeItem src in sources)
+                {
+                    int pos = appConfig.outbound.IndexOf(src);
+
+                    string domainRemarks = src.remarks + "-优选域名";
+                    if (existing.Add(domainRemarks))
+                    {
+                        NodeItem d = Utils.DeepCopy(src);
+                        d.address = domain;
+                        d.remarks = domainRemarks;
+                        appConfig.outbound.Insert(pos + 1, d);
+                        addedDomain++;
+                        pos++;
+                    }
+                    else
+                    {
+                        dupDomain++;
+                    }
+
+                    string ipRemarks = src.remarks + "-优选IP";
+                    if (ip == null)
+                    {
+                        noIp++;
+                    }
+                    else if (ip == src.address)
+                    {
+                        // 地址与原节点相同会使 getItemId 重复, 跳过
+                        sameAddr++;
+                    }
+                    else if (existing.Add(ipRemarks))
+                    {
+                        NodeItem c = Utils.DeepCopy(src);
+                        c.address = ip;
+                        c.remarks = ipRemarks;
+                        appConfig.outbound.Insert(pos + 1, c);
+                        addedIp++;
+                    }
+                    else
+                    {
+                        dupIp++;
+                    }
+                }
+
+                if (addedDomain + addedIp > 0)
+                {
+                    // 只新增节点, index/活动节点不变, 不需要重启内核
+                    AppConfigHandler.SaveConfig(ref appConfig, false);
+                    RefreshServers();
+                }
+                AppendText(false, $"补充优选节点: 新增 域名{addedDomain} / IP{addedIp}"
+                    + $"; 跳过 重名域名{dupDomain} / 重名IP{dupIp} / IP同原地址{sameAddr} / IP未取到{noIp}"
+                    + $"; 域名={domain}"
+                    + (ip == null ? "; 优选IP拉取失败, 未补IP节点" : $"; IP={ip}")
+                    + (sources.Count == 0 ? "; 没有别名含CFCDN且不含优选的原节点" : ""));
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog(ex.Message, ex);
+                AppendText(false, "补充优选节点: 出错 " + ex.Message);
+            }
+            finally
+            {
+                tsbAddPreferredNodes.Enabled = true;
+            }
+        }
+
         private void tsbClose_Click(object sender, EventArgs e)
         {
             HideForm();

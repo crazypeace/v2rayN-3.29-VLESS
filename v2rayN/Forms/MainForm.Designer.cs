@@ -118,6 +118,7 @@
             this.tsbReload = new System.Windows.Forms.ToolStripButton();
             this.tsbUpdatePreferredIp = new System.Windows.Forms.ToolStripButton();
             this.tsbUpdatePreferredDomain = new System.Windows.Forms.ToolStripButton();
+            this.tsbAddPreferredNodes = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCheckUpdate = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsbCheckUpdateN = new System.Windows.Forms.ToolStripMenuItem();
@@ -721,6 +722,7 @@
             this.toolStripSeparator10,
             this.tsbUpdatePreferredIp,
             this.tsbUpdatePreferredDomain,
+            this.tsbAddPreferredNodes,
             this.tsbHelp,
             this.tsbPromotion,
             this.toolStripSeparator11,
@@ -797,6 +799,12 @@
             resources.ApplyResources(this.tsbUpdatePreferredDomain, "tsbUpdatePreferredDomain");
             this.tsbUpdatePreferredDomain.Name = "tsbUpdatePreferredDomain";
             this.tsbUpdatePreferredDomain.Click += new System.EventHandler(this.tsbUpdatePreferredDomain_Click);
+            // 
+            // tsbAddPreferredNodes
+            // 
+            resources.ApplyResources(this.tsbAddPreferredNodes, "tsbAddPreferredNodes");
+            this.tsbAddPreferredNodes.Name = "tsbAddPreferredNodes";
+            this.tsbAddPreferredNodes.Click += new System.EventHandler(this.tsbAddPreferredNodes_Click);
             // 
             // toolStripSeparator7
             // 
@@ -1025,6 +1033,7 @@
         private System.Windows.Forms.ToolStripButton tsbReload;
         private System.Windows.Forms.ToolStripButton tsbUpdatePreferredIp;
         private System.Windows.Forms.ToolStripButton tsbUpdatePreferredDomain;
+        private System.Windows.Forms.ToolStripButton tsbAddPreferredNodes;
         private System.Windows.Forms.ToolStripButton tsbQRCodeSwitch;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripMenuItem subMenuAddServer;

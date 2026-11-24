@@ -491,6 +491,9 @@
   <data name="tsbReload.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 60</value>
   </data>
+  <data name="tsbAddPreferredNodes.Text" xml:space="preserve">
+    <value>补充优选节点</value>
+  </data>
   <data name="tsbUpdatePreferredDomain.Text" xml:space="preserve">
     <value>更新优选域名</value>
   </data>
