@@ -96,6 +96,11 @@ namespace v2rayN.Mode
         public string preferredIpUrl { get; set; }
 
         /// <summary>
+        /// 优选域名后缀
+        /// </summary>
+        public string preferredDomainSuffix { get; set; }
+
+        /// <summary>
         /// 允许来自局域网的连接
         /// </summary>
         public bool allowLANConn { get; set; }

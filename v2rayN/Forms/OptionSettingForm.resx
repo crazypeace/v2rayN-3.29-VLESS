@@ -2573,4 +2573,36 @@
   <data name="txtPreferredIpUrl.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
   </data>
+
+  <data name="labPreferredDomainSuffix.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+
+  <data name="labPreferredDomainSuffix.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 500</value>
+  </data>
+
+  <data name="labPreferredDomainSuffix.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 18</value>
+  </data>
+
+  <data name="labPreferredDomainSuffix.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+
+  <data name="labPreferredDomainSuffix.Text" xml:space="preserve">
+    <value>Preferred domain suffix</value>
+  </data>
+
+  <data name="txtPreferredDomainSuffix.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 524</value>
+  </data>
+
+  <data name="txtPreferredDomainSuffix.Size" type="System.Drawing.Size, System.Drawing">
+    <value>541, 28</value>
+  </data>
+
+  <data name="txtPreferredDomainSuffix.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
 </root>

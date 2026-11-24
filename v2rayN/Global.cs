@@ -24,6 +24,11 @@ namespace v2rayN
         public const string PreferredIpUrl = @"https://ip.164746.xyz/ipTop.html";
 
         /// <summary>
+        /// PreferredDomainSuffix
+        /// </summary>
+        public const string PreferredDomainSuffix = @"cf.090227.xyz";
+
+        /// <summary>
         /// CustomRoutingListUrl
         /// </summary>
         public const string CustomRoutingListUrl = @"https://raw.githubusercontent.com/2dust/v2rayCustomRoutingList/master/";

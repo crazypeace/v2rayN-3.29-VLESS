@@ -91,6 +91,8 @@
             this.txtSpeedTestUrl = new System.Windows.Forms.TextBox();
             this.labPreferredIpUrl = new System.Windows.Forms.Label();
             this.txtPreferredIpUrl = new System.Windows.Forms.TextBox();
+            this.labPreferredDomainSuffix = new System.Windows.Forms.Label();
+            this.txtPreferredDomainSuffix = new System.Windows.Forms.TextBox();
             this.chkKeepOlderDedupl = new System.Windows.Forms.CheckBox();
             this.cbFreshrate = new System.Windows.Forms.ComboBox();
             this.lbFreshrate = new System.Windows.Forms.Label();
@@ -552,6 +554,8 @@
             this.tabPage7.Controls.Add(this.txtSpeedTestUrl);
             this.tabPage7.Controls.Add(this.labPreferredIpUrl);
             this.tabPage7.Controls.Add(this.txtPreferredIpUrl);
+            this.tabPage7.Controls.Add(this.labPreferredDomainSuffix);
+            this.tabPage7.Controls.Add(this.txtPreferredDomainSuffix);
             this.tabPage7.Controls.Add(this.chkKeepOlderDedupl);
             this.tabPage7.Controls.Add(this.cbFreshrate);
             this.tabPage7.Controls.Add(this.lbFreshrate);
@@ -593,6 +597,16 @@
             // 
             resources.ApplyResources(this.txtPreferredIpUrl, "txtPreferredIpUrl");
             this.txtPreferredIpUrl.Name = "txtPreferredIpUrl";
+            // 
+            // labPreferredDomainSuffix
+            // 
+            resources.ApplyResources(this.labPreferredDomainSuffix, "labPreferredDomainSuffix");
+            this.labPreferredDomainSuffix.Name = "labPreferredDomainSuffix";
+            // 
+            // txtPreferredDomainSuffix
+            // 
+            resources.ApplyResources(this.txtPreferredDomainSuffix, "txtPreferredDomainSuffix");
+            this.txtPreferredDomainSuffix.Name = "txtPreferredDomainSuffix";
             // 
             // chkKeepOlderDedupl
             // 
@@ -910,6 +924,8 @@
         private System.Windows.Forms.TextBox txtSpeedTestUrl;
         private System.Windows.Forms.Label labPreferredIpUrl;
         private System.Windows.Forms.TextBox txtPreferredIpUrl;
+        private System.Windows.Forms.Label labPreferredDomainSuffix;
+        private System.Windows.Forms.TextBox txtPreferredDomainSuffix;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton tlsHelloFragmentBtn;
         private System.Windows.Forms.RadioButton socks5TunnelBtn;

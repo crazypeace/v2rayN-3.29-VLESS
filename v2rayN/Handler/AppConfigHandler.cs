@@ -153,6 +153,10 @@ namespace v2rayN.Handler
             {
                 appConfig.preferredIpUrl = Global.PreferredIpUrl;
             }
+            if (Utils.IsNullOrEmpty(appConfig.preferredDomainSuffix))
+            {
+                appConfig.preferredDomainSuffix = Global.PreferredDomainSuffix;
+            }
             //if (Utils.IsNullOrEmpty(appConfig.remoteDNS))
             //{
             //    appConfig.remoteDNS = "1.1.1.1";

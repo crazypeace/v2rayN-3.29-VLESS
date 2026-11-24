@@ -138,6 +138,8 @@ namespace v2rayN.Forms
             txtDelayTestUrl.Text = appConfig.delayTestUrl;
             // 优选IP来源
             txtPreferredIpUrl.Text = appConfig.preferredIpUrl;
+            // 优选域名后缀
+            txtPreferredDomainSuffix.Text = appConfig.preferredDomainSuffix;
 
             ComboItem[] cbSource = new ComboItem[]
             {
@@ -400,6 +402,7 @@ namespace v2rayN.Forms
             appConfig.speedTestUrl = txtSpeedTestUrl.Text.TrimEx();
             appConfig.delayTestUrl = txtDelayTestUrl.Text.TrimEx();
             appConfig.preferredIpUrl = txtPreferredIpUrl.Text.TrimEx();
+            appConfig.preferredDomainSuffix = txtPreferredDomainSuffix.Text.TrimEx();
 
             //bool lastEnableStatistics = appConfig.enableStatistics;
             //if(lastEnableStatistics != appConfig.enableStatistics)
