@@ -1,6 +1,8 @@
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using v2rayN.Tool;
@@ -41,6 +43,40 @@ namespace v2rayN.Handler
                 Utils.SaveLog(ex.Message, ex);
                 return null;
             }
+        }
+
+        /// <summary>
+        /// 随机优选域名: 6 个小写字母 + 2 个数字 + "." + 配置的优选域名后缀。
+        /// 后缀前若带 "." 会先去掉; 配置为空返回 null。
+        /// </summary>
+        public static string RandomPreferredDomain(string suffix)
+        {
+            if (Utils.IsNullOrEmpty(suffix))
+            {
+                return null;
+            }
+            string s = suffix.Trim().TrimStart('.');
+            if (Utils.IsNullOrEmpty(s))
+            {
+                return null;
+            }
+            const string letters = "abcdefghijklmnopqrstuvwxyz";
+            const string digits = "0123456789";
+            byte[] buf = new byte[8];
+            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(buf);
+            }
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 6; i++)
+            {
+                sb.Append(letters[buf[i] % letters.Length]);
+            }
+            for (int i = 6; i < 8; i++)
+            {
+                sb.Append(digits[buf[i] % digits.Length]);
+            }
+            return sb.ToString() + "." + s;
         }
 
         /// <summary>

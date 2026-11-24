@@ -895,6 +895,50 @@ namespace v2rayN.Forms
             }
         }
 
+        /// <summary>
+        /// 更新优选域名: 遍历全体节点, 别名含"优选域名"的把地址设为一个随机优选域名
+        /// (本次点击只生成一个域名, 所有匹配节点共用)
+        /// </summary>
+        private void tsbUpdatePreferredDomain_Click(object sender, EventArgs e)
+        {
+            string domain = PreferredIpHandler.RandomPreferredDomain(appConfig.preferredDomainSuffix);
+            if (Utils.IsNullOrEmpty(domain))
+            {
+                AppendText(false, "更新优选域名: 未配置优选域名后缀(参数设置-v2rayN设置)");
+                return;
+            }
+
+            int changed = 0;
+            bool activeChanged = false;
+            for (int i = 0; i < appConfig.outbound.Count; i++)
+            {
+                NodeItem node = appConfig.outbound[i];
+                if (node.remarks != null && node.remarks.Contains("优选域名") && node.address != domain)
+                {
+                    node.address = domain;
+                    changed++;
+                    if (i == appConfig.index)
+                    {
+                        activeChanged = true;
+                    }
+                }
+            }
+
+            if (changed > 0)
+            {
+                AppConfigHandler.SaveConfig(ref appConfig, false);
+                RefreshServers();
+                if (activeChanged)
+                {
+                    // SaveConfig(false) 会把标志清零, 这里必须重新置位才能真正重启内核
+                    Global.reloadV2ray = true;
+                    LoadV2ray();
+                }
+            }
+            AppendText(false, $"更新优选域名: {changed} 个节点地址 -> {domain}"
+                + (changed == 0 ? " (没有别名含优选域名且地址不同的节点)" : ""));
+        }
+
         private void tsbClose_Click(object sender, EventArgs e)
         {
             HideForm();
