@@ -308,8 +308,7 @@ namespace v2rayN.Forms
                 {
                     //lvItem.Checked = true;
                     lvItem.ForeColor = Color.DodgerBlue;
-                    // 活动节点只用颜色区分, 不再加粗字体
-                    //lvItem.Font = new Font(lvItem.Font, FontStyle.Bold);
+                    lvItem.Font = new Font(lvItem.Font, FontStyle.Bold);
                 }
 
                 if (lvItem != null) lvServers.Items.Add(lvItem);
